@@ -1,7 +1,9 @@
 const readDir = require("./readDir");
 const fs = require("fs");
-module.exports = (jsDom) => {
-  doc = jsDom.window.document;
+const { JSDOM } = require("jsdom");
+module.exports = (html) => {
+  const jsDom = new JSDOM(html);
+  const doc = jsDom.window.document;
   readDir("/files/", {
     callback({ dir, file, isFile }) {
       switch (file) {
@@ -41,7 +43,7 @@ module.exports = (jsDom) => {
     <meta property="og:image" content="https://FlagClicked.thecolaber.repl.co/global/logo.jpg">
     <meta property="og:image:type" content="image/jpg">
   `;
-  return jsDom;
+  return jsDom.serialize();
 
   function createElt(name, attrs) {
     const elt = doc.createElement(name);
