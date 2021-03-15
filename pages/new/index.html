@@ -40,13 +40,16 @@
           },
           async createTutorial() {
             const newReq = fetch(
-              "https://flagclicked.thecolaber.repl.co/api/new",
+              "/api/new",
               {
                 method: "POST",
                 body: this.input,
               }
             );
-            console.log(await (await newReq).text());
+            const data = await (await newReq).json();
+            console.log(data.tutorialId);
+            location.href = `/tutorials/${data.tutorialId}`;
+
           },
         },
       });
