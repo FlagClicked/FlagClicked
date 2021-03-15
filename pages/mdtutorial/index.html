@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Home - When Flag Clicked</title>
+	<meta property="og:title" content="When Flag Clicked" />
+	<meta property="og:description" content="When Flag Clicked Markdown Tutorial." />
+</head>
+
+<body>
+	<div style="display: none" v-show="true">
+		<navbar></navbar>
+		<div id="content" v-html="html"></div>
+		<footerbar></footerbar>
+	</div>
+	<script>
+		window.app = Vue.createApp({
+        data() {
+          return {
+            html: marked(
+              `
+<center><h1>When Flag Clicked Markdown Tutorial</h1></center>
+<center><h2>This tutorial will teach you the basics of markdown.</h2></center>
+
+<div style="margin: auto; width: 50%;">
+<h2>Headings</h2>
+<p>To create a heading, add number signs (#) in front of a word or phrase. The number of number signs you use should correspond to the heading level. For example, to create a heading level three, use three number signs (e.g., ### My Header).</p>
+<h3>Heading Best Practices</h4>
+<p>Markdown applications don’t agree on how to handle a missing space between the number signs (#) and the heading name. For compatibility, always put a space between the number signs and the heading name. <br> <br>
+✔Do this<br>
+<pre>
+# Here's a Heading<br>
+</pre>
+❌Don't do this<br>
+<pre>
+#Here's a Heading
+</pre>
+</p>
+<h2>Paragraphs</h2>
+<p>To create paragraphs, use a blank line to separate one or more lines of text.</p>
+<h3>Paragraph Best Practices</h3>
+✔Do this<br>
+<pre>
+Don't put tabs or spaces in front of your paragraphs.
+Keep lines left-aligned like this.
+</pre>
+<br>
+❌Don't do this<br>
+  <pre>
+      This can result in unexpected formatting problems.
+
+    Don't add tabs or spaces in front of paragraphs.
+  </pre></p>
+  
+  <h2>Line Breaks</h2>
+<p>To create a line break, end a line with two or more spaces, and then type return/enter.</p>
+<h3>Line Break Best Practices</h3>
+You can use two or more spaces (commonly referred to as “trailing whitespace”) for line breaks in nearly every Markdown application, but it’s controversial. It’s hard to see trailing whitespace in an editor, and many people accidentally or intentionally put two spaces after every sentence. For this reason, you may want to use something other than trailing whitespace for line breaks. Fortunately, there is another option supported by nearly every Markdown application: the <br> HTML tag.<br> <br>
+For compatibility, use trailing white space or the <br> HTML tag at the end of the line. <br> <br>
+✔Do this<br>
+<pre>
+First line with two spaces after.  
+And the next line.
+
+First line with the HTML tag after.<br>
+And the next line.
+
+</pre>
+<br>
+❌Don't do this<br>
+  <pre>
+First line with a backslash after.&#92;
+And the next line.
+
+First line with nothing after.
+And the next line.
+
+  </pre>
+  </p>
+
+  <h2>Bold</h2>
+<p>To bold text, add two asterisks before and after a word or phrase. To bold the middle of a word for emphasis, add two asterisks without spaces around the letters.</p>
+ <h2>Italic</h2>
+<p>To italicize text, add one asterisk before and after a word or phrase. To italicize the middle of a word for emphasis, add one asterisk without spaces around the letters.</p>
+ <h2>Bold and Italic</h2>
+<p>To emphasize text with bold and italics at the same time, add three asterisks before and after a word or phrase. To bold and italicize the middle of a word for emphasis, add three asterisks without spaces around the letters.</p>
+<h2>Ordered Lists</h2>
+<p>To create an ordered list, add line items with numbers followed by periods. The numbers don’t have to be in numerical order, but the list should start with the number one.</p>
+<h3>Ordered List Best Practices</h3>
+<p>Markdown applications don’t agree on how to handle a missing space between the number signs (#) and the heading name. For compatibility, always put a space between the number signs and the heading name. <br> <br>
+✔Do this<br>
+<pre>
+1. First item
+2. Second item
+</pre>
+❌Don't do this
+<pre>
+1) First item
+2) Second item
+</pre>
+</p>
+<h2>Unordered Lists</h2>
+<p>To create an unordered list, add dashes (-) in front of line items. Indent one or more items to create a nested list.</p>
+
+  <h2>Images</h2>
+<p>To add an image, add an exclamation mark (!), followed by alt text in brackets, and the URL to the image asset in parentheses. You can optionally add a title after the URL in the parentheses.
+<pre>
+!&#91;Sample image&#93;(https://u.cubeupload.com/markverb1/INPe0M.jpg "Sample Image")
+</pre>
+</p>
+<h2>Escaping Characters</h2>
+<p>To display a literal character that would otherwise be used to format text in a Markdown document, add a backslash (&#92) in front of the character.</p>
+<h3>Characters you can escape</h3>
+<pre>
+&#92	
+&#96	
+*	
+_	
+{ }	
+[ ]	
+< >	
+( )
+#
++
+-	
+.	
+!
+|
+<pre>
+</div>
+
+
+
+
+
+
+
+
+
+<p style="font-size: 10px;"> Made by Mark.exe#6989. Github and Scratch: markverb1</p>
+`
+            ),
+          };
+        },
+      });
+	</script>
+</body>
+
+</html>
