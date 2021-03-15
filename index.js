@@ -4,7 +4,7 @@ const readDir = require("./libs/readDir");
 const Database = require("@replit/database");
 const db = new Database();
 const addLibs = require("./libs/add-libs");
- 
+
 db.list().then((keys) => {
   for (key of keys) {
     db.delete(key);
