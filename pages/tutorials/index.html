@@ -11,8 +11,7 @@
   <body>
     <div style="display: none" v-show="true">
       <navbar v-if="navbar"></navbar>
-      <div id="content" v-html="compiledMarkdown">
-      </div>
+      <div id="content" v-html="compiledMarkdown"></div>
       <footerbar v-if="navbar"></footerbar>
     </div>
     <script>
@@ -20,7 +19,7 @@
         data() {
           return {
             input: "loading...",
-            navbar: false
+            navbar: false,
           };
         },
         computed: {
@@ -28,18 +27,17 @@
             return marked(this.input);
           },
         },
-        methods: {
-
-        },
+        methods: {},
         async mounted() {
-          this.navbar = new URLSearchParams(location.search).get("hidenav") != "true"
+          this.navbar =
+            new URLSearchParams(location.search).get("hidenav") != "true";
           if (!this.navbar) {
-            document.documentElement.style.setProperty('--navbarHeight', 0)
+            document.documentElement.style.setProperty("--navbarHeight", 0);
           }
           const id = location.pathname.split("/")[2];
           const markdown = await (await fetch(`/api/tutorials/${id}`)).text();
           this.input = markdown;
-        }
+        },
       });
     </script>
   </body>
