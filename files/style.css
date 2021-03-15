@@ -87,6 +87,7 @@ body {
   min-height: 400px;
 }
 #blocks-banner {
+  display: block;
   width: 100%;
 }
 #copyright {
