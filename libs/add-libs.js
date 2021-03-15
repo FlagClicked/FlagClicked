@@ -7,30 +7,30 @@ module.exports = (jsDom) => {
       switch (file) {
         case "style.css":
           const styleElt = createElt("style", {
-            textContent: fs.readFileSync("." + dir + file, "utf8")
+            textContent: fs.readFileSync("." + dir + file, "utf8"),
           });
           doc.head.append(styleElt);
           break;
         case "components.js":
           const navJsElt = createElt("script", {
-            textContent: fs.readFileSync("." + dir + file, "utf8")
+            textContent: fs.readFileSync("." + dir + file, "utf8"),
           });
           doc.body.append(navJsElt);
           break;
       }
-    }
+    },
   });
   const vueJsElt = createElt("script", {
-    src: "https://unpkg.com/vue@next"
+    src: "https://unpkg.com/vue@next",
   });
   doc.head.prepend(vueJsElt);
   const markedJsElt = createElt("script", {
-    src: "https://unpkg.com/marked@0.3.6"
+    src: "https://unpkg.com/marked@0.3.6",
   });
   doc.head.append(markedJsElt);
   const logoLinkElt = createElt("link", {
     href: "/global/logo.svg",
-    rel: "icon"
+    rel: "icon",
   });
   doc.head.append(logoLinkElt);
   doc.head.innerHTML += `
@@ -40,7 +40,7 @@ module.exports = (jsDom) => {
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="https://FlagClicked.thecolaber.repl.co/global/logo.jpg">
     <meta property="og:image:type" content="image/jpg">
-  `
+  `;
   return jsDom;
 
   function createElt(name, attrs) {
@@ -57,4 +57,4 @@ module.exports = (jsDom) => {
     }
     return elt;
   }
-}
+};

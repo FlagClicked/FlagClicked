@@ -2,30 +2,30 @@
 <html lang="en">
   <head>
     <title>Home - When Flag Clicked</title>
-    <meta property="og:title" content="When Flag Clicked">
-    <meta property="og:description" content="When Flag Clicked is something.">
+    <meta property="og:title" content="When Flag Clicked" />
+    <meta property="og:description" content="When Flag Clicked is something." />
   </head>
   <body>
-    <div style="display: none;" v-show="true">
+    <div style="display: none" v-show="true">
       <navbar></navbar>
-      <div id="content" v-html="html">
-      </div>
+      <div id="content" v-html="html"></div>
       <footerbar></footerbar>
     </div>
-      <script>
+    <script>
       window.app = Vue.createApp({
         data() {
           return {
             html: marked(
-`
+              `
 <center><h2>This Week's Featured Tutorial</h2></center>
 <center><h3>Tutorial Name - Username</h3></center>
 <center>
 <iframe src="/tutorials/1" width="800" height="800" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe></center>
 
-`)
-          }
-        }
+`
+            ),
+          };
+        },
       });
     </script>
   </body>

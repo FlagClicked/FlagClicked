@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>New Tutorial - When Flag Clicked</title>
-  <meta property="og:title" content="Create a new Tutorial">
-  <meta property="og:description" content="Create a new tutorial for scratchers, by scratchers.">
+  <head>
+    <title>New Tutorial - When Flag Clicked</title>
+    <meta property="og:title" content="Create a new Tutorial" />
+    <meta
+      property="og:description"
+      content="Create a new tutorial for scratchers, by scratchers."
+    />
 
-<script src="https://unpkg.com/marked@2.0.1"></script>
-</head>
-<body>
-  <div style="display: none;" v-show="true">
-    <navbar></navbar>
-    <div id="content">
-      <div id="editor">
-        <textarea :value="input" @input="update"></textarea>
-        <div v-html="compiledMarkdown"></div>
+    <script src="https://unpkg.com/marked@2.0.1"></script>
+  </head>
+  <body>
+    <div style="display: none" v-show="true">
+      <navbar></navbar>
+      <div id="content">
+        <div id="editor">
+          <textarea :value="input" @input="update"></textarea>
+          <div v-html="compiledMarkdown"></div>
+        </div>
+        <button @click="createTutorial">Create</button>
       </div>
-      <button @click="createTutorial">Create</button>
+      <footerbar></footerbar>
     </div>
-    <footerbar></footerbar>
-  </div>
     <script>
-    window.app = Vue.createApp({
-      data() {
-        return {
-          input: '# New Tutorial!'
-        }
-      },
-      computed: {
-        compiledMarkdown() {
-          return marked(this.input, { sanitize: true });
-        }
-      },
-      methods: {
-        update(e) {
-          this.input = e.target.value;
+      window.app = Vue.createApp({
+        data() {
+          return {
+            input: "# New Tutorial!",
+          };
         },
-        async createTutorial() {
-          const newReq = fetch("https://flagclicked.thecolaber.repl.co/api/new", {
-            method: "POST",
-            body: this.input
-          });        
-          console.log(await (await newReq).text())
-        }
-      }
-    });
-  </script>
-</body>
+        computed: {
+          compiledMarkdown() {
+            return marked(this.input, { sanitize: true });
+          },
+        },
+        methods: {
+          update(e) {
+            this.input = e.target.value;
+          },
+          async createTutorial() {
+            const newReq = fetch(
+              "https://flagclicked.thecolaber.repl.co/api/new",
+              {
+                method: "POST",
+                body: this.input,
+              }
+            );
+            console.log(await (await newReq).text());
+          },
+        },
+      });
+    </script>
+  </body>
 </html>

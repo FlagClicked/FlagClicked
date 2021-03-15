@@ -2,14 +2,16 @@
   --navbarHeight: 100px;
 }
 * {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
   color: white;
 }
 body {
   margin: 0;
   background: #21bcff;
 }
-#navbar, #footer {
+#navbar,
+#footer {
   background: #ffbf00;
   height: calc(var(--navbarHeight) / 2);
   position: absolute;
@@ -37,7 +39,8 @@ body {
   margin: 0 10px;
   height: 50px;
 }
-#navbar ul, #footer > ul {
+#navbar ul,
+#footer > ul {
   list-style: none;
   display: flex;
   flex: 1;
@@ -48,12 +51,12 @@ body {
   display: block;
   font-size: 20px;
 }
-#navbar ul li, #footer ul li {
+#navbar ul li,
+#footer ul li {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 #navbar ul li.button p {
   text-align: center;
@@ -67,12 +70,13 @@ body {
   margin: 0;
   user-select: none;
 }
-#navbar ul li:not(.button), #navbar ul li.button p {
+#navbar ul li:not(.button),
+#navbar ul li.button p {
   cursor: pointer;
 }
 
 #navbar ul li:not(.button):hover {
-  background: #00000021
+  background: #00000021;
 }
 #navbar ul li.button p:hover {
   border: none;
@@ -118,7 +122,6 @@ body {
 
 /* maybe temp */
 
-
 #editor {
   height: 500px;
   display: flex;
@@ -143,7 +146,8 @@ textarea {
   padding: 20px;
 }
 
-p > code, pre {
+p > code,
+pre {
   background: #0000003d;
   border-radius: 5px;
   padding: 3px;

@@ -1,30 +1,30 @@
-app.component('navbar', {
+app.component("navbar", {
   data() {
     return {
       items: [
         {
           text: "Tutorials",
-          button: true
+          button: true,
         },
         {
           text: "Voting",
           button: true,
-          smallSize2: true
+          smallSize2: true,
         },
         {
           text: "About",
           button: true,
-          smallSize1: true
+          smallSize1: true,
         },
         {
-          text: "Sign In"
+          text: "Sign In",
         },
         {
           text: "Create Account",
-          smallSize1: true
-        }
-      ]
-    }
+          smallSize1: true,
+        },
+      ],
+    };
   },
   props: [],
   template: `
@@ -40,30 +40,30 @@ app.component('navbar', {
       :data-smallsize2="item.smallSize2"
       :class="item.button ? 'button' : ''"><p>{{ item.text }}</p></li>
     </ul>
-  </div>`
+  </div>`,
 });
-app.component('footerbar', {
+app.component("footerbar", {
   data() {
     return {
       columns: [
         [
           {
-            text: "Contact Us"
+            text: "Contact Us",
           },
           {
-            text: "About Us"
-          }
+            text: "About Us",
+          },
         ],
         [
           {
-            text: "Tutorials"
+            text: "Tutorials",
           },
           {
-            text: "Stuff"
-          }
-        ]
-      ]
-    }
+            text: "Stuff",
+          },
+        ],
+      ],
+    };
   },
   props: [],
   template: `
@@ -82,6 +82,6 @@ app.component('footerbar', {
       </li> 
     </ul>
     <div id="copyright">Copyright 2021 © TheColaber</div>
-  </div>`
+  </div>`,
 });
-app.mount('body');
+app.mount("body");
