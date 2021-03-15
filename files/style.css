@@ -146,7 +146,7 @@ textarea {
   padding: 20px;
 }
 
-p > code,
+*:not(pre) > code,
 pre {
   background: #0000003d;
   border-radius: 5px;

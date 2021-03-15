@@ -7,8 +7,6 @@
       property="og:description"
       content="A another tutorial for scratchers, by scratchers."
     />
-
-    <script src="https://unpkg.com/marked@2.0.1"></script>
   </head>
   <body>
     <div style="display: none" v-show="true">
@@ -27,7 +25,7 @@
         },
         computed: {
           compiledMarkdown() {
-            return marked(this.input, { sanitize: true });
+            return marked(this.input);
           },
         },
         methods: {
