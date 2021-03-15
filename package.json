@@ -1,0 +1,25 @@
+{
+  "name": "FlagClicked",
+  "version": "1.0.0",
+  "description": "Website for FlagClicked",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlagClicked/FlagClicked.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlagClicked/FlagClicked/issues"
+  },
+  "homepage": "https://github.com/FlagClicked/FlagClicked#readme",
+  "dependencies": {
+    "@replit/database": "^2.0.0",
+    "express": "^4.17.1",
+    "jsdom": "^16.5.1"
+  }
+}
