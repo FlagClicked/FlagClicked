@@ -31,7 +31,7 @@ module.exports = (html) => {
   });
   doc.head.append(markedJsElt);
   const logoLinkElt = createElt("link", {
-    href: "/global/logo.svg",
+    href: "/assets/logo.svg",
     rel: "icon",
   });
   doc.head.append(logoLinkElt);
@@ -40,7 +40,7 @@ module.exports = (html) => {
     <meta property="og:url" content="https://FlagClicked.thecolaber.repl.co">
     <meta property="og:site_name" content="When Flag Clicked">
     <meta property="og:locale" content="en_US">
-    <meta property="og:image" content="https://FlagClicked.thecolaber.repl.co/global/logo.jpg">
+    <meta property="og:image" content="https://FlagClicked.thecolaber.repl.co/assets/logo.jpg">
     <meta property="og:image:type" content="image/jpg">
   `;
   return jsDom.serialize();

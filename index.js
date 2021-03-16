@@ -25,8 +25,8 @@ readDir("/pages/", {
     }
   },
 });
-pageDir = "/global/";
-readDir("/global/", {
+pageDir = "/assets/";
+readDir("/assets/", {
   callback({ dir, file, isFile }) {
     if (!isFile) {
       pageDir += file + "/";
