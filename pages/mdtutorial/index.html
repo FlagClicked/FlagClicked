@@ -16,169 +16,169 @@
       <footerbar></footerbar>
     </div>
     <script>
-      window.app = Vue.createApp({
-        data() {
-          return {
-            html: marked(
-              `
-<center>
+            window.app = Vue.createApp({
+              data() {
+                return {
+                  html: marked(
+                    `
+      <center>
 
-# When Flag Clicked Markdown Tutorial
+      # When Flag Clicked Markdown Tutorial
 
-</center>
+      </center>
 
-<center>
+      <center>
 
-## This tutorial will teach you the basics of markdown.
+      ## This tutorial will teach you the basics of markdown.
 
-</center>
+      </center>
 
-<div style="margin: auto; width: 50%;">
+      <div style="margin: auto; width: 50%;">
 
-## Headings
+      ## Headings
 
-To create a heading, add number signs (#) in front of a word or phrase. The number of number signs you use should correspond to the heading level. For example, to create a heading level three, use three number signs (e.g., ### My Header).
+      To create a heading, add number signs (#) in front of a word or phrase. The number of number signs you use should correspond to the heading level. For example, to create a heading level three, use three number signs (e.g., ### My Header).
 
-### Heading Best Practices
+      ### Heading Best Practices
 
-Markdown applications don’t agree on how to handle a missing space between the number signs (#) and the heading name. For compatibility, always put a space between the number signs and the heading name.  
+      Markdown applications don’t agree on how to handle a missing space between the number signs (#) and the heading name. For compatibility, always put a space between the number signs and the heading name.
 
-✔Do this  
+      ✔Do this
 
-<pre># Here's a Heading  
+      <pre># Here's a Heading
 
-</pre>
+      </pre>
 
-❌Don't do this  
+      ❌Don't do this
 
-<pre>#Here's a Heading
-</pre>
+      <pre>#Here's a Heading
+      </pre>
 
-## Paragraphs
+      ## Paragraphs
 
-To create paragraphs, use a blank line to separate one or more lines of text.
+      To create paragraphs, use a blank line to separate one or more lines of text.
 
-### Paragraph Best Practices
+      ### Paragraph Best Practices
 
-✔Do this  
+      ✔Do this
 
-<pre>Don't put tabs or spaces in front of your paragraphs.
-Keep lines left-aligned like this.
-</pre>
+      <pre>Don't put tabs or spaces in front of your paragraphs.
+      Keep lines left-aligned like this.
+      </pre>
 
-❌Don't do this  
+      ❌Don't do this
 
-<pre>      This can result in unexpected formatting problems.
+      <pre>      This can result in unexpected formatting problems.
 
-    Don't add tabs or spaces in front of paragraphs.
-  </pre>
+          Don't add tabs or spaces in front of paragraphs.
+        </pre>
 
-## Line Breaks
+      ## Line Breaks
 
-To create a line break, end a line with two or more spaces, and then type return/enter.
+      To create a line break, end a line with two or more spaces, and then type return/enter.
 
-### Line Break Best Practices
+      ### Line Break Best Practices
 
-You can use two or more spaces (commonly referred to as “trailing whitespace”) for line breaks in nearly every Markdown application, but it’s controversial. It’s hard to see trailing whitespace in an editor, and many people accidentally or intentionally put two spaces after every sentence. For this reason, you may want to use something other than trailing whitespace for line breaks. Fortunately, there is another option supported by nearly every Markdown application: the  
-HTML tag.  
+      You can use two or more spaces (commonly referred to as “trailing whitespace”) for line breaks in nearly every Markdown application, but it’s controversial. It’s hard to see trailing whitespace in an editor, and many people accidentally or intentionally put two spaces after every sentence. For this reason, you may want to use something other than trailing whitespace for line breaks. Fortunately, there is another option supported by nearly every Markdown application: the
+      HTML tag.
 
-For compatibility, use trailing white space or the  
-HTML tag at the end of the line.  
+      For compatibility, use trailing white space or the
+      HTML tag at the end of the line.
 
-✔Do this  
+      ✔Do this
 
-<pre>First line with two spaces after.  
-And the next line.
+      <pre>First line with two spaces after.
+      And the next line.
 
-First line with the HTML tag after.  
+      First line with the HTML tag after.
 
-And the next line.
+      And the next line.
 
-</pre>
+      </pre>
 
-❌Don't do this  
+      ❌Don't do this
 
-<pre>First line with a backslash after.\
-And the next line.
+      <pre>First line with a backslash after.\
+      And the next line.
 
-First line with nothing after.
-And the next line.
+      First line with nothing after.
+      And the next line.
 
-  </pre>
+        </pre>
 
-## Bold
+      ## Bold
 
-To bold text, add two asterisks before and after a word or phrase. To bold the middle of a word for emphasis, add two asterisks without spaces around the letters.
+      To bold text, add two asterisks before and after a word or phrase. To bold the middle of a word for emphasis, add two asterisks without spaces around the letters.
 
-## Italic
+      ## Italic
 
-To italicize text, add one asterisk before and after a word or phrase. To italicize the middle of a word for emphasis, add one asterisk without spaces around the letters.
+      To italicize text, add one asterisk before and after a word or phrase. To italicize the middle of a word for emphasis, add one asterisk without spaces around the letters.
 
-## Bold and Italic
+      ## Bold and Italic
 
-To emphasize text with bold and italics at the same time, add three asterisks before and after a word or phrase. To bold and italicize the middle of a word for emphasis, add three asterisks without spaces around the letters.
+      To emphasize text with bold and italics at the same time, add three asterisks before and after a word or phrase. To bold and italicize the middle of a word for emphasis, add three asterisks without spaces around the letters.
 
-## Ordered Lists
+      ## Ordered Lists
 
-To create an ordered list, add line items with numbers followed by periods. The numbers don’t have to be in numerical order, but the list should start with the number one.
+      To create an ordered list, add line items with numbers followed by periods. The numbers don’t have to be in numerical order, but the list should start with the number one.
 
-### Ordered List Best Practices
+      ### Ordered List Best Practices
 
-Markdown applications don’t agree on how to handle a missing space between the number signs (#) and the heading name. For compatibility, always put a space between the number signs and the heading name.  
+      Markdown applications don’t agree on how to handle a missing space between the number signs (#) and the heading name. For compatibility, always put a space between the number signs and the heading name.
 
-✔Do this  
+      ✔Do this
 
-<pre>1\. First item
-2\. Second item
-</pre>
+      <pre>1\. First item
+      2\. Second item
+      </pre>
 
-❌Don't do this
+      ❌Don't do this
 
-<pre>1) First item
-2) Second item
-</pre>
+      <pre>1) First item
+      2) Second item
+      </pre>
 
-## Unordered Lists
+      ## Unordered Lists
 
-To create an unordered list, add dashes (-) in front of line items. Indent one or more items to create a nested list.
+      To create an unordered list, add dashes (-) in front of line items. Indent one or more items to create a nested list.
 
-## Images
+      ## Images
 
-To add an image, add an exclamation mark (!), followed by alt text in brackets, and the URL to the image asset in parentheses. You can optionally add a title after the URL in the parentheses.
+      To add an image, add an exclamation mark (!), followed by alt text in brackets, and the URL to the image asset in parentheses. You can optionally add a title after the URL in the parentheses.
 
-<pre>![Sample image](https://u.cubeupload.com/markverb1/INPe0M.jpg "Sample Image")
-</pre>
+      <pre>![Sample image](https://u.cubeupload.com/markverb1/INPe0M.jpg "Sample Image")
+      </pre>
 
-## Escaping Characters
+      ## Escaping Characters
 
-To display a literal character that would otherwise be used to format text in a Markdown document, add a backslash (\) in front of the character.
+      To display a literal character that would otherwise be used to format text in a Markdown document, add a backslash (\) in front of the character.
 
-### Characters you can escape
+      ### Characters you can escape
 
-<pre>\	
-`	
-*	
-_	
-{ }	
-[ ]	
-< >	
-( )
-#
-+
--	
-.	
-!
-|
-</pre>
+      <pre>\
+      `
+      *
+      _
+      { }
+      [ ]
+      < >
+      ( )
+      #
+      +
+      -
+      .
+      !
+      |
+      </pre>
 
-</div>
+      </div>
 
-Made with ❤ by Mark.exe#6989. Github and Scratch: markverb1
-`
-            ),
-          };
-        },
-      });
+      Made with ❤ by Mark.exe#6989. Github and Scratch: markverb1
+      `
+                  ),
+                };
+              },
+            });
     </script>
   </body>
 </html>
