@@ -6,17 +6,23 @@
     <meta property="og:description" content="When Flag Clicked is something." />
   </head>
   <body>
-    <video autoplay muted id="intro-video" src="/assets/intro.mp4" @ended="introEnd($event)" v-show="!introWatched"></video>
+    <video
+      autoplay
+      muted
+      id="intro-video"
+      src="/assets/intro.mp4"
+      @ended="introEnd($event)"
+      v-show="!introWatched"
+    ></video>
     <div style="display: none" v-show="introDone || introWatched">
       <navbar></navbar>
       <div id="content" v-html="html"></div>
       <footerbar></footerbar>
     </div>
     <script>
-
       function getCookies() {
         let cookies = {};
-        document.cookie.split(";").every(s => {
+        document.cookie.split(";").every((s) => {
           if (!s.length) return;
           let [name, value] = s.trim().split("=");
           cookies[name] = value;
@@ -25,17 +31,16 @@
       }
       function setCookie(name, value) {
         let cookies = getCookies();
-        console.log(cookies)
+        console.log(cookies);
         cookies[name] = value;
         let newcookies = "";
         for (cookie in cookies) {
-          console.log(cookie)
-          newcookies+= `${cookie}= ${cookies[cookie]}; `
+          console.log(cookie);
+          newcookies += `${cookie}= ${cookies[cookie]}; `;
         }
-        console.log(newcookies)
+        console.log(newcookies);
         document.cookie = newcookies;
       }
-
 
       window.app = Vue.createApp({
         data() {
@@ -60,10 +65,10 @@
             setTimeout(() => {
               event.target.style.display = "none";
             }, 1000);
-          }
+          },
         },
         mounted() {
-          console.log(getCookies().introwatched)
+          console.log(getCookies().introwatched);
           this.introWatched = getCookies().introwatched === "true";
           setCookie("introwatched", "true");
         },
