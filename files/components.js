@@ -22,6 +22,8 @@ app.component("navbar", {
         {
           text: "Create Account",
           smallSize1: true,
+          bold: true,
+          href: "/join",
         },
       ],
     };
@@ -29,16 +31,24 @@ app.component("navbar", {
   props: [],
   template: `
   <div id="navbar">
-    
     <ul>
+    <a href="/">
       <li>
         <div id="block">
           when <img src="https://scratch.mit.edu/static/blocks-media/green-flag.svg"> clicked
         </div>
-      </li>
-      <li v-for="item of items" :data-smallsize1="item.smallSize1" 
+      </li>    
+    </a>
+
+      <a
+      :href="item.href"
+      :data-smallsize1="item.smallSize1" 
       :data-smallsize2="item.smallSize2"
-      :class="item.button ? 'button' : ''"><p>{{ item.text }}</p></li>
+      v-for="item of items">
+      <li
+      :class="item.button ? 'button' : ''"
+      :style="item.bold ? 'font-weight: 500' : ''"><p>{{ item.text }}</p></li>
+      </a>
     </ul>
   </div>`,
 });
@@ -59,7 +69,7 @@ app.component("footerbar", {
             text: "Tutorials",
           },
           {
-            text: "Stuff",
+            text: "MD Tutorial",
           },
         ],
       ],
@@ -67,7 +77,7 @@ app.component("footerbar", {
   },
   props: [],
   template: `
-  <img src="/global/blocks.jpg" id="blocks-banner">
+  <img src="/assets/blocks.jpg" id="blocks-banner">
   <div id="footer">
     <ul>
       <li>
