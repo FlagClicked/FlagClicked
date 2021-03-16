@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Home - When Flag Clicked</title>
+    <meta property="og:title" content="When Flag Clicked" />
+    <meta
+      property="og:description"
+      content="When Flag Clicked Markdown Tutorial."
+    />
+  </head>
 
-<head>
-  <title>Home - When Flag Clicked</title>
-  <meta property="og:title" content="When Flag Clicked" />
-  <meta property="og:description" content="When Flag Clicked Markdown Tutorial." />
-</head>
-
-<body>
-  <div style="display: none" v-show="true">
-    <navbar></navbar>
-    <div id="content" v-html="html"></div>
-    <footerbar></footerbar>
-  </div>
-  <script>
-    window.app = Vue.createApp({
-      data() {
-        return {
-          html: marked(
-            `
+  <body>
+    <div style="display: none" v-show="true">
+      <navbar></navbar>
+      <div id="content" v-html="html"></div>
+      <footerbar></footerbar>
+    </div>
+    <script>
+      window.app = Vue.createApp({
+        data() {
+          return {
+            html: marked(
+              `
 <center><h1>When Flag Clicked Markdown Tutorial</h1></center>
 <center><h2>This tutorial will teach you the basics of markdown.</h2></center>
 
@@ -139,11 +141,10 @@ _
 
 <p style="font-size: 10px;"> Made by Mark.exe#6989. Github and Scratch: markverb1 </p>
 `
-          ),
-        };
-      },
-    });
-  </script>
-</body>
-
+            ),
+          };
+        },
+      });
+    </script>
+  </body>
 </html>
