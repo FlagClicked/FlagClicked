@@ -42,6 +42,7 @@ module.exports = (html) => {
     <meta property="og:locale" content="en_US">
     <meta property="og:image" content="https://FlagClicked.thecolaber.repl.co/assets/logo.jpg">
     <meta property="og:image:type" content="image/jpg">
+    <script src="https://scratchblocks.github.io/js/scratchblocks-v3.4-min.js"></script>
   `;
   return jsDom.serialize();
 
