@@ -29,6 +29,7 @@
         },
         computed: {
           compiledMarkdown() {
+            const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
             const renderCodeblocks = () => {
               if (!document.querySelector('.scratchblocks')) {
                 scratchblocks.renderMatching('code.lang-scratchblocks', {
@@ -40,9 +41,9 @@
                 i.setAttribute('data-language', i.classList[0]?.slice(5));
                 Rainbow.color(i.parentNode);
               });
-              window.requestAnimationFrame(renderCodeblocks);
+              requestAnimationFrame(renderCodeblocks);
             };
-            window.requestAnimationFrame(renderCodeblocks);
+            requestAnimationFrame(renderCodeblocks);
 
             return marked(this.input);
           },
