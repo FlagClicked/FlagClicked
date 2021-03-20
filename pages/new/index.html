@@ -24,22 +24,28 @@
       window.app = Vue.createApp({
         data() {
           return {
-            input: '# New Tutorial!',
+            input: "# New Tutorial!",
           };
         },
         computed: {
           compiledMarkdown() {
-            const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+            const requestAnimationFrame =
+              window.requestAnimationFrame ||
+              window.mozRequestAnimationFrame ||
+              window.webkitRequestAnimationFrame ||
+              window.msRequestAnimationFrame;
             const renderCodeblocks = () => {
-              if (!document.querySelector('.scratchblocks')) {
-                scratchblocks.renderMatching('code.lang-scratchblocks', {
-                  style: 'scratch3',
+              if (!document.querySelector(".scratchblocks")) {
+                scratchblocks.renderMatching("code.lang-scratchblocks", {
+                  style: "scratch3",
                 });
               }
-              var codeblocks = Array.from(document.querySelectorAll('code'));
-              codeblocks = codeblocks.filter(i => i.classList[0] != 'lang-scratchblocks');
+              var codeblocks = Array.from(document.querySelectorAll("code"));
+              codeblocks = codeblocks.filter(
+                (i) => i.classList[0] != "lang-scratchblocks"
+              );
               codeblocks.forEach((i) => {
-                i.setAttribute('data-language', i.classList[0]?.slice(5));
+                i.setAttribute("data-language", i.classList[0]?.slice(5));
                 Rainbow.color(i.parentNode);
               });
               requestAnimationFrame(renderCodeblocks);
@@ -54,8 +60,8 @@
             this.input = e.target.value;
           },
           async createTutorial() {
-            const newReq = fetch('/api/new', {
-              method: 'POST',
+            const newReq = fetch("/api/new", {
+              method: "POST",
               body: this.input,
             });
             const data = await (await newReq).json();
