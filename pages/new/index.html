@@ -24,18 +24,25 @@
       window.app = Vue.createApp({
         data() {
           return {
-            input: "# New Tutorial!",
+            input: '# New Tutorial!',
           };
         },
         computed: {
           compiledMarkdown() {
-            setTimeout(() => {
-              if (!document.querySelector(".scratchblocks")) {
-                scratchblocks.renderMatching("code.lang-scratchblocks", {
-                  style: "scratch3",
+            const renderCodeblocks = () => {
+              if (!document.querySelector('.scratchblocks')) {
+                scratchblocks.renderMatching('code.lang-scratchblocks', {
+                  style: 'scratch3',
                 });
               }
-            }, 0);
+              const codeblocks = Array.from(document.querySelectorAll('code'));
+              codeblocks.forEach((i) => {
+                i.setAttribute('data-language', i.classList[0]?.slice(5));
+                Rainbow.color(i.parentNode);
+              });
+              window.requestAnimationFrame(renderCodeblocks);
+            };
+            window.requestAnimationFrame(renderCodeblocks);
 
             return marked(this.input);
           },
@@ -45,13 +52,13 @@
             this.input = e.target.value;
           },
           async createTutorial() {
-            const newReq = fetch("/api/new", {
-              method: "POST",
+            const newReq = fetch('/api/new', {
+              method: 'POST',
               body: this.input,
             });
             const data = await (await newReq).json();
             console.log(data.tutorialId);
-            location.href = `/tutorials/${data.tutorialId}`;
+            window.location.href = `/tutorials/${data.tutorialId}`;
           },
         },
       });
