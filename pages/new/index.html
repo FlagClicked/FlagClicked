@@ -22,10 +22,10 @@
     </div>
     <script>
       const requestAnimationFrame =
-              window.requestAnimationFrame ||
-              window.mozRequestAnimationFrame ||
-              window.webkitRequestAnimationFrame ||
-              window.msRequestAnimationFrame;
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
       window.app = Vue.createApp({
         data() {
           return {
@@ -40,7 +40,9 @@
                   style: "scratch3",
                 });
               }
-              var codeblocks = Array.from(document.querySelectorAll("code:not(.lang-scratchblocks)"));
+              var codeblocks = Array.from(
+                document.querySelectorAll("code:not(.lang-scratchblocks)")
+              );
               codeblocks.forEach((i) => {
                 i.setAttribute("data-language", i.classList[0]?.slice(5));
                 Rainbow.color(i.parentNode);
