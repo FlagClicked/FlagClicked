@@ -1,6 +1,6 @@
 # FlagClicked
 
-[![](https://img.shields.io/badge/chat-on%20discord-orange?style=for-the-badge&logo=appveyor)](https://discord.gg/253sVH6qYg)
+<!--[![](https://img.shields.io/badge/chat-on%20discord-orange?style=for-the-badge&logo=appveyor)](https://discord.gg/253sVH6qYg)-->
 
 ## Build:
 
