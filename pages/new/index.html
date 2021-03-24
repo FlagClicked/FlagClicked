@@ -21,6 +21,11 @@
       <footerbar></footerbar>
     </div>
     <script>
+      const requestAnimationFrame =
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
       window.app = Vue.createApp({
         data() {
           return {
@@ -29,13 +34,21 @@
         },
         computed: {
           compiledMarkdown() {
-            setTimeout(() => {
+            const renderCodeblocks = () => {
               if (!document.querySelector(".scratchblocks")) {
                 scratchblocks.renderMatching("code.lang-scratchblocks", {
                   style: "scratch3",
                 });
               }
-            }, 0);
+              var codeblocks = Array.from(
+                document.querySelectorAll("code:not(.lang-scratchblocks)")
+              );
+              codeblocks.forEach((i) => {
+                i.setAttribute("data-language", i.classList[0]?.slice(5));
+                Rainbow.color(i.parentNode);
+              });
+            };
+            requestAnimationFrame(renderCodeblocks);
 
             return marked(this.input);
           },
@@ -51,7 +64,7 @@
             });
             const data = await (await newReq).json();
             console.log(data.tutorialId);
-            location.href = `/tutorials/${data.tutorialId}`;
+            window.location.href = `/tutorials/${data.tutorialId}`;
           },
         },
       });

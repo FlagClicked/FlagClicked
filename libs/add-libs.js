@@ -43,6 +43,8 @@ module.exports = (html) => {
     <meta property="og:image" content="https://FlagClicked.thecolaber.repl.co/assets/logo.jpg">
     <meta property="og:image:type" content="image/jpg">
     <script src="https://scratchblocks.github.io/js/scratchblocks-v3.4-min.js"></script>
+    <link href="https://gitcdn.link/repo/ccampbell/rainbow/master/themes/css/rainbow.css" rel="stylesheet" type="text/css">
+    <script src="https://gitcdn.link/repo/ccampbell/rainbow/master/dist/rainbow.min.js"></script>
   `;
   return jsDom.serialize();
 
