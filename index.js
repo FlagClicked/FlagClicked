@@ -1,18 +1,15 @@
 const express = require("express");
 const fs = require("fs");
-const { JSDOM } = require("jsdom");
 const readDir = require("./libs/readDir");
 const Database = require("@replit/database");
 const db = new Database();
+const addLibs = require("./libs/add-libs");
 
-db.list().then((keys) => {
-  for (key of keys) {
-    db.delete(key);
-  }
-});
-
-//db.list().then(keys => {});
-//db.list("prefix").then(matches => {});
+// db.list().then((keys) => {
+//   for (key of keys) {
+//     db.delete(key);
+//   }
+// });
 
 const app = express();
 app.use(express.text());
@@ -25,8 +22,8 @@ readDir("/pages/", {
     }
   },
 });
-pageDir = "/global/";
-readDir("/global/", {
+pageDir = "/assets/";
+readDir("/assets/", {
   callback({ dir, file, isFile }) {
     if (!isFile) {
       pageDir += file + "/";
@@ -40,10 +37,8 @@ for (const page in pages) {
   app.get(page, (req, res) => {
     if (pages[page].split(".")[1] === "html") {
       const html = fs.readFileSync("." + pages[page], "utf8");
-      let fileContent = new JSDOM(html);
-      fileContent = require("./libs/add-libs")(fileContent);
       res.setHeader("Content-type", "text/html");
-      res.send(fileContent.serialize());
+      res.send(addLibs(html));
     } else {
       //res.contentType(__dirname + pages[page]);
       //res.setHeader('Content-type','image/jpg');
@@ -59,21 +54,24 @@ app.get("/api/tutorials/:id", (req, res) => {
   });
 });
 app.get("/tutorials/:id", (req, res) => {
-  res.sendFile(__dirname + "/pages/tutorials");
+  const html = fs.readFileSync("./pages/tutorials/index.html", "utf8");
+  res.setHeader("Content-type", "text/html");
+  res.send(addLibs(html));
 });
 
 app.post("/api/new", (req, res) => {
-  res.set(
-    "Access-Control-Allow-Origin",
-    "https://flagclicked.thecolaber.repl.co/"
-  );
+  // This commented code should be modified to accept the CURRENT domian... this code wouldn't work on works.
+  // res.set(
+  //   "Access-Control-Allow-Origin",
+  //   "https://flagclicked.colabersecret.repl.co/"
+  // );
   res.set("Access-Control-Allow-Methods", "POST");
   if ("POST" !== req.method) return res.sendStatus(403);
   console.log(req.body);
   let allowKey = false;
   db.list("tutorial-").then((matches) => {
     db.set(`tutorial-${matches.length + 1}`, req.body).then(() => {
-      res.send(matches.length + 1);
+      res.send({ tutorialId: matches.length + 1 });
     });
   });
 });

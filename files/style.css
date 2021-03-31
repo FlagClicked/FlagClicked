@@ -51,12 +51,17 @@ body {
   display: block;
   font-size: 20px;
 }
-#navbar ul li,
+#navbar li,
 #footer ul li {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#navbar a {
+  text-decoration: none;
+  display: flex;
+  flex: 1;
 }
 #navbar ul li.button p {
   text-align: center;
@@ -87,6 +92,7 @@ body {
   min-height: 400px;
 }
 #blocks-banner {
+  display: block;
   width: 100%;
 }
 #copyright {
@@ -120,14 +126,24 @@ body {
   border-radius: 10px;
 }
 
-/* maybe temp */
-
+#intro-video {
+  opacity: 1;
+  transition: opacity 1s;
+  position: fixed;
+  z-index: 999;
+  height: 100%;
+  width: 100%;
+  background: #000;
+}
+#intro-video.fade {
+  opacity: 0;
+}
 #editor {
   height: 500px;
   display: flex;
 }
 textarea,
-#editor div {
+#editor > div {
   display: inline-block;
   flex: 1;
   height: 100%;
@@ -146,9 +162,15 @@ textarea {
   padding: 20px;
 }
 
-p > code,
+*:not(pre) > code,
 pre {
   background: #0000003d;
   border-radius: 5px;
   padding: 3px;
+}
+
+#featured-iframe {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px;
 }
