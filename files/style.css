@@ -179,15 +179,15 @@ pre {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  padding: 20px;
 }
 .contributor {
   color: inherit;
-  border-radius: 0.25rem;
+  border-radius: 5px;
+  border: 1.5px #00000030 solid;
   transition: background-color 0.15s ease-in-out;
   flex: 0 0 33.333333%;
-  max-width: 33.333333%;
+  max-width: 30%;
 }
 .contributor a {
   padding: 0.375rem 15px;
