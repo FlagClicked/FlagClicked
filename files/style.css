@@ -174,3 +174,48 @@ pre {
   border-radius: 10px;
   padding: 10px;
 }
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.contributor {
+  color: inherit;
+  border-radius: .25rem;
+  transition: background-color .15s ease-in-out;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+.contributor a {
+  padding: .375rem 15px;
+  color: inherit;
+  display: flex;
+  text-decoration: none;
+}
+.contributor-icon {
+  margin-right: .75rem;
+  height: 64px;
+  width: 64px;
+}
+.contributor-info {
+  display: flex;
+  flex: 1 0 0;
+  max-width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+.contributor-name {
+  font-size: 1.25rem;
+  line-height: 1;
+  word-break: break-all;
+  margin: 0;
+}
+.contributor-items {
+  display: flex;
+}
+.contributor:hover {
+  background: #00000030;
+}
