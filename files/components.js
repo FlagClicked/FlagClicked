@@ -91,7 +91,10 @@ app.component("footerbar", {
         </ul>
       </li> 
     </ul>
-    <div id="copyright">Copyright 2021 © TheColaber</div>
+    <div id="copyright">Copyright 2021 © TheColaber
+    <iframe src="https://ghbtns.com/github-btn.html?user=FlagClicked&repo=FlagClicked&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub" style="position:relative;top:6px;"></iframe>
+    <iframe src="https://ghbtns.com/github-btn.html?user=FlagClicked&repo=FlagClicked&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub" style="position:relative;top:6px;right:50px;"></iframe>
+    </div>
   </div>`,
 });
 app.mount("body");
