@@ -1,6 +1,6 @@
 # FlagClicked
 
-<img src="https://img.shields.io/uptimerobot/ratio/7/u1119423-3e100cebd23002910b01cef4?label=website%20uptime"> <img src="https://img.shields.io/github/last-commit/FlagClicked/FlagClicked">
+<img src="https://img.shields.io/uptimerobot/ratio/7/m787558463-21ac174679970136082ceb64?label=website%20uptime"> <img src="https://img.shields.io/github/last-commit/FlagClicked/FlagClicked">
 
 ## Build:
 
