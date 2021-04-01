@@ -1,6 +1,4 @@
-# FlagClicked
-
-<!--[![](https://img.shields.io/badge/chat-on%20discord-orange?style=for-the-badge&logo=appveyor)](https://discord.gg/253sVH6qYg)-->
+# FlagClicked <img src="https://img.shields.io/uptimerobot/ratio/7/m787695288-3df9c8a76e370f30963f4bb2?label=website%20uptime">
 
 ## Build:
 
