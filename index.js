@@ -35,7 +35,7 @@ readDir("/assets/", {
 console.log(pages);
 for (const page in pages) {
   app.get(page, (req, res) => {
-    console.log(pages[page].split(".")[1])
+    console.log(pages[page].split(".")[1]);
     if (pages[page].split(".")[1] === "html") {
       const html = fs.readFileSync("." + pages[page], "utf8");
       res.setHeader("Content-type", "text/html");
