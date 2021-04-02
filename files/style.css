@@ -102,12 +102,12 @@ body {
 }
 
 /* Small Screens CSS */
-@media (max-width: 1380px) {
+@media (max-width: 1390px) {
   [data-smallsize1] {
     display: none !important;
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   [data-smallsize2] {
     display: none !important;
   }
