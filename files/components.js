@@ -9,21 +9,17 @@ app.component("navbar", {
         {
           text: "Voting",
           button: true,
-          smallSize1: true,
+          smallSize: true,
         },
         {
           text: "About",
           button: true,
-          smallSize1: true,
+          smallSize: true,
         },
         {
-          text: "Sign In",
-        },
-        {
-          text: "Create Account",
-          smallSize2: true,
+          text: "Log In",
           bold: true,
-          href: "/join",
+          href: "/login",
         },
       ],
     };
@@ -42,8 +38,7 @@ app.component("navbar", {
 
       <a
       :href="item.href"
-      :data-smallsize1="item.smallSize1" 
-      :data-smallsize2="item.smallSize2"
+      :data-smallsize="item.smallSize" 
       v-for="item of items">
       <li
       :class="item.button ? 'button' : ''"
