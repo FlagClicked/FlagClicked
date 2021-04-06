@@ -9,7 +9,7 @@ app.component("navbar", {
         {
           text: "Voting",
           button: true,
-          smallSize2: true,
+          smallSize1: true,
         },
         {
           text: "About",
@@ -21,7 +21,7 @@ app.component("navbar", {
         },
         {
           text: "Create Account",
-          smallSize1: true,
+          smallSize2: true,
           bold: true,
           href: "/join",
         },
