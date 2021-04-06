@@ -91,6 +91,11 @@ body {
   padding-top: var(--navbarHeight);
   min-height: 400px;
 }
+#content.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #blocks-banner {
   display: block;
   width: 100%;
@@ -102,13 +107,8 @@ body {
 }
 
 /* Small Screens CSS */
-@media (max-width: 1390px) {
-  [data-smallsize1] {
-    display: none !important;
-  }
-}
 @media (max-width: 1000px) {
-  [data-smallsize2] {
+  [data-smallsize] {
     display: none !important;
   }
 }
