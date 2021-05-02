@@ -36,7 +36,7 @@ module.exports = {
       var scratchRes = await fetch(`https://api.scratch.mit.edu/users/${username}`).catch(err => {reject(`Scratch Server Error: ${err}`)}).then(res => res.json())
 
       if (scratchRes && scratchRes.code !== "NotFound") {
-        var User = {
+        var User = { // User Object
           id: scratchRes.id,
           name: scratchRes.username, // needed to get the exact capitalization of the user
           tutorials: 0, // Number of tutorials this user has created
