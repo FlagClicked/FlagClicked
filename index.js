@@ -1,9 +1,12 @@
+const REPLIT_URL = 'FlagClicked.9gr.repl.co' // Please change this URL to your replit URL.
 const express = require("express");
 const fs = require("fs");
 const readDir = require("./libs/readDir");
 const Database = require("@replit/database");
 const db = new Database();
 const addLibs = require("./libs/add-libs");
+const auth = require("./libs/auth")
+const fetch = require("node-fetch")
 
 // db.list().then((keys) => {
 //   for (key of keys) {
@@ -76,4 +79,44 @@ app.post("/api/new", (req, res) => {
   });
 });
 
+app.get("/login", (req, res) => {
+  res.redirect(`https://FluffyScratch.hampton.pw/auth/getKeys/v2?redirect=${Buffer.from(REPLIT_URL + "/login/finish", 'utf-8').toString("base64")}`)
+})
+
+// /login/finish - Finishes the logging-in process from FluffyScratch. It issues a cookie to the user 
+app.get("/login/finish", async (req, res) => {
+  if (!req.query.privateCode) return res.redirect(`/login/error?error=0`)
+  var username = await auth.checkIfFluffyResponseValid(req.query.privateCode).catch(err => {res.redirect(`/login/error?error=1`); throw ""})
+
+  if (username) {
+    var session = await auth.createSession(username)
+    
+    res.cookie('token', session.token)
+
+    res.redirect("/")
+  }
+})
+
+app.get("/auth/me", (req, res) => { // Returns <user> object.
+  if (!req.query.token) return res.json({error: 'no token provided'})
+  auth.getSession(req.query.token)
+  .catch(err => {
+    return res.json({error: 'invalid token'})
+  })
+  .then(resp => {
+    if (!resp) return;
+    resp.sessions = null // remove this so we mask it away from da client
+    res.json(resp)
+  })
+})
+
+app.get("/auth/delete", (req, res) => {
+  auth.deleteSession(req.query.token)
+  .catch(err => {
+    return res.json({error: 'invalid token'})
+  })
+  .then(res => {
+    res.redirect('/')
+  })
+})
 app.listen(3000, () => console.log("server started"));

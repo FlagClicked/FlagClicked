@@ -27,23 +27,6 @@
           };
         },
         methods: {},
-        async mounted() {
-          const privateCode = new URL(location).searchParams.get("privateCode");
-          console.log(privateCode);
-          if (privateCode) {
-            console.log("Has code");
-            const codeData = await (
-              await fetch(
-                `https://fluffyscratch.hampton.pw/auth/verify/v2/${privateCode}`
-              )
-            ).json();
-            if (codeData.valid) {
-              console.log(codeData.username);
-            } else {
-              console.log("failed");
-            }
-          }
-        },
       });
     </script>
   </body>

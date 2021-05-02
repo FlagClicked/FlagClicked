@@ -17,7 +17,7 @@ app.component("navbar", {
           smallSize: true,
         },
         {
-          text: "Log In",
+          text: "Login",
           bold: true,
           href: "/login",
         },
