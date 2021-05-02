@@ -3,6 +3,7 @@ module.exports = function readDir(
   dir,
   { callback, deep = true, pageDir = "/" }
 ) {
+  console.log("a")
   const files = fs.readdirSync("." + dir);
   for (const file of files) {
     const isFile = fs.lstatSync("." + dir + file).isFile();

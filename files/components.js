@@ -17,7 +17,7 @@ app.component("navbar", {
           smallSize: true,
         },
         {
-          text: "Login",
+          text: "Log In",
           bold: true,
           href: "/login",
         },
@@ -35,7 +35,6 @@ app.component("navbar", {
         </div>
       </li>    
     </a>
-
       <a
       :href="item.href"
       :data-smallsize="item.smallSize" 

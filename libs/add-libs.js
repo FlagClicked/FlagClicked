@@ -2,6 +2,7 @@ const readDir = require("./readDir");
 const fs = require("fs");
 const { JSDOM } = require("jsdom");
 module.exports = (html) => {
+  console.log("doing one")
   const jsDom = new JSDOM(html);
   const doc = jsDom.window.document;
   readDir("/files/", {

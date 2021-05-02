@@ -28,6 +28,9 @@
         window.msRequestAnimationFrame;
       window.app = Vue.createApp({
         data() {
+          if (document.cookie == "") {
+            window.location.href = "/login"
+          }
           return {
             input: "# New Tutorial!",
           };
@@ -61,6 +64,7 @@
             const newReq = fetch("/api/new", {
               method: "POST",
               body: this.input,
+              credentials: "include"
             });
             const data = await (await newReq).json();
             console.log(data.tutorialId);
