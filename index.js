@@ -1,4 +1,4 @@
-const REPLIT_URL = "FlagClicked.9gr.repl.co"; // Please change this URL to your replit URL before starting!
+const REPLIT_URL = "flagclicked2.9gr.repl.co"; // Please change this URL to your replit URL before starting!
 const express = require("express");
 const fs = require("fs");
 const readDir = require("./libs/readDir");
@@ -87,7 +87,7 @@ app.post("/api/new", (req, res) => {
 
 app.get("/login", (req, res) => {
   res.redirect(
-    `https://FluffyScratch.hampton.pw/auth/getKeys/v2?redirect=${Buffer.from(
+    `https://fluffyscratch.hampton.pw/auth/getKeys/v2?redirect=${Buffer.from(
       REPLIT_URL + "/login/finish",
       "utf-8"
     ).toString("base64")}`
@@ -96,11 +96,11 @@ app.get("/login", (req, res) => {
 
 // /login/finish - Finishes the logging-in process from FluffyScratch. It issues a cookie to the user
 app.get("/login/finish", async (req, res) => {
-  if (!req.query.privateCode) return res.redirect(`/login/error?error=0`);
+  if (!req.query.privateCode) return res.json({error: "failed FluffyScratch auth"})
   var username = await auth
     .checkIfFluffyResponseValid(req.query.privateCode)
     .catch((err) => {
-      res.redirect(`/login/error?error=1`);
+      res.json({error: "failed FluffyScratch auth"})
       throw "";
     });
 
@@ -113,7 +113,7 @@ app.get("/login/finish", async (req, res) => {
   }
 });
 
-app.get("/auth/me", (req, res) => {
+app.get("/login/me", (req, res) => {
   // Returns <user> object.
   if (!req.query.token) return res.json({ error: "no token provided" });
   auth
@@ -128,7 +128,7 @@ app.get("/auth/me", (req, res) => {
     });
 });
 
-app.get("/auth/delete", (req, res) => {
+app.get("/login/delete", (req, res) => {
   var cookie = auth.getCookie("token", req.headers.cookie)
   if (!cookie) return res.status(403).json({error: "invalid token"})
   auth
@@ -136,8 +136,10 @@ app.get("/auth/delete", (req, res) => {
     .catch((err) => {
       return res.json({ error: "invalid token" });
     })
-    .then((res) => {
-      res.redirect("/");
+    .then(() => {
+      res.clearCookie("token") // doesnt work... we need to clear the cookie from the client
+      res.redirect("/?clearCookie=true");
     });
 });
+
 app.listen(3000, () => console.log("server started"));
