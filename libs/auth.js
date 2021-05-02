@@ -1,6 +1,7 @@
 /* 
 Reference for this module (all functions are async unless noted):
 
+
 module auth
   Function auth._newUser
      Params: username <String>
