@@ -1,4 +1,5 @@
-const REPLIT_URL = 'FlagClicked.9gr.repl.co' // Please change this URL to your replit URL.
+const REPLIT_URL = 'www.whenflagclicked.org' // Please change this URL to your replit URL before starting!
+
 const express = require("express");
 const fs = require("fs");
 const readDir = require("./libs/readDir");
@@ -63,11 +64,7 @@ app.get("/tutorials/:id", (req, res) => {
 });
 
 app.post("/api/new", (req, res) => {
-  // This commented code should be modified to accept the CURRENT domian... this code wouldn't work on works.
-  // res.set(
-  //   "Access-Control-Allow-Origin",
-  //   "https://flagclicked.colabersecret.repl.co/"
-  // );
+  res.header("Access-Control-Allow-Origin", REPLIT_URL)
   res.set("Access-Control-Allow-Methods", "POST");
   if ("POST" !== req.method) return res.sendStatus(403);
   console.log(req.body);
