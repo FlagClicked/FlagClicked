@@ -19,12 +19,13 @@
         data() {
           return {
             input: "loading...",
+            meta: "",
             navbar: false,
           };
         },
         computed: {
           compiledMarkdown() {
-            return marked(this.input, { sanitize: true });
+            return marked(this.meta + "\n" + this.input, { sanitize: true });
           },
         },
         methods: {},
@@ -35,8 +36,13 @@
             document.documentElement.style.setProperty("--navbarHeight", 0);
           }
           const id = location.pathname.split("/")[2];
-          const markdown = await (await fetch(`/api/tutorials/${id}`)).text();
-          this.input = markdown;
+          const tutorial = await (await fetch(`/api/tutorials/${id}`)).json();
+          if (tutorial.error) {
+            this.input = "";
+            return
+          }
+          this.meta = `Created by ${tutorial.author}\nat ${(new Date(tutorial.created)).toLocaleTimeString()}`
+          this.input = tutorial.body;
         },
       });
     </script>

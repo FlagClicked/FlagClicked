@@ -1,4 +1,4 @@
-const REPLIT_URL = "www.whenflagclicked.org"; // Please change this URL to your replit URL before starting!
+const REPLIT_URL = "FlagClicked2.9gr.repl.co"; // Please change this URL to your replit URL before starting!
 const express = require("express");
 const fs = require("fs");
 const readDir = require("./libs/readDir");
@@ -8,11 +8,7 @@ const addLibs = require("./libs/add-libs");
 const auth = require("./libs/auth");
 const fetch = require("node-fetch");
 
-// db.list().then((keys) => {
-//   for (key of keys) {
-//     db.delete(key);
-//   }
-// });
+// db.list().then((keys) => {for (key of keys) {db.delete(key)}})
 
 const app = express();
 app.use(express.text());
@@ -53,9 +49,10 @@ for (const page in pages) {
 
 app.get("/api/tutorials/:id", (req, res) => {
   db.get(`tutorial-${req.params.id}`).then((value) => {
-    res.send(value);
+    res.json(value || {error: "no tutorial found"})
   });
 });
+
 app.get("/tutorials/:id", (req, res) => {
   const html = fs.readFileSync("./pages/tutorials/index.html", "utf8");
   res.setHeader("Content-type", "text/html");
@@ -75,11 +72,18 @@ app.post("/api/new", (req, res) => {
     .getSession(cookie)
     .catch((err) => {
       res.status(403).json({ error: "invalid token" });
-      throw "";
+      return false
     })
-    .then((res) => {
+    .then((user) => {
+      if (!res) return;
       db.list("tutorial-").then((matches) => {
-        db.set(`tutorial-${matches.length + 1}`, req.body).then(() => {
+        var data = {
+          "id": matches.length + 1,
+          "body": req.body,
+          "created": (new Date()).toUTCString(),
+          "author": user.name
+        }
+        db.set(`tutorial-${matches.length + 1}`, data).then(() => {
           res.json({ tutorialId: matches.length + 1 });
         });
       });
@@ -109,7 +113,7 @@ app.get("/login/finish", async (req, res) => {
   if (username) {
     var session = await auth.createSession(username);
 
-    res.cookie("token", session.token);
+    res.cookie("token", session.token, {path:'/'});
 
     res.redirect("/");
   }
@@ -139,8 +143,8 @@ app.get("/login/delete", (req, res) => {
       return res.json({ error: "invalid token" });
     })
     .then(() => {
-      res.clearCookie("token"); // doesnt work... we need to clear the cookie from the client
-      res.redirect("/?clearCookie=true");
+      res.clearCookie("token", {path: "/"}); // doesnt work... we need to clear the cookie from the client
+      res.redirect("/");
     });
 });
 

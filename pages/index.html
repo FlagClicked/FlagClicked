@@ -14,20 +14,9 @@
     <script>
       window.app = Vue.createApp({
         data() {
-          window.location.searchParams = new URLSearchParams(
-            window.location.search
-          );
-          if (location.searchParams.get("clearCookie")) {
-            fetch("/login/delete", { method: "GET", credentials: "include" }); // invalidate the token to prevent spam. just in case
-            var cookies = document.cookie.split("; ");
-            cookies.forEach((cookie) => {
-              document.cookie += ";max-age=0;";
-            });
-            window.location.replace("/");
-          }
+          
           return {
-            html: marked(
-              `
+            html: marked(`
 <center><h2>This Week's Featured Tutorial</h2></center>
 <center><h3>Tutorial Name - Username</h3></center>
 <center>
