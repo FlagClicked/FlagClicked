@@ -37,7 +37,7 @@
           }
           const id = location.pathname.split("/")[2];
           const tutorial = await (await fetch(`/api/tutorials/${id}`)).json();
-          if (tutorial.error || typeof tutorial !== 'Object') {
+          if (tutorial.error || typeof tutorial !== "Object") {
             this.input = "";
             return;
           }
