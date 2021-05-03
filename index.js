@@ -90,7 +90,8 @@ app.post("/api/new", (req, res) => {
     });
 });
 
-app.get("/login", (req, res) => { // endpoint that redirects the user to FluffyScratch
+app.get("/login", (req, res) => {
+  // endpoint that redirects the user to FluffyScratch
   res.redirect(
     `https://fluffyscratch.hampton.pw/auth/getKeys/v2?redirect=${Buffer.from(
       REPLIT_URL + "/login/finish",
