@@ -39,9 +39,11 @@
           const tutorial = await (await fetch(`/api/tutorials/${id}`)).json();
           if (tutorial.error) {
             this.input = "";
-            return
+            return;
           }
-          this.meta = `Created by ${tutorial.author}\nat ${(new Date(tutorial.created)).toLocaleTimeString()}`
+          this.meta = `Created by ${tutorial.author}\nat ${new Date(
+            tutorial.created
+          ).toLocaleTimeString()}`;
           this.input = tutorial.body;
         },
       });

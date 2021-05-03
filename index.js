@@ -49,7 +49,7 @@ for (const page in pages) {
 
 app.get("/api/tutorials/:id", (req, res) => {
   db.get(`tutorial-${req.params.id}`).then((value) => {
-    res.json(value || {error: "no tutorial found"})
+    res.json(value || { error: "no tutorial found" });
   });
 });
 
@@ -72,17 +72,17 @@ app.post("/api/new", (req, res) => {
     .getSession(cookie)
     .catch((err) => {
       res.status(403).json({ error: "invalid token" });
-      return false
+      return false;
     })
     .then((user) => {
       if (!res) return;
       db.list("tutorial-").then((matches) => {
         var data = {
-          "id": matches.length + 1,
-          "body": req.body,
-          "created": (new Date()).toUTCString(),
-          "author": user.name
-        }
+          id: matches.length + 1,
+          body: req.body,
+          created: new Date().toUTCString(),
+          author: user.name,
+        };
         db.set(`tutorial-${matches.length + 1}`, data).then(() => {
           res.json({ tutorialId: matches.length + 1 });
         });
@@ -113,7 +113,7 @@ app.get("/login/finish", async (req, res) => {
   if (username) {
     var session = await auth.createSession(username);
 
-    res.cookie("token", session.token, {path:'/'});
+    res.cookie("token", session.token, { path: "/" });
 
     res.redirect("/");
   }
@@ -143,7 +143,7 @@ app.get("/login/delete", (req, res) => {
       return res.json({ error: "invalid token" });
     })
     .then(() => {
-      res.clearCookie("token", {path: "/"}); // doesnt work... we need to clear the cookie from the client
+      res.clearCookie("token", { path: "/" }); // doesnt work... we need to clear the cookie from the client
       res.redirect("/");
     });
 });
