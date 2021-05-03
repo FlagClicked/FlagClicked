@@ -31,8 +31,9 @@ const Database = require("@replit/database");
 const db = new Database();
 
 module.exports = {
-  getCookie: function(name, cookie) { // code from jeffalo's image uploader thing
-    var value = "; " + cookie
+  getCookie: function (name, cookie) {
+    // code from jeffalo's image uploader thing
+    var value = "; " + cookie;
     var parts = value.split("; " + name + "=");
     if (parts.length == 2) return parts.pop().split(";").shift();
   },
@@ -127,5 +128,5 @@ module.exports = {
     } else {
       throw "invalid";
     }
-  }
+  },
 };

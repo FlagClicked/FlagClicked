@@ -63,26 +63,27 @@ app.get("/tutorials/:id", (req, res) => {
 });
 
 app.post("/api/new", (req, res) => {
-  res.header("Access-Control-Allow-Origin", REPLIT_URL)
-  res.set("Access-Control-Allow-Methods", "POST")
+  res.header("Access-Control-Allow-Origin", REPLIT_URL);
+  res.set("Access-Control-Allow-Methods", "POST");
 
-  if ("POST" !== req.method) return res.status(403).json({error: 'invalid method'})
-  var cookie = auth.getCookie("token", req.headers.cookie)
-  if (!cookie) return res.status(403).json({error: "no token"})
+  if ("POST" !== req.method)
+    return res.status(403).json({ error: "invalid method" });
+  var cookie = auth.getCookie("token", req.headers.cookie);
+  if (!cookie) return res.status(403).json({ error: "no token" });
 
-  auth.getSession(cookie)
-  .catch(err => {
-    res.status(403).json({error: "invalid token"})
-    throw ""
-  })
-  .then(res => {
-    db.list("tutorial-").then((matches) => {
-      db.set(`tutorial-${matches.length + 1}`, req.body)
-      .then(() => {
-        res.json({tutorialId: matches.length + 1})
-      })
+  auth
+    .getSession(cookie)
+    .catch((err) => {
+      res.status(403).json({ error: "invalid token" });
+      throw "";
     })
-  })
+    .then((res) => {
+      db.list("tutorial-").then((matches) => {
+        db.set(`tutorial-${matches.length + 1}`, req.body).then(() => {
+          res.json({ tutorialId: matches.length + 1 });
+        });
+      });
+    });
 });
 
 app.get("/login", (req, res) => {
@@ -96,11 +97,12 @@ app.get("/login", (req, res) => {
 
 // /login/finish - Finishes the logging-in process from FluffyScratch. It issues a cookie to the user
 app.get("/login/finish", async (req, res) => {
-  if (!req.query.privateCode) return res.json({error: "failed FluffyScratch auth"})
+  if (!req.query.privateCode)
+    return res.json({ error: "failed FluffyScratch auth" });
   var username = await auth
     .checkIfFluffyResponseValid(req.query.privateCode)
     .catch((err) => {
-      res.json({error: "failed FluffyScratch auth"})
+      res.json({ error: "failed FluffyScratch auth" });
       throw "";
     });
 
@@ -129,15 +131,15 @@ app.get("/login/me", (req, res) => {
 });
 
 app.get("/login/delete", (req, res) => {
-  var cookie = auth.getCookie("token", req.headers.cookie)
-  if (!cookie) return res.status(403).json({error: "invalid token"})
+  var cookie = auth.getCookie("token", req.headers.cookie);
+  if (!cookie) return res.status(403).json({ error: "invalid token" });
   auth
     .deleteSession(cookie)
     .catch((err) => {
       return res.json({ error: "invalid token" });
     })
     .then(() => {
-      res.clearCookie("token") // doesnt work... we need to clear the cookie from the client
+      res.clearCookie("token"); // doesnt work... we need to clear the cookie from the client
       res.redirect("/?clearCookie=true");
     });
 });
