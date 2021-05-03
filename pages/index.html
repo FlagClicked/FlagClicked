@@ -16,7 +16,7 @@
         data() {
           window.location.searchParams = new URLSearchParams(window.location.search)
           if (location.searchParams.get("clearCookie")) {
-            fetch("/login/delete", {method: "POST", credentials: "include"}) // invalidate the token to prevent spam. just in case
+            fetch("/login/delete", {method: "GET", credentials: "include"}) // invalidate the token to prevent spam. just in case
             var cookies = document.cookie.split("; ")
             cookies.forEach((cookie) => {
               document.cookie += ";max-age=0;"
