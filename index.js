@@ -90,7 +90,7 @@ app.post("/api/new", (req, res) => {
     });
 });
 
-app.get("/login", (req, res) => {
+app.get("/login", (req, res) => { // endpoint that redirects the user to FluffyScratch
   res.redirect(
     `https://fluffyscratch.hampton.pw/auth/getKeys/v2?redirect=${Buffer.from(
       REPLIT_URL + "/login/finish",
@@ -129,7 +129,7 @@ app.get("/login/me", (req, res) => {
     })
     .then((resp) => {
       if (!resp) return;
-      resp.sessions = null; // remove this so we mask it away from da client
+      resp.sessions = null; // remove this so we mask sessions away from the client.
       res.json(resp);
     });
 });
@@ -143,7 +143,7 @@ app.get("/login/delete", (req, res) => {
       return res.json({ error: "invalid token" });
     })
     .then(() => {
-      res.clearCookie("token", { path: "/" }); // doesnt work... we need to clear the cookie from the client
+      res.clearCookie("token", { path: "/" }); // clear the cookie from the client
       res.redirect("/");
     });
 });
