@@ -106,8 +106,9 @@ app.get("/login/finish", async (req, res) => {
   if (req.query.privateCode) {
     var username = await auth
       .checkIfFluffyResponseValid(req.query.privateCode)
-      .catch((err) => { error = true });
-
+      .catch((err) => {
+        error = true;
+      });
 
     if (username) {
       var session = await auth.createSession(username);
