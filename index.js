@@ -1,4 +1,4 @@
-const REPLIT_URL = "www.whenflagclicked.org"; // Please change this URL to your replit URL before starting!
+const REPLIT_URL = "whenflagclicked.org"; // Please change this URL to your replit URL before starting!
 const express = require("express");
 const fs = require("fs");
 const readDir = require("./libs/readDir");
@@ -102,22 +102,20 @@ app.get("/login", (req, res) => {
 
 // /login/finish - Finishes the logging-in process from FluffyScratch. It issues a cookie to the user
 app.get("/login/finish", async (req, res) => {
-  if (!req.query.privateCode)
-    return res.json({ error: "failed FluffyScratch auth" });
-  var username = await auth
-    .checkIfFluffyResponseValid(req.query.privateCode)
-    .catch((err) => {
-      res.json({ error: "failed FluffyScratch auth" });
-      throw "";
-    });
+  let error = false;
+  if (req.query.privateCode) {
+    var username = await auth
+      .checkIfFluffyResponseValid(req.query.privateCode)
+      .catch((err) => {
+        error = true;
+      });
 
-  if (username) {
-    var session = await auth.createSession(username);
-
-    res.cookie("token", session.token, { path: "/" });
-
-    res.redirect("/");
-  }
+    if (username) {
+      var session = await auth.createSession(username);
+      res.cookie("token", session.token, { path: "/" });
+    }
+  } else error = true;
+  res.redirect("/?error=" + error);
 });
 
 app.get("/login/me", (req, res) => {
