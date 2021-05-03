@@ -35,7 +35,6 @@ app.component("navbar", {
         </div>
       </li>    
     </a>
-
       <a
       :href="item.href"
       :data-smallsize="item.smallSize" 
