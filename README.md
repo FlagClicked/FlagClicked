@@ -5,7 +5,7 @@
 
 ## Build:
 
-**Will need: replit.com account.**
+**Will need: [replit](https://replit.com) account.**
 
 1. Fork this repo.
 2. Go to https://replit.com/.
