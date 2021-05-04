@@ -40,10 +40,8 @@ module.exports = (html) => {
     <meta property="og:url" content="https://www.whenflagclicked.org">
     <meta property="og:site_name" content="When Flag Clicked">
     <meta property="og:locale" content="en_US">
-
     <meta property="og:image" content="/assets/logo.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
-
     <script src="https://scratchblocks.github.io/js/scratchblocks-v3.4-min.js"></script>
     <link href="https://gitcdn.link/repo/ccampbell/rainbow/master/themes/css/rainbow.css" rel="stylesheet" type="text/css">
     <script src="https://gitcdn.link/repo/ccampbell/rainbow/master/dist/rainbow.min.js"></script>
