@@ -1,6 +1,6 @@
 # FlagClicked
 
-![](https://img.shields.io/uptimerobot/ratio/7/m787558463-21ac174679970136082ceb64?label=website%20uptime&style=flat-square)
+![](https://img.shields.io/uptimerobot/ratio/7/m787558463-21ac174679970136082ceb64?label=🟢website%20uptime&style=flat-square)
 ![](https://img.shields.io/github/last-commit/FlagClicked/FlagClicked?style=flat-square&logo=github)
 
 ## Build:
