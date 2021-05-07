@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Send Feedback</title>
+	<!--file uploading (files stored on a seprate server)-->
+	<script src="https://static.filestackapi.com/filestack-js/3.x.x/filestack.min.js">
+
+	</script>
+</head>
+
+<body>
+	<center>
+		<input placeholder="Title (required)" required class="fb" id="title">
+		  <textarea id="desc" placeholder="Description (required)" required class="fb"></textarea>
+      <button onclick="openFileUploader()" type="button" class="fb">Upload attachment (optional)</button>
+	    <button onclick="check(document.getElementById('title'),document.getElementById('desc'))" type="button" class="fb">Send</button>
+    </center>
+</body>
+
+<script>
+const client = filestack.init("Akpao2mxRSe4pivR5avApz");
+const options = {
+  fromSources: ["local_file_system", "googledrive", "url"],
+  onUploadDone: res => {
+  console.log(JSON.stringify(res))
+  }
+      onFileSelected: file => {
+      // If you throw any error in this function it will reject the file selection.
+      // The error message will be displayed to the user as an alert.
+      if (file.size > 4000 * 1000) {
+      throw new Error('File too big, select something smaller than 4MB');
+    }
+  }
+};
+};
+var title = document.getElementById('title').value;
+var desc = document.getElementById('desc').value;
+function openFileUploader() {
+  client.picker(options).open();
+}
+function check(desc) {
+  desc = document.getElementById('desc').value
+  if (desc != "") {
+    console.log("desc:" + desc);
+    check2();
+  } else {
+    console.error("required fields not filled out");
+  }
+}
+function check2(title) {
+  title = document.getElementById('title').value
+  if (title != "") {
+    console.log("title:" + title);
+    send();
+  } else {
+    console.error("required fields not filled out");
+  }
+}
+function send(){
+  var request = new XMLHttpRequest();
+    request.open("POST", "https://discord.com/api/webhooks/824176018516475925/dlT-UCTRRJSiJOt2M_phpa0I-o6FtjOCpLgOPpviWauz_NoMecoHrBfYDWWp5QdKvGIP");
+    //webhook info
+    request.setRequestHeader('Content-type', 'application/json');
+    var title = document.getElementById('title').value;
+    var desc = document.getElementById('desc').value;
+//embed data
+var myEmbed = {
+  title: title,
+  description: desc,
+  color: hexToDecimal("#fc8803")
+}
+//account info
+var params = {
+  username: "Feedback",
+  embeds: [ myEmbed ],
+  avatar_url: "https://u.cubeupload.com/markverb1/1s31l1.png"
+}
+request.send(JSON.stringify(params));
+
+//colors
+function hexToDecimal(hex) {
+  return parseInt(hex.replace("#",""), 16)
+}
+    };
+</script>
+
+</html>
