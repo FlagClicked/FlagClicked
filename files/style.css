@@ -220,3 +220,21 @@ pre {
 .contributor:hover {
   background: #00000030;
 }
+
+.button0 {
+  text-align: center;
+  width: 120px;
+  background: white;
+  color: #5d657c;
+  padding: 10px;
+  border-radius: 20pc;
+  border: #00000045 solid 2px;
+  height: fit-content;
+  margin: 0;
+  user-select: none;
+}
+.button0:hover {
+  cursor: pointer;
+  border: none;
+  box-shadow: 0px 0px 8px #888888;
+}
