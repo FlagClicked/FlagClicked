@@ -222,19 +222,16 @@ pre {
 }
 
 .button0 {
-  text-align: center;
-  width: 120px;
-  background: white;
-  color: #5d657c;
-  padding: 10px;
-  border-radius: 20pc;
-  border: #00000045 solid 2px;
-  height: fit-content;
-  margin: 0;
-  user-select: none;
+  background: #21bcff;
+  border: 1px solid #146f96;
+  padding: 7px;
+  margin: 5px;
+  font-size: 1em;
+  border-radius: 5px;
+  text-decoration: none;
+
 }
 .button0:hover {
   cursor: pointer;
-  border: none;
   box-shadow: 0px 0px 8px #888888;
 }

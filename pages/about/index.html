@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home - When Flag Clicked</title>
+    <meta property="og:title" content="When Flag Clicked" />
+    <meta property="og:description" content="When Flag Clicked Home Page." />
+  </head>
+  <body>
+    <div style="display: none" v-show="true">
+      <navbar></navbar>
+      <div id="content" v-html="html"></div>
+      <footerbar></footerbar>
+    </div>
+    <script>
+      window.app = Vue.createApp({
+        data() {
+          return {
+            html: marked(`
+            `),
+          };
+        },
+        methods: {},
+      });
+    </script>
+  </body>
+</html>
