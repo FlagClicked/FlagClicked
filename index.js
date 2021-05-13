@@ -1,4 +1,4 @@
-const REPLIT_URL = "FlagClicked-2.musiconmono.repl.co"; // Please change this URL to your replit URL before starting!
+const REPLIT_URL = "www.whenflagclicked.org"; // Please change this URL to your replit URL before starting!
 const express = require("express");
 const fs = require("fs");
 const readDir = require("./libs/readDir");
