@@ -14,7 +14,8 @@
       <div id="content" v-html="compiledMarkdown"></div>
       <footerbar v-if="navbar"></footerbar>
     </div>
-    <script>
+  </body>
+      <script>
       window.app = Vue.createApp({
         data() {
           return {
@@ -48,5 +49,5 @@
         },
       });
     </script>
-  </body>
+
 </html>
