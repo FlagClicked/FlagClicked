@@ -53,7 +53,31 @@
             };
             requestAnimationFrame(renderCodeblocks);
 
-            return marked(this.input, { sanitize: true });
+            function addEmbeds(html) {
+              // this is a kind of hacky way to do it since the markdown is sanitized
+              return html
+                .replace(
+                  /\$<a href="(.*?)">(.*?)<\/a>/g,
+                  (match, url, title) =>
+                    `<iframe width="560" height="315" src="https://www.youtube.com/embed/${/(\/youtube\/|\?v=)(.*?)($|\/|&|#)/
+                      .exec(url)[2]
+                      .replace(/"/g, '\\"')}" title="${title.replace(
+                      /"/g,
+                      '\\"'
+                    )}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+                )
+                .replace(
+                  /<a href="(\d+)">(project|turbowarp)<\/a>/g,
+                  (match, id, website) =>
+                    `<iframe src="https://${
+                      website === "turbowarp"
+                        ? "turbowarp.org"
+                        : "scratch.mit.edu/projects"
+                    }/${id}/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>`
+                );
+            }
+
+            return addEmbeds(marked(this.input, { sanitize: true }));
           },
         },
         methods: {
