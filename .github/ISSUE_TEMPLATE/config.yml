@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: 💬 Discussion
-    url: https://github.com/ScratchAddons/ScratchAddons/discussions/new
-    about: Needs discussion (moved to Discussions)
-  - name: ❓ Help/questions
-    url: https://github.com/ScratchAddons/ScratchAddons/discussions/new
-    about: Ask a question (moved to Discussions)
