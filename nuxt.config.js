@@ -5,6 +5,7 @@ export default {
    */
   head: {
     title: "Flag Clicked",
+    script: [],
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -30,8 +31,7 @@ export default {
         rel: "apple-touch-icon",
         sizes: "60x60",
         href: "/assets/apple-touch-icon-ipad-76x76.png"
-      },
-      {}
+      }
     ]
   },
 

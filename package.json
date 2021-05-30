@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "author": "TheColaber and contributers",
+  "license": "MIT",
   "private": false,
   "scripts": {
     "dev": "MINIMAL=1 nuxt",
@@ -12,6 +13,7 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "js-cookie": "2.2.1",
     "nuxt": "^2.15.0"
   },
   "keywords": []
