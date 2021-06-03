@@ -55,7 +55,7 @@ export default {
 
 <style scoped>
 .navbar {
-  --padding: 20px; 
+  --padding: 20px;
   background: #ffbf00;
   height: 80px;
   position: absolute;
