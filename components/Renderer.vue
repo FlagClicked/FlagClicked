@@ -9,6 +9,7 @@ export default {
   },
   computed: {
     renderedContent() {
+      let requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
       const renderCodeBlocks = () => {
         if (!document.querySelector(".scratchblocks")) {
           scratchblocks.renderMatching("code.lang-scratchblocks", {
