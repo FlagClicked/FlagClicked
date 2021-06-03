@@ -4,7 +4,9 @@ export default {
    ** Doc: https://vue-meta.nuxtjs.org/api/#metainfo-properties
    */
   head: {
-    title: "Flag Clicked",
+    titleTemplate: (chunk) => {
+      return chunk ? `${chunk} - When Flag Clicked` : 'When Flag Clicked'
+    },
     script: [],
     meta: [
       { charset: "utf-8" },
@@ -51,5 +53,9 @@ export default {
    ** Plugins to load before mounting the App
    ** Doc: https://nuxtjs.org/docs/2.x/directory-structure/plugins
    */
-  plugins: []
+  plugins: [],
+  
+  env: {
+    backendURL: "https://api.whenflagclicked.org"
+  }
 };
