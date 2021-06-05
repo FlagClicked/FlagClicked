@@ -54,7 +54,7 @@ export default {
         Rainbow.color(el.parentNode);
       });
 
-      return _document.querySelector("body").innerHTML
+      return _document.querySelector("body").innerHTML;
     },
   },
   ssr: false,
