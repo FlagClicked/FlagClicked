@@ -37,8 +37,8 @@ export default {
       cookies.set("auth", this.$route.query.token);
       return;
     }
-    this.link = this.backEndURL + "/auth/begin";
-    window.location = this.link;
+    this.link = `${process.env.backendURL}/auth/begin`
+    window.location.href = this.link;
   },
 };
 </script>
