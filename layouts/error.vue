@@ -17,9 +17,8 @@
 </template>
 
 <script>
-
 export default {
   props: ["error"],
-  layout: "error"
+  layout: "error",
 };
 </script>
