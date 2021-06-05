@@ -36,6 +36,8 @@ export default {
       },
     ],
   },
+  
+  components: true,
 
   /*
    ** Nuxt.js modules
