@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="content">
+    <Navbar />
     <center>
       <div v-if="error.statusCode === 404">
         <h1>Our server is having issues finding this page</h1>
@@ -16,11 +17,9 @@
 </template>
 
 <script>
-import Error404 from "../components/Error404";
 
 export default {
-  components: { Error404 },
   props: ["error"],
-  layout: "error",
+  layout: "error"
 };
 </script>
