@@ -14,7 +14,7 @@ export default {
     if (this.data) {
       this.body = this.data.body;
       this.author = this.data.author;
-      return
+      return;
     }
     let res = await fetch(`${process.env.backendURL}/tutorials/${this.id}`);
     let json = await res.json();
