@@ -3,7 +3,7 @@
     <Navbar />
     <div class="margined">
       <div class="tutorial-container">
-        <Tutorial :id="id" />
+        <Tutorial :id="id" :content="content" />
       </div>
     </div>
     <Footer />
@@ -12,16 +12,18 @@
 <script>
 export default {
   head() {
-    title: "Loading Tutorial";
+    title: "Loading Tutorial"
   },
   data() {
-    id: this.$route.params.id;
+    id: this.$route.params.id,
+    content: []
   },
   async fetch() {
     let res = await fetch(
-      `${process.env.backendURL}/tutorial/${id}/title`
-    ).then((r) => r.text());
-    this.title = `${res} - When Flag Clicked`;
+      `${process.env.backendURL}/tutorial/${id}`
+    ).then((r) => r.json());
+    this.content = res
+    this.title = `${res.title} - When Flag Clicked`;
   },
 };
 </script>
