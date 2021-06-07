@@ -21,8 +21,7 @@ export default {
   data() {
     return {
       link: null,
-      error: false,
-      backEndURL: "//hly3v.sse.codesandbox.io",
+      error: (!!this.$route.query.error) || false
     };
   },
   mounted() {
@@ -30,10 +29,7 @@ export default {
       window.location = "/";
       return;
     }
-    if (this.$route.query.error) {
-      this.error = true;
-      return;
-    } else if (this.$route.query.token) {
+    if (this.$route.query.token) {
       cookies.set("auth", this.$route.query.token);
       return;
     }
