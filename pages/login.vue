@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       link: null,
-      error: (!!this.$route.query.error) || false
+      error: !!this.$route.query.error || false,
     };
   },
   mounted() {
