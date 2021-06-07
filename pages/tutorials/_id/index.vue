@@ -13,20 +13,20 @@
 export default {
   head() {
     return {
-      title: "Tutorial"
-    }
+      title: "Tutorial",
+    };
   },
   data() {
     return {
       id: this.$route.params.id,
-      content: []
-    }
+      content: [],
+    };
   },
   async fetch() {
-    let res = await fetch(
-      `${process.env.backendURL}/tutorial/${id}`
-    ).then((r) => r.json());
-    this.content = res
+    let res = await fetch(`${process.env.backendURL}/tutorial/${id}`).then(
+      (r) => r.json()
+    );
+    this.content = res;
     this.title = `${res.title}`;
   },
 };
