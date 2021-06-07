@@ -26,7 +26,7 @@ export default {
   },
   mounted() {
     if (cookies.get("auth")) {
-      window.location.href = "/";
+      this.$router.push("/")
       return;
     }
     if (this.$route.query.token) {
