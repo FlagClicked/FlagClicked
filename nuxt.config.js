@@ -5,7 +5,7 @@ export default {
    */
   head: {
     titleTemplate: (chunk) => {
-      return chunk ? `${chunk} - When Flag Clicked` : "When Flag Clicked";
+      return chunk ? `${chunk} on When Flag Clicked` : "When Flag Clicked";
     },
     script: [],
     meta: [
@@ -58,6 +58,6 @@ export default {
   plugins: [],
 
   env: {
-    backendURL: "https://api.whenflagclicked.org",
+    backendURL: process.env.backendURL || "https://api.whenflagclicked.org",
   },
 };
