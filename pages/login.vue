@@ -31,7 +31,7 @@ export default {
     }
     if (this.$route.query.token) {
       cookies.set("auth", this.$route.query.token);
-      this.$router.push({ path: "/" })
+      this.$router.push({ path: "/" });
       return;
     }
     this.link = `${process.env.backendURL}/auth/begin`;
