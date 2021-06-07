@@ -1,10 +1,13 @@
 <template>
-  <center>
-    <div>
-      <h2>This Week's Featured Tutorial</h2>
-      <h3>Tutorial Name - Username</h3>
-    </div>
-  </center>
+  <div class="container">
+    <Navbar />
+    <center>
+      <div>
+        <h2>This week's Featured Tutorial</h2>
+        <h3>Tutorial Name - Author</h3>
+      </div>
+    </center>
+  </div>
 </template>
 
 <script></script>
