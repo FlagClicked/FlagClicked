@@ -13,11 +13,11 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "@nuxt/content": "^1.14.0",
     "js-cookie": "2.2.1",
-    "nuxt": "^2.15.0",
     "linkedom": "latest",
     "marked": "latest",
-    "@nuxt/content": "latest"
+    "nuxt": "^2.15.0"
   },
   "keywords": []
 }
