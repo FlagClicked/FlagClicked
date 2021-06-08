@@ -4,14 +4,14 @@
 <script>
 let parseHTML;
 if (process.server) {
-  parseHTML = require('linkedom').parseHTML
+  parseHTML = require("linkedom").parseHTML;
 } else {
   parseHTML = (html) => {
     if (window.DOMParser) {
-      let parser = new window.DOMParser()
-      return parser.parseFromString(html, 'text/html')
+      let parser = new window.DOMParser();
+      return parser.parseFromString(html, "text/html");
     }
-  }
+  };
 }
 
 export default {
@@ -22,7 +22,9 @@ export default {
   computed: {
     renderedContent() {
       // from https://github.com/jeffalo/ocular/blob/main/components/Render.vue
-      let _document = parseHTML(`<html><body>${marked(this.content)}</body></html>`)
+      let _document = parseHTML(
+        `<html><body>${marked(this.content)}</body></html>`
+      );
 
       let options = {
         style: "scratch3",
