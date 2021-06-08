@@ -3,6 +3,7 @@
 </template>
 <script>
 import * as marked from "marked";
+import * as scratchblocks from "scratchblocks";
 let parseHTML;
 if (process.server) {
   parseHTML = require("linkedom").parseHTML;
