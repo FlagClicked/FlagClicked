@@ -2,7 +2,7 @@
   <div class="renderedContent" v-html="renderedContent"></div>
 </template>
 <script>
-import * as marked from 'marked';
+import * as marked from "marked";
 let parseHTML;
 if (process.server) {
   parseHTML = require("linkedom").parseHTML;
