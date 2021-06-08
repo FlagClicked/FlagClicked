@@ -1,12 +1,8 @@
 <template>
-  <div class="container">
-    <Navbar />
-    <div class="margined">
-      <div class="tutorial-container">
-        <Tutorial :id="id" :content="content" />
-      </div>
+  <div class="margined">
+    <div class="tutorial-container">
+      <Tutorial :id="id" :content="content" />
     </div>
-    <Footer />
   </div>
 </template>
 <script>
