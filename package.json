@@ -17,7 +17,8 @@
     "js-cookie": "2.2.1",
     "linkedom": "latest",
     "marked": "latest",
-    "nuxt": "^2.15.0"
+    "nuxt": "^2.15.0",
+    "scratchblocks": "latest"
   },
   "keywords": []
 }
