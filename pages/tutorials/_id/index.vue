@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import * as fetch from 'node-fetch';
+import * as fetch from "node-fetch";
 export default {
   head() {
     return {
@@ -20,12 +20,16 @@ export default {
     };
   },
   async asyncData({ req, params, error }) {
-    var res = await fetch(`${process.env.backendURL}/tutorial/${params.id}`)
-    
-    if (res.error !== 200) return error({ statusCode: 404, message: "This tutorial cannot be found" })
-    
-    res = await res.json()
-    
+    var res = await fetch(`${process.env.backendURL}/tutorial/${params.id}`);
+
+    if (res.error !== 200)
+      return error({
+        statusCode: 404,
+        message: "This tutorial cannot be found",
+      });
+
+    res = await res.json();
+
     this.content = res.body;
     this.title = `${res.title}`;
   },
