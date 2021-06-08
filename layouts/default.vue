@@ -26,4 +26,14 @@ body {
 .content {
   padding-top: 80px;
 }
+
+.margined {
+  margin-left: 88.5px;
+}
+
+@media only screen and (max-width: 500px) {
+  .margined {
+    margin-left: 5px;
+  }
+}
 </style>

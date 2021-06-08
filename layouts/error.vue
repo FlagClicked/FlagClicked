@@ -1,6 +1,5 @@
 <template>
-  <div class="content">
-    <Navbar />
+  <div class="margined">
     <center>
       <div v-if="error.statusCode === 404">
         <h1>Our server is having issues finding this page</h1>

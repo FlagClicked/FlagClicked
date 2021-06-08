@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       link: null,
-      error: !!this.$route.query.error || false,
+      error: !!JSON.parse(this.$route.query.error) || false,
     };
   },
   mounted() {
@@ -35,7 +35,7 @@ export default {
       return;
     }
     this.link = `${process.env.backendURL}/auth/begin`;
-    window.location.href = this.link;
+    window.location.replace(this.link);
   },
 };
 </script>

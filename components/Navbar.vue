@@ -4,9 +4,7 @@
       <div class="block">
         <span
           >when
-          <img
-            src="https://scratch.mit.edu/static/blocks-media/green-flag.svg"
-          />
+          <img src="/greenflag.svg" />
           clicked</span
         >
       </div>
@@ -58,7 +56,6 @@ export default {
   --padding: 20px;
   background: #ffbf00;
   height: 80px;
-  position: absolute;
   width: calc(100% - var(--padding) * 2);
   display: flex;
   font-size: 30px;

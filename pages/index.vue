@@ -11,4 +11,9 @@
 
 <script></script>
 
-<style scoped></style>
+<style scoped>
+.margined {
+  margin: 88.5px;
+  margin-top: 0px;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div class="margined">
     <div class="row">
-      <div v-for="user of users" class="contributor">
+      <div v-for="user of users" class="contributor" :key="Math.random()">
         <a :href="user.profile">
           <img :src="user.avatar_url" class="contributor-icon" />
           <div class="contributor-info">
@@ -10,6 +10,7 @@
               <div
                 v-for="name of user.contributions"
                 :title="icons[name].description"
+                :key="Math.random()"
               >
                 {{ icons[name].symbol }}
               </div>
@@ -24,7 +25,7 @@
 export default {
   data() {
     return {
-      contributors: [],
+      users: [],
       icons: {
         a11y: {
           symbol: "\ufe0f\ufe0f\ufe0f\ufe0f\u267f\ufe0f",
@@ -153,12 +154,13 @@ export default {
       },
     };
   },
-  async asyncData({ $http }) {
-    const contributors = await $http.$get(
+  async fetch() {
+    const contributors = await fetch(
       "https://raw.githubusercontent.com/FlagClicked/Contributors/master/.all-contributorsrc"
-    );
+    ).then((res) => res.json());
 
-    return { contributors: JSON.parse(contributors) };
+    this.users = contributors;
   },
+  fetchOnServer: false,
 };
 </script>

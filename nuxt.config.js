@@ -14,27 +14,27 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "Tutorials by scratchers, for scratchers",
-      },
+        content: "Tutorials by scratchers, for scratchers"
+      }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "apple-touch-icon",
         sizes: "144x144",
-        href: "/assets/apple-touch-icon-ipad-retina-152x152.png",
+        href: "/assets/apple-touch-icon-ipad-retina-152x152.png"
       },
       {
         rel: "apple-touch-icon",
         sizes: "114x114",
-        href: "/assets/apple-touch-icon-iphone-retina-120x120.png",
+        href: "/assets/apple-touch-icon-iphone-retina-120x120.png"
       },
       {
         rel: "apple-touch-icon",
         sizes: "60x60",
-        href: "/assets/apple-touch-icon-ipad-76x76.png",
-      },
-    ],
+        href: "/assets/apple-touch-icon-ipad-76x76.png"
+      }
+    ]
   },
 
   components: true,
@@ -43,7 +43,7 @@ export default {
    ** Nuxt.js modules
    ** Doc: https://modules.nuxtjs.org
    */
-  modules: [],
+  modules: ["@nuxt/content"],
 
   /*
    ** Global CSS
@@ -58,6 +58,6 @@ export default {
   plugins: [],
 
   env: {
-    backendURL: process.env.backendURL || "https://api.whenflagclicked.org",
-  },
+    backendURL: process.env.backendURL || "https://api.whenflagclicked.org"
+  }
 };
