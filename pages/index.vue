@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-    <Navbar />
+  <div class="margined">
     <center>
       <div>
         <h2>This week's Featured Tutorial</h2>
