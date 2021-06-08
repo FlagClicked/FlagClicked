@@ -2,6 +2,18 @@
   <div class="renderedContent" v-html="renderedContent"></div>
 </template>
 <script>
+let parseHTML;
+if (process.server) {
+  parseHTML = require('linkedom').parseHTML
+} else {
+  parseHTML = (html) => {
+    if (window.DOMParser) {
+      let parser = new window.DOMParser()
+      return parser.parseFromString(html, 'text/html')
+    }
+  }
+}
+
 export default {
   props: ["content"],
   data() {
@@ -10,11 +22,7 @@ export default {
   computed: {
     renderedContent() {
       // from https://github.com/jeffalo/ocular/blob/main/components/Render.vue
-      let parser = new DOMParser();
-      let _document = parser.parseFromString(
-        `<html><body>${marked(this.content)}</body></html>`,
-        "text/html"
-      );
+      let _document = parseHTML(`<html><body>${marked(this.content)}</body></html>`)
 
       let options = {
         style: "scratch3",
