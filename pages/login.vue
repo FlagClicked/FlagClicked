@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="margined">
     <div v-if="error">
       <p>
         There was an error trying to login.
