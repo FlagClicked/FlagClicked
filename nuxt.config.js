@@ -55,14 +55,14 @@ export default {
    ** Plugins to load before mounting the App
    ** Doc: https://nuxtjs.org/docs/2.x/directory-structure/plugins
    */
-  plugins: ['~/plugins/auth.js'],
+  plugins: ["~/plugins/auth.js"],
 
   env: {
     backendURL: process.env.backendURL || "https://api.whenflagclicked.org",
   },
-  
+
   loading: {
-    color: 'white',
-    height: '4px'
-  }
+    color: "white",
+    height: "4px",
+  },
 };
