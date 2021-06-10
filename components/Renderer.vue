@@ -4,7 +4,16 @@
 <script>
 import * as marked from "marked";
 import * as scratchblocks from "scratchblocks";
-let parseHTML;
+
+
+export default {
+  props: ["content"],
+  data() {
+    return {};
+  },
+  computed: {
+    renderedContent() {
+      let parseHTML;
 if (process.server) {
   let linkedom = require("linkedom");
   parseHTML = (html) => {
@@ -19,14 +28,6 @@ if (process.server) {
     }
   };
 }
-
-export default {
-  props: ["content"],
-  data() {
-    return {};
-  },
-  computed: {
-    renderedContent() {
       // from https://github.com/jeffalo/ocular/blob/main/components/Render.vue
       let _document = parseHTML(
         `<html><body>${marked(this.content)}</body></html>`
@@ -70,8 +71,8 @@ export default {
         Rainbow.color(el.parentNode);
       });
 
-      return _document.querySelector("body").innerHTML;
-    },
-  },
-};
+      return _document.querySelector("body").innerHTML
+    }
+  }
+}
 </script>
