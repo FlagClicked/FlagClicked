@@ -11,5 +11,9 @@ export default async function ({ redirect, req, store }) {
     token = cookie.get("auth");
   }
 
-  // TODO: more stuff here
+  await store.dispatch('auth/refreshUserDetails', token)
+  
+  if (!$auth.isLoggedIn()) {
+    redirect('/login')
+  }
 }
