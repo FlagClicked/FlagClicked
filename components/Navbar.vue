@@ -37,7 +37,9 @@
 export default {
   data() {
     return {
-      userLink: this.$auth.user() ? `/user/${this.$auth.user().username}` : "/login",
+      userLink: this.$auth.user()
+        ? `/user/${this.$auth.user().username}`
+        : "/login",
       items: [
         {
           text: "Tutorials",
@@ -48,7 +50,7 @@ export default {
           text: "About",
           button: true,
           href: "/about",
-        }
+        },
       ],
     };
   },
