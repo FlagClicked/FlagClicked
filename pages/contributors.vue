@@ -38,8 +38,8 @@
 export default {
   head() {
     return {
-      title: "Contributors"
-    }
+      title: "Contributors",
+    };
   },
   data() {
     return {
