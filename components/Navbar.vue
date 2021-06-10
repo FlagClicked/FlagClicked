@@ -48,12 +48,7 @@ export default {
           text: "About",
           button: true,
           href: "/about",
-        },
-        {
-          text: "Log In",
-          bold: true,
-          href: "/login",
-        },
+        }
       ],
     };
   },
