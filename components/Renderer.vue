@@ -1,12 +1,16 @@
 <template>
-  <div class="renderedContent" v-html="renderedContent"></div>
+  <div class="rendered" v-html="renderedContent"></div>
 </template>
 <script>
 import * as marked from "marked";
 import * as scratchblocks from "scratchblocks";
 let parseHTML;
 if (process.server) {
-  parseHTML = require("linkedom").parseHTML;
+  let linkedom = require("linkedom")
+  parseHTML = (html) => {
+    let { document } = linkedom.parseHTML(html)
+    return document
+  }
 } else {
   parseHTML = (html) => {
     if (window.DOMParser) {
