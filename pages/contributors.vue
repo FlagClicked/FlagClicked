@@ -7,11 +7,12 @@
         >Get credited!</a
       >
     </h2>
-    <div class="row">
+    <Loading v-if="loading" />
+    <div class="row" v-else>
       <div
-        v-for="user of users.contributors"
+        v-for="(user, index) of users.contributors"
         class="contributor"
-        :key="Math.random()"
+        :key="index"
       >
         <a :href="user.profile">
           <img :src="user.avatar_url" class="contributor-icon" />
@@ -21,9 +22,9 @@
             </p>
             <div class="contributor-items">
               <div
-                v-for="name of user.contributions"
+                v-for="(name, key) of user.contributions"
                 :title="icons[name].description"
-                :key="Math.random()"
+                :key="key"
               >
                 {{ icons[name].symbol }}
               </div>
@@ -44,6 +45,7 @@ export default {
   data() {
     return {
       users: [],
+      loading: true,
       icons: {
         a11y: {
           symbol: "\ufe0f\ufe0f\ufe0f\ufe0f\u267f\ufe0f",
@@ -176,7 +178,9 @@ export default {
     const contributors = await fetch(
       "https://raw.githubusercontent.com/FlagClicked/Contributors/master/.all-contributorsrc"
     ).then((res) => res.json());
-
+    
+    this.loading = false;
+    
     this.users = contributors;
   },
   fetchOnServer: false,
