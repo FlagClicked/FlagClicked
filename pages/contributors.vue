@@ -36,6 +36,11 @@
 </template>
 <script>
 export default {
+  head() {
+    return {
+      title: "Contributors"
+    }
+  },
   data() {
     return {
       users: [],
