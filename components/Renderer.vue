@@ -13,7 +13,7 @@ export default {
   computed: {
     renderedContent() {
       let parseHTML;
-      if (process.server) return
+      if (process.server) return;
       // from https://github.com/jeffalo/ocular/blob/main/components/Render.vue
       let _document = parseHTML(
         `<html><body>${marked(this.content)}</body></html>`
