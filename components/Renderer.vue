@@ -6,11 +6,11 @@ import * as marked from "marked";
 import * as scratchblocks from "scratchblocks";
 let parseHTML;
 if (process.server) {
-  let linkedom = require("linkedom")
+  let linkedom = require("linkedom");
   parseHTML = (html) => {
-    let { document } = linkedom.parseHTML(html)
-    return document
-  }
+    let { document } = linkedom.parseHTML(html);
+    return document;
+  };
 } else {
   parseHTML = (html) => {
     if (window.DOMParser) {
