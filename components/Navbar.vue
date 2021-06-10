@@ -27,9 +27,7 @@
         <p v-if="$auth.user()">
           {{ $auth.user().username }}
         </p>
-        <p v-if="!$auth.user()">
-          Login
-        </p>
+        <p v-if="!$auth.user()">Login</p>
       </span>
     </NuxtLink>
   </div>
