@@ -37,7 +37,7 @@ export const actions = {
         .then((res) => {
           if (res.error) {
             dispatch("logout");
-            resolve(false)
+            resolve(false);
           } else {
             commit("setUser", res);
             resolve(res);
