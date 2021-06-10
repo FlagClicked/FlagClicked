@@ -178,9 +178,9 @@ export default {
     const contributors = await fetch(
       "https://raw.githubusercontent.com/FlagClicked/Contributors/master/.all-contributorsrc"
     ).then((res) => res.json());
-    
+
     this.loading = false;
-    
+
     this.users = contributors;
   },
   fetchOnServer: false,
