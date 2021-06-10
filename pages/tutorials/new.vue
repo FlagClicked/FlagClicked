@@ -20,6 +20,7 @@
 <script>
 import cookies from "js-cookie";
 export default {
+  middleware: ["authenticated"],
   head() {
     return {
       title: "Create Tutorial",
