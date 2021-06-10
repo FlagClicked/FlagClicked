@@ -73,6 +73,6 @@ export default {
       return _document.querySelector("body").innerHTML;
     },
   },
-  ssr: false
+  ssr: false,
 };
 </script>
