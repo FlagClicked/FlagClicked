@@ -177,6 +177,7 @@ export default {
   fetchOnServer: false,
 };
 </script>
+
 <style scoped>
 .contributor {
   color: inherit;
