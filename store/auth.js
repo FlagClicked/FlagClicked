@@ -22,11 +22,11 @@ export const mutations = {
 };
 
 export const actions = {
-  async refreshUserDetails({ commit, dispatch }) {
+  async refreshUserDetails({ commit, dispatch }, token) {
     return new Promise((resolve, reject) => {
       let headers = {};
       if (process.server) {
-        headers = { cookie: `auth=${cookies.get("auth")}` };
+        headers = { cookie: `auth=${token || cookies.get("auth")}` };
       }
       fetch(`${process.env.backendURL}/auth/me`, {
         method: "GET",
@@ -37,6 +37,7 @@ export const actions = {
         .then((res) => {
           if (res.error) {
             dispatch("logout");
+            resolve(false)
           } else {
             commit("setUser", res);
             resolve(res);
