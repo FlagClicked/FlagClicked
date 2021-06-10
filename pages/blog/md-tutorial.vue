@@ -158,11 +158,12 @@ To display a literal character that would otherwise be used to format text in a 
 \`\`\`
 **_Everything you see above are all basic things you can do in markdown._**
 However one thing we have added into our markdown, are scratchblocks embeds. You can make them like this:
-\`\`\`\
+\\`\\`\\`
 when gf clicked
 move (10) steps
 set [var v] to (100)
-\`\`\`\
+\\`\\`\\`
+
 which outputs:
 \`\`\`scratchblocks
 when gf clicked
