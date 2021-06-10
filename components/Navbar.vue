@@ -22,6 +22,16 @@
         >{{ item.text }}</span
       >
     </NuxtLink>
+    <NuxtLink :to="userLink" class="item">
+      <span style="font-weight: 500">
+        <p v-if="$auth.user()">
+          {{ $auth.user().username }}
+        </p>
+        <p v-if="!$auth.user()">
+          Login
+        </p>
+      </span>
+    </NuxtLink>
   </div>
 </template>
 
@@ -29,6 +39,7 @@
 export default {
   data() {
     return {
+      userLink: this.$auth.user() ? `/user/${this.$auth.user().username}` : "/login"
       items: [
         {
           text: "Tutorials",
