@@ -1,11 +1,24 @@
 <template>
-  <div class="margined">
+  <div class="margined" style="text-align: center">
+    <h1>Below is a list of users who have contributed to the website.</h1>
+    <h2>
+      Have you contributed and you're not listed here?
+      <a href="https://github.com/FlagClicked/Contributors/issues/1"
+        >Get credited!</a
+      >
+    </h2>
     <div class="row">
-      <div v-for="user of users" class="contributor" :key="Math.random()">
+      <div
+        v-for="user of users.contributors"
+        class="contributor"
+        :key="Math.random()"
+      >
         <a :href="user.profile">
           <img :src="user.avatar_url" class="contributor-icon" />
           <div class="contributor-info">
-            <p class="contributor-name">{{ user.name }}</p>
+            <p class="contributor-name" style="text-align: left">
+              {{ user.name }}
+            </p>
             <div class="contributor-items">
               <div
                 v-for="name of user.contributions"
@@ -164,3 +177,50 @@ export default {
   fetchOnServer: false,
 };
 </script>
+<style scoped>
+.contributor {
+  color: inherit;
+  border-radius: 5px;
+  border: 1.5px #00000030 solid;
+  transition: background-color 0.15s ease-in-out;
+  flex: 0 0 33.333333%;
+  max-width: 20%;
+}
+.contributor a {
+  padding: 0.375rem 15px;
+  color: inherit;
+  display: flex;
+  text-decoration: none;
+}
+.contributor-icon {
+  margin-right: 0.75rem;
+  height: 64px;
+  width: 64px;
+}
+.contributor-info {
+  display: flex;
+  flex: 1 0 0;
+  max-width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+.contributor-name {
+  font-size: 1.25rem;
+  line-height: 1;
+  word-break: break-all;
+  margin: 0;
+}
+.contributor-items {
+  display: flex;
+}
+.contributor:hover {
+  background: #00000030;
+}
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+</style>

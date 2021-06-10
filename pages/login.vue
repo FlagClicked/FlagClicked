@@ -25,12 +25,12 @@ export default {
     };
   },
   mounted() {
-    if (cookies.get("auth")) {
+    if (this.$auth.user()) {
       this.$router.push({ path: "/" });
       return;
     }
     if (this.$route.query.token) {
-      cookies.set("auth", this.$route.query.token);
+      this.$store.commit("setToken", this.$route.query.token);
       this.$router.push({ path: "/" });
       return;
     }
