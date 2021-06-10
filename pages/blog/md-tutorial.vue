@@ -164,11 +164,11 @@ move (10) steps
 set [var v] to (100)
 \`\`\`\
 which outputs:
-```scratchblocks
+\`\`\`scratchblocks
 when gf clicked
 move (10) steps
 set [var v] to (100)
-```
+\`\`\`
 Anyway, that's all for now! We'll add more if we here [any feedback from you!](/contact)
 `,
     };
