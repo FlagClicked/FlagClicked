@@ -5,7 +5,6 @@
 import * as marked from "marked";
 import * as scratchblocks from "scratchblocks";
 
-
 export default {
   props: ["content"],
   data() {
@@ -14,20 +13,20 @@ export default {
   computed: {
     renderedContent() {
       let parseHTML;
-if (process.server) {
-  let linkedom = require("linkedom");
-  parseHTML = (html) => {
-    let { document } = linkedom.parseHTML(html);
-    return document;
-  };
-} else {
-  parseHTML = (html) => {
-    if (window.DOMParser) {
-      let parser = new window.DOMParser();
-      return parser.parseFromString(html, "text/html");
-    }
-  };
-}
+      if (process.server) {
+        let linkedom = require("linkedom");
+        parseHTML = (html) => {
+          let { document } = linkedom.parseHTML(html);
+          return document;
+        };
+      } else {
+        parseHTML = (html) => {
+          if (window.DOMParser) {
+            let parser = new window.DOMParser();
+            return parser.parseFromString(html, "text/html");
+          }
+        };
+      }
       // from https://github.com/jeffalo/ocular/blob/main/components/Render.vue
       let _document = parseHTML(
         `<html><body>${marked(this.content)}</body></html>`
@@ -71,8 +70,8 @@ if (process.server) {
         Rainbow.color(el.parentNode);
       });
 
-      return _document.querySelector("body").innerHTML
-    }
-  }
-}
+      return _document.querySelector("body").innerHTML;
+    },
+  },
+};
 </script>
