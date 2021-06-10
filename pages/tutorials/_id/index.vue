@@ -20,7 +20,13 @@ export default {
     };
   },
   async asyncData({ req, params, error }) {
-    var res = await fetch(`${process.env.backendURL}/tutorial/${params.id}`);
+    var res;
+    
+    try {
+      res = await fetch(`${process.env.backendURL}/tutorial/${params.id}`)
+    } catch(ex) {
+      return error({ statusCode: 500, message: `Error on rendering page: ${ex}\nError Code: TUTORIAL_FETCH_ERROR` })
+    }
 
     if (res.error !== 200)
       return error({
