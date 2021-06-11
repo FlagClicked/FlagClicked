@@ -7,11 +7,15 @@
 export default {};
 </script>
 <style scoped>
-  .spinner {
-    animation: spin 4s infinite;
+.spinner {
+  animation: spin 4s infinite;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0);
   }
-  @keyframes spin {
-    from { transform: rotate(0); }
-    to { transform: rotate(360); }
+  to {
+    transform: rotate(360);
   }
+}
 </style>
