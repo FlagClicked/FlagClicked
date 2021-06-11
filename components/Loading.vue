@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="spinner"></div>
+    <img src="/greenflag.svg" class="spinner" />
   </div>
 </template>
 <script>
