@@ -26,6 +26,9 @@
       <span style="font-weight: 500">
         <p v-if="$auth.user()">
           {{ $auth.user().username }}
+          <img
+          :src"`https://cdn2.scratch.mit.edu/get_image/user/${$auth.user().id}_50x50.png`"
+          />
         </p>
         <p v-if="!$auth.user()">Login</p>
       </span>

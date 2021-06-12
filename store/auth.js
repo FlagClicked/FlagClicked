@@ -3,7 +3,7 @@ import cookies from "js-cookie";
 
 export const state = () => ({
   user: null,
-  token: null,
+  token: null
 });
 
 export const mutations = {
@@ -18,38 +18,42 @@ export const mutations = {
   },
   resetToken(store) {
     store.token = null;
-  },
+  }
 };
 
 export const actions = {
   async refreshUserDetails({ commit, dispatch }, token) {
     return new Promise((resolve, reject) => {
-      let headers = {};
+      var headers = {};
       if (process.server) {
         headers = { cookie: `auth=${token || cookies.get("auth")}` };
       }
-      fetch(`${process.env.backendURL}/auth/me`, {
-        method: "GET",
-        credentials: "include",
-        headers,
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.error) {
-            dispatch("logout");
-            resolve(false);
-          } else {
-            commit("setUser", res);
-            resolve(res);
-          }
-        });
+      try {
+        fetch(`${process.env.backendURL}/auth/me`, {
+          method: "GET",
+          credentials: "include",
+          headers
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.error) {
+              dispatch("logout");
+              resolve(false);
+            } else {
+              commit("setUser", res);
+              resolve(res);
+            }
+          });
+      } catch (ex) {
+        resolve(false);
+      }
     });
   },
   async logout({ commit, dispatch }) {
     return new Promise(async (resolve, reject) => {
       let token = cookies.get("auth");
       let res = await fetch(`${process.env.backendURL}/auth/delete`, {
-        credentials: "include",
+        credentials: "include"
       });
       let json = await res.json();
 
@@ -59,5 +63,5 @@ export const actions = {
       if (json.error) return resolve(json.error);
       resolve(json.ok);
     });
-  },
+  }
 };

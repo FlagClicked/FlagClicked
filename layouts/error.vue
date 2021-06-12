@@ -9,8 +9,8 @@
           typed the URL correctly.
         </p>
       </div>
-      <h1 v-else>An error occurred</h1>
-      <NuxtLink to="/">Home page</NuxtLink>
+      <h1 v-else>An error occurred when trying to start this page.</h1>
+      <p>Go back to the <NuxtLink to="/">Home page</NuxtLink></p>
     </center>
   </div>
 </template>
