@@ -1,7 +1,7 @@
 <template>
   <div class="margined">
-    <h1>{{ page.title }}</h1>
-    <h3>by {{ page.author }}</h3>
+    <h1>{{ title }}</h1>
+    <h3>by {{ author.user }}</h3>
     <Renderer :content="page" />
   </div>
 </template>
@@ -14,9 +14,12 @@ export default {
   },
   data() {
     return {
-      page: `# Flag Clicked Markdown Tutorial
-
-## Headings
+      author: {
+        user: "markverb1",
+        scratch: "markverb1",
+      },
+      title: "Markdown Tutorial",
+      page: `## Headings
 
 To create a heading, add number signs (#) in front of a word or phrase. The number of number signs you use should correspond to the heading level. For example, to create a heading level three, use three number signs (e.g., ### My Header).
 
