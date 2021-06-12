@@ -3,7 +3,7 @@ import cookies from "js-cookie";
 
 export const state = () => ({
   user: null,
-  token: null
+  token: null,
 });
 
 export const mutations = {
@@ -18,7 +18,7 @@ export const mutations = {
   },
   resetToken(store) {
     store.token = null;
-  }
+  },
 };
 
 export const actions = {
@@ -32,7 +32,7 @@ export const actions = {
         fetch(`${process.env.backendURL}/auth/me`, {
           method: "GET",
           credentials: "include",
-          headers
+          headers,
         })
           .then((res) => res.json())
           .then((res) => {
@@ -53,7 +53,7 @@ export const actions = {
     return new Promise(async (resolve, reject) => {
       let token = cookies.get("auth");
       let res = await fetch(`${process.env.backendURL}/auth/delete`, {
-        credentials: "include"
+        credentials: "include",
       });
       let json = await res.json();
 
@@ -63,5 +63,5 @@ export const actions = {
       if (json.error) return resolve(json.error);
       resolve(json.ok);
     });
-  }
+  },
 };
