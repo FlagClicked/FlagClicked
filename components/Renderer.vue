@@ -30,7 +30,7 @@ export default {
     let sb = Array.from(doc.querySelectorAll("code.lang-scratchblocks"));
 
     sb.forEach((blocks) => {
-      let code = options.parse(blocks, options);
+      let code = options.read(blocks, options);
       let parsed = options.parse(code, options);
       let svg = options.render(parsed, options);
 
