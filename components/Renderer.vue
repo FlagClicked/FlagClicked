@@ -49,6 +49,5 @@ export default {
     
     this.renderedContent = doc.querySelector('body').innerHTML
   }
-  ssr: false,
 };
 </script>
