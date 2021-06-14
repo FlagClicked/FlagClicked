@@ -8,16 +8,16 @@ export default {};
 </script>
 <style scoped>
 .spinner {
-  animation: spin 4s infinite;
+  animation: spin 1s infinite;
   width: 50px;
   height: 50px;
 }
 @keyframes spin {
   from {
-    transform: rotate(0);
+    transform: rotate(0deg);
   }
   to {
-    transform: rotate(360);
+    transform: rotate(360deg);
   }
 }
 </style>
