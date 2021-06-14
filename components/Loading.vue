@@ -9,6 +9,8 @@ export default {};
 <style scoped>
 .spinner {
   animation: spin 4s infinite;
+  width: 50px;
+  height: 50px;
 }
 @keyframes spin {
   from {
