@@ -36,4 +36,8 @@ body {
     margin-left: 5px;
   }
 }
+
+[class*="hljs"] {
+  font-family: monospace;
+}
 </style>

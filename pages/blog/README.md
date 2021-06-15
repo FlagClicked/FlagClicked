@@ -1,3 +1,3 @@
-# Playground
+# Blog
 
-This contains stuff to play around with!
+Blog files

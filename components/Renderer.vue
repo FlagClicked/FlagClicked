@@ -4,7 +4,8 @@
   </client-only>
 </template>
 <script>
-// import * as marked from "marked";
+import * as Rainbow from "highlight.js";
+import "highlight.js/styles/github.css";
 
 export default {
   props: ["content"],
@@ -50,7 +51,9 @@ export default {
 
     codeblocks.forEach((el) => {
       el.setAttribute("data-language", el.classList[0]?.split("-")[1]);
-      // el.innerHTML = this.$syntax.highlight(el.innerHTML, "javascript");
+      el.innerHTML = Rainbow.highlight(el.innerHTML, {
+        language: "javascript",
+      }).value;
     });
 
     this.renderedContent = doc.querySelector("body").innerHTML;
