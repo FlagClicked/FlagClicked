@@ -1,4 +1,8 @@
-# codesandbox-nuxt
+# FlagClicked
+
+FlagClicked's main repository. This is currently in the works - it will change regularly.
+This frontend is built with Nuxt.js (a vue framework).
+The backend can be found [here](https://github.com/FlagClicked/Backend).
 
 ## Build Setup
 

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="margined">
     <div v-if="error">
       <p>
         There was an error trying to login.
@@ -21,24 +21,21 @@ export default {
   data() {
     return {
       link: null,
-      error: false,
-      backEndURL: "//hly3v.sse.codesandbox.io",
+      error: !!JSON.parse(this.$route.query.error) || false,
     };
   },
   mounted() {
-    if (cookies.get("auth")) {
-      window.location = "/";
+    if (this.$auth.user()) {
+      this.$router.push({ path: "/" });
       return;
     }
-    if (this.$route.query.error) {
-      this.error = true;
-      return;
-    } else if (this.$route.query.token) {
-      cookies.set("auth", this.$route.query.token);
+    if (this.$route.query.token) {
+      this.$store.commit("setToken", this.$route.query.token);
+      this.$router.push({ path: "/" });
       return;
     }
-    this.link = this.backEndURL + "/auth/begin";
-    window.location = this.link;
+    this.link = `${process.env.backendURL}/auth/begin`;
+    window.location.replace(this.link);
   },
 };
 </script>

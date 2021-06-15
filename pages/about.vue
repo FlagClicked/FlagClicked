@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="margined">
     <h1>About us</h1>
     <p>TODO</p>
   </div>
@@ -9,5 +9,4 @@
 export default {};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

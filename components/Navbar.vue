@@ -4,9 +4,7 @@
       <div class="block">
         <span
           >when
-          <img
-            src="https://scratch.mit.edu/static/blocks-media/green-flag.svg"
-          />
+          <img src="/greenflag.svg" />
           clicked</span
         >
       </div>
@@ -24,6 +22,17 @@
         >{{ item.text }}</span
       >
     </NuxtLink>
+    <NuxtLink :to="userLink" class="item">
+      <span style="font-weight: 500">
+        <p v-if="$auth.user()">
+          {{ $auth.user().username }}
+          <img
+          :src"`https://cdn2.scratch.mit.edu/get_image/user/${$auth.user().id}_50x50.png`"
+          />
+        </p>
+        <p v-if="!$auth.user()">Login</p>
+      </span>
+    </NuxtLink>
   </div>
 </template>
 
@@ -31,6 +40,9 @@
 export default {
   data() {
     return {
+      userLink: this.$auth.user()
+        ? `/user/${this.$auth.user().username}`
+        : "/login",
       items: [
         {
           text: "Tutorials",
@@ -42,11 +54,6 @@ export default {
           button: true,
           href: "/about",
         },
-        {
-          text: "Log In",
-          bold: true,
-          href: "/login",
-        },
       ],
     };
   },
@@ -55,10 +62,9 @@ export default {
 
 <style scoped>
 .navbar {
-  --padding: 20px; 
+  --padding: 20px;
   background: #ffbf00;
   height: 80px;
-  position: absolute;
   width: calc(100% - var(--padding) * 2);
   display: flex;
   font-size: 30px;
