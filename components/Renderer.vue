@@ -4,7 +4,7 @@
   </client-only>
 </template>
 <script>
-import * as marked from "marked";
+// import * as marked from "marked";
 
 export default {
   props: ["content"],
@@ -15,7 +15,7 @@ export default {
   },
   mounted() {
     let doc = new window.DOMParser().parseFromString(
-      `<html><body>${marked(this.content)}</body></html>`,
+      `<html><body>${this.$md.render(this.content)}</body></html>`,
       "text/html"
     );
 
@@ -50,7 +50,7 @@ export default {
 
     codeblocks.forEach((el) => {
       el.setAttribute("data-language", el.classList[0]?.split("-")[1]);
-      // Rainbow.color(el.parentNode) // <<< TODO
+      // el.innerHTML = this.$syntax.highlight(el.innerHTML, "javascript");
     });
 
     this.renderedContent = doc.querySelector("body").innerHTML;

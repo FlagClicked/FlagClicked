@@ -13,11 +13,11 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "@nuxtjs/markdownit": "^2.0.0",
     "cookie": "^0.4.1",
     "js-cookie": "^2.2.1",
-    "marked": "^2.0.7",
     "node-fetch": "^2.6.1",
-    "nuxt": "^2.15.6"
+    "nuxt": "^2.15.7"
   },
   "keywords": []
 }
