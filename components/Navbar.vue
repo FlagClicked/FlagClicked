@@ -62,9 +62,10 @@ export default {
 
 <style scoped>
 .navbar {
-  --padding: 20px;
+  --padding: 20px; 
   background: #ffbf00;
   height: 80px;
+  position: absolute;
   width: calc(100% - var(--padding) * 2);
   display: flex;
   font-size: 30px;
@@ -114,10 +115,17 @@ export default {
   align-items: center;
   justify-content: center;
 }
+.dark-mode .navbar{
+  background-color: #570600;
+}
 .button {
   cursor: pointer;
 }
-
+.dark-mode .button {
+  cursor: pointer;
+  background-color: #380400;
+  color: white;
+}
 .navbar span:not(.button):hover {
   background: #00000021;
 }
@@ -129,6 +137,16 @@ export default {
     rgba(250, 250, 250, 1) 0%,
     rgba(255, 255, 255, 1) 50%,
     rgba(250, 250, 250, 1) 100%
+  ); /*very unnoticable gradient when hover*/
+}
+.dark-mode .button:hover {
+  box-shadow: 0px 0px 8px #ffffff;
+  text-shadow: 0 0 10px #FFFFFF;
+  background: linear-gradient(
+    90deg,
+    #260300 0%,
+    #380400 50%,
+    #260300 100%
   ); /*very unnoticable gradient when hover*/
 }
 </style>

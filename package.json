@@ -20,5 +20,8 @@
     "nuxt": "^2.15.7",
     "rainbow-code": "^2.1.7"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^2.0.10"
+  }
 }

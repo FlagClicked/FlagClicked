@@ -36,7 +36,29 @@ body {
     margin-left: 5px;
   }
 }
-
+.dark-mode body {
+  background-color: #000000 !important;
+  color: #ebf4f1;
+}
+.dark-mode option {
+  background-color: black;
+  color: #ebf4f1;
+}
+.dark-mode .blocks-image {
+  filter: invert(1);
+  opacity: 0;
+}
+option {
+  color: black;
+}
+.dark-mode select {
+  background: black;
+  color: white;
+}
+select {
+  color: black;
+  border-radius: 3px;
+}
 [class*="hljs"] {
   font-family: monospace;
 }

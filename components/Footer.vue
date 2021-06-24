@@ -20,6 +20,11 @@
       <NuxtLink to="/contributors">
         <div class="footer-copyright">Copyright © FlagClicked Contributors</div>
       </NuxtLink>
+      <select v-model="$colorMode.preference">
+      <option value="system">System</option>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+    </select>
     </div>
   </div>
 </template>
