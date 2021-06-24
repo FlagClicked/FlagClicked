@@ -62,7 +62,7 @@ export default {
 
 <style scoped>
 .navbar {
-  --padding: 20px; 
+  --padding: 20px;
   background: #ffbf00;
   height: 80px;
   position: absolute;
@@ -115,7 +115,7 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.dark-mode .navbar{
+.dark-mode .navbar {
   background-color: #570600;
 }
 .button {
@@ -141,7 +141,7 @@ export default {
 }
 .dark-mode .button:hover {
   box-shadow: 0px 0px 8px #ffffff;
-  text-shadow: 0 0 10px #FFFFFF;
+  text-shadow: 0 0 10px #ffffff;
   background: linear-gradient(
     90deg,
     #260300 0%,
