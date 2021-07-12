@@ -5,7 +5,13 @@
       "use": "@nuxtjs/vercel-builder",
       "config": {
         "serverFiles": ["server-middleware/**"]
+      },
+      "env": {
+        "MONGODB_URL": "@MONGODB_URL"
       }
     }
-  ]
+  ],
+  "env": {
+    "MONGODB_URL": "@MONGODB_URL"
+  }
 }
