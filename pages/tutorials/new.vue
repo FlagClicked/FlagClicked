@@ -3,11 +3,7 @@
     <div class="margined">
       <div class="tutorial-editor">
         <div class="col">
-          <input
-            type="text"
-            placeholder="Title"
-            v-model="title"
-          />
+          <input type="text" placeholder="Title" v-model="title" />
           <textarea v-model="input"></textarea>
         </div>
         <Renderer :content="input" />
@@ -52,7 +48,7 @@ export default {
 
       if (json.id) return this.$router.push({ path: `/tutorials/${json.id}` });
     },
-  }
+  },
 };
 </script>
 <style>
@@ -76,5 +72,4 @@ export default {
   width: 100%;
   height: 100%;
 }
-
 </style>

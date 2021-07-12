@@ -63,7 +63,7 @@ export default {
 
   env: {
     mongoDBURL: process.env.MONGODB_URL || "localhost/flagclicked",
-    studioId: 29872706
+    studioId: 29872706,
   },
 
   loading: {
@@ -79,5 +79,5 @@ export default {
     runtime: true,
   },
 
-  serverMiddleware: ['~/server-middleware/server.js']
+  serverMiddleware: ["~/server-middleware/server.js"],
 };

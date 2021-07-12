@@ -20,22 +20,23 @@ export default {
     };
   },
   async asyncData({ req, params, error }) {
-    req = process.server ? req : { protocol: window.location.protocol, Host: window.location.hostname }
+    req = process.server
+      ? req
+      : { protocol: window.location.protocol, Host: window.location.hostname };
     var res;
-    var host = process.server ? `${req.protocol}://${req.get("Host")}` : ""
+    var host = process.server ? `${req.protocol}://${req.get("Host")}` : "";
 
     try {
       res = await fetch(`${host}/api/tutorial/${params.id}`);
     } catch (ex) {
-      this.layout = 'error'
+      this.layout = "error";
     }
 
-    if (res.error == 404)
-      this.layout = 'error'
+    if (res.error == 404) this.layout = "error";
 
     res = await res.json();
 
-    return { fetched: res }
+    return { fetched: res };
   },
 };
 </script>

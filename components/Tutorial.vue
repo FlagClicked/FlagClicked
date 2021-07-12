@@ -9,14 +9,14 @@ export default {
   data() {
     return {
       author: "",
-      body: ""
+      body: "",
     };
   },
   async fetch() {
-    if (this.data) return
+    if (this.data) return;
     let res = await fetch(`/api/tutorials/${this.id}`);
     let json = await res.json();
-    this.data = json
+    this.data = json;
   },
 };
 </script>

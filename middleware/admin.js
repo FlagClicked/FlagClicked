@@ -5,13 +5,16 @@ export default async function ({ redirect, req, store, $auth, $util }) {
 
   if (process.server) {
     if (req.headers.cookie) {
-      token = cookie.parse(req.headers.cookie).token
+      token = cookie.parse(req.headers.cookie).token;
     }
   } else {
     token = cookie.get("token");
   }
 
-  await store.dispatch("auth/refreshUserDetails", { token, base: $util.getHost(req) });
+  await store.dispatch("auth/refreshUserDetails", {
+    token,
+    base: $util.getHost(req),
+  });
 
   if (!$auth.user().admin) {
     redirect("/");

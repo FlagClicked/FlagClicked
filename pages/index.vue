@@ -7,7 +7,9 @@
       </div>
       <div v-else class="hero-banner">
         <h1 class="gold">FlagClicked<span class="blue">.</span></h1>
-        <span class="md">The new tutorials platform for scratchers, from scratchers.</span>
+        <span class="md"
+          >The new tutorials platform for scratchers, from scratchers.</span
+        >
         <br />
       </div>
     </center>
@@ -35,18 +37,26 @@ export default {
   display: grid;
   padding-left: 7rem;
   text-align: left;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
 .hero-banner * {
   color: #111;
 }
 
-body { margin: 0;}
+body {
+  margin: 0;
+}
 
-.gold {color: #FFBF00;}
+.gold {
+  color: #ffbf00;
+}
 
-.blue {color: #21bcff;}
+.blue {
+  color: #21bcff;
+}
 
-.md {font-size: 20px;}
+.md {
+  font-size: 20px;
+}
 </style>

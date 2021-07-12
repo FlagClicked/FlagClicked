@@ -8,7 +8,11 @@
       <span>{{ item.text }}</span>
     </NuxtLink>
     <NuxtLink to="/settings" class="item right" v-if="$auth.user()">
-      <img :src="`https://cdn2.scratch.mit.edu/get_image/user/${$auth.user().id}_500x500.png`" />
+      <img
+        :src="`https://cdn2.scratch.mit.edu/get_image/user/${
+          $auth.user().id
+        }_500x500.png`"
+      />
     </NuxtLink>
     <NuxtLink to="/login" class="item right" v-else>
       <span>Login</span>
@@ -22,16 +26,16 @@ export default {
       items: [
         {
           text: "Tutorials",
-          link: "/tutorials"
-        }
-      ]
-    }
-  }
-}
+          link: "/tutorials",
+        },
+      ],
+    };
+  },
+};
 </script>
 <style scoped>
 .navbar {
-  --brand: #FFBF00;
+  --brand: #ffbf00;
   background: var(--brand);
   height: 50px;
   width: 100%;
