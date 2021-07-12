@@ -1,7 +1,7 @@
 <template>
   <div class="margined">
     <div class="tutorial-container">
-      <Tutorial :id="id" :content="content" />
+      <Tutorial :id="id" :data="fetched" />
     </div>
   </div>
 </template>
@@ -10,37 +10,32 @@ import * as fetch from "node-fetch";
 export default {
   head() {
     return {
-      title: "Tutorial",
+      title: this.title,
     };
   },
   data() {
     return {
       id: this.$route.params.id,
-      content: [],
+      fetched: [],
     };
   },
   async asyncData({ req, params, error }) {
+    req = process.server ? req : { protocol: window.location.protocol, Host: window.location.hostname }
     var res;
+    var host = process.server ? `${req.protocol}://${req.get("Host")}` : ""
 
     try {
-      res = await fetch(`${process.env.backendURL}/tutorial/${params.id}`);
+      res = await fetch(`${host}/api/tutorial/${params.id}`);
     } catch (ex) {
-      return error({
-        statusCode: 500,
-        message: `Error on rendering page: ${ex}\nError Code: TUTORIAL_FETCH_ERROR`,
-      });
+      this.layout = 'error'
     }
 
-    if (res.error !== 200)
-      return error({
-        statusCode: 404,
-        message: "This tutorial cannot be found",
-      });
+    if (res.error == 404)
+      this.layout = 'error'
 
     res = await res.json();
 
-    this.content = res.body;
-    this.title = `${res.title}`;
+    return { fetched: res }
   },
 };
 </script>

@@ -22,46 +22,57 @@ export const mutations = {
 };
 
 export const actions = {
-  async refreshUserDetails({ commit, dispatch }, token) {
-    return new Promise((resolve, reject) => {
-      var headers = {};
-      if (process.server) {
-        headers = { cookie: `auth=${token || cookies.get("auth")}` };
-      }
-      try {
-        fetch(`${process.env.backendURL}/auth/me`, {
-          method: "GET",
-          credentials: "include",
-          headers,
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            if (res.error) {
-              dispatch("logout");
-              resolve(false);
-            } else {
-              commit("setUser", res);
-              resolve(res);
-            }
-          });
-      } catch (ex) {
-        resolve(false);
-      }
-    });
-  },
-  async logout({ commit, dispatch }) {
-    return new Promise(async (resolve, reject) => {
-      let token = cookies.get("auth");
-      let res = await fetch(`${process.env.backendURL}/auth/delete`, {
+  async refreshUserDetails({ commit, dispatch }, obj) {
+    let { token = cookies.get('token'), base = ''} = obj || {}
+    let headers = {}
+    if (process.server) {
+      headers = { cookie: `token=${token}` }
+    }
+    
+    var res
+
+    try {
+      res = await fetch(`${base}/auth/me`, {
+        method: "GET",
         credentials: "include",
-      });
-      let json = await res.json();
-
-      commit("resetUser", res);
-      commit("resetToken", res);
-
-      if (json.error) return resolve(json.error);
-      resolve(json.ok);
-    });
+        headers
+      })
+    } catch(ex) {
+      throw 'Fetch Error'
+    }
+    let json = await res.json()
+    if (!json.username) {
+      commit('resetUser', null)
+      commit('resetToken', null)
+      return
+    } else {
+      commit('setUser', json)
+      commit('setToken', json)
+      return json
+    }
   },
+
+  async logout({ commit, dispatch }, obj) {
+    let { token = cookies.get('token'), base = ''} = obj || {}
+    let headers = {}
+    if (process.server) {
+      headers = { cookie: `token=${token}` }
+    }
+    
+    var res
+
+    try {
+      res = await fetch(`${base}/auth/delete`, {
+        method: "PUT",
+        credentials: "include",
+        headers
+      })
+    } catch(ex) {
+      throw 'Fetch Error'
+    }
+    
+    commit('resetUser')
+    commit('resetToken')
+    return res
+  }
 };

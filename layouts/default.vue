@@ -21,6 +21,7 @@ export default {};
 body {
   margin: 0px;
   background: #21bcff;
+  overflow-x: hidden;
 }
 
 .content {

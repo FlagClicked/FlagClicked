@@ -1,5 +1,7 @@
 <template>
-  <Renderer :content="body" />
+  <div class="post">
+    <Renderer :content="data.body" />
+  </div>
 </template>
 <script>
 export default {
@@ -7,19 +9,14 @@ export default {
   data() {
     return {
       author: "",
-      body: "",
+      body: ""
     };
   },
   async fetch() {
-    if (this.data) {
-      this.body = this.data.body;
-      this.author = this.data.author;
-      return;
-    }
-    let res = await fetch(`${process.env.backendURL}/tutorials/${this.id}`);
+    if (this.data) return
+    let res = await fetch(`/api/tutorials/${this.id}`);
     let json = await res.json();
-    this.body = json.body;
-    this.author = json.author;
+    this.data = json
   },
 };
 </script>
