@@ -1,12 +1,12 @@
 export default ({ store }, inject) => {
   inject("auth", {
-    isLoggedIn() {
+    get isLoggedIn() {
       return !!store.state.auth.user;
     },
-    user() {
+    get user() {
       return store.state.auth.user;
     },
-    token() {
+    get token() {
       return store.state.auth.token;
     },
   });

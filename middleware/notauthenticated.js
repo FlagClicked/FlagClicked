@@ -16,7 +16,7 @@ export default async function ({ redirect, req, store, $auth, $util }) {
     base: $util.getHost(req),
   });
 
-  if ($auth.isLoggedIn()) {
+  if ($auth.isLoggedIn) {
     redirect("/");
   }
 }

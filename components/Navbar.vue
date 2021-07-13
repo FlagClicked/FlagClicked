@@ -7,10 +7,10 @@
     <NuxtLink :to="item.link" class="item" v-for="(item, k) in items" :key="k">
       <span>{{ item.text }}</span>
     </NuxtLink>
-    <NuxtLink to="/settings" class="item right" v-if="$auth.user()">
+    <NuxtLink to="/settings" class="item right" v-if="$auth.user">
       <img
         :src="`https://cdn2.scratch.mit.edu/get_image/user/${
-          $auth.user().id
+          $auth.user.id
         }_500x500.png`"
       />
     </NuxtLink>

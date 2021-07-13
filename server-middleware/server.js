@@ -90,14 +90,14 @@ app.put("/api/auth/login", async (req, res) => {
   let resp = await fetch(
     `https://api.scratch.mit.edu/studios/${
       process.env.studioId || 30078251
-    }/comments`
+    }/comments?limit=40`
   );
   let json = await resp.json();
-  let tk = await auth.rawTokenDB.find({ private: req.body["private"] });
-  if (!tk[0]) return res.json({ error: "invalid token" });
+  let tk = await auth.rawTokenDB.findOnc({ private: req.body.private });
+  if (!tk) return res.json({ error: "invalid token" });
 
   for (let j in json) {
-    if (json[j].content == tk[0].token) {
+    if (json[j].content == tk.token) {
       await auth.rawTokenDB.remove({ private: req.body["private"] });
       let author = json[j].author.username;
 
@@ -107,7 +107,6 @@ app.put("/api/auth/login", async (req, res) => {
       }
 
       let session = await auth.createSession(user.username);
-
       res.cookie("token", session, { path: "/" });
 
       res.json({ ok: true, token: session });

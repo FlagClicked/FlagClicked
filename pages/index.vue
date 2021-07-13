@@ -1,7 +1,7 @@
 <template>
   <div>
     <center>
-      <div v-if="$auth.isLoggedIn()" class="margined">
+      <div v-if="$auth.isLoggedIn" class="margined">
         <h2>This week's Featured Tutorial</h2>
         <h3>{{ tutorialName }} - {{ tutorialAuthor }}</h3>
       </div>
@@ -19,6 +19,7 @@
 <script>
 export default {
   data() {
+    // console.log(this)
     return {
       tutorialName: "TutorialName",
       tutorialAuthor: "TutorialAuthor",
