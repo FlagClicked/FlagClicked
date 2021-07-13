@@ -19,16 +19,16 @@ export default {
     };
   },
   async mounted() {
-    let res = (await this.$axios.$put(`/api/auth/init`));
+    let res = await this.$axios.$put(`/api/auth/init`);
     this._private = res.private;
     this.code = res.token;
   },
   methods: {
     async finishAuth() {
       await this.$axios.$put(`/api/auth/login`, {
-          private: this._private,
-          public: this.code,
-        });
+        private: this._private,
+        public: this.code,
+      });
 
       this.$store.dispatch("auth/refreshUserDetails");
       this.$router.push({ path: "/" });

@@ -22,13 +22,15 @@ export const mutations = {
 };
 
 export const actions = {
-  async refreshUserDetails({ commit, dispatch }, { token = cookies.get("token"), base = "" } = {}) {
+  async refreshUserDetails(
+    { commit, dispatch },
+    { token = cookies.get("token"), base = "" } = {}
+  ) {
     let headers = {};
     if (process.server) {
       headers = { cookie: `token=${token}` };
     }
-    var res;      
-
+    var res;
 
     try {
       res = await fetch(`${base}/auth/me`, {

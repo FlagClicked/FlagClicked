@@ -88,7 +88,9 @@ app.put("/api/auth/init", async (req, res) => {
 
 app.put("/api/auth/login", async (req, res) => {
   let resp = await fetch(
-    `https://api.scratch.mit.edu/studios/${process.env.studioId || 30078251}/comments`
+    `https://api.scratch.mit.edu/studios/${
+      process.env.studioId || 30078251
+    }/comments`
   );
   let json = await resp.json();
   let tk = await auth.rawTokenDB.find({ private: req.body["private"] });
