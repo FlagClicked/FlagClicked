@@ -47,7 +47,7 @@ export default {
    ** Nuxt.js modules
    ** Doc: https://modules.nuxtjs.org
    */
-  modules: ["@nuxtjs/markdownit"],
+  modules: ["@nuxtjs/axios","@nuxtjs/markdownit"],
 
   /*
    ** Global CSS

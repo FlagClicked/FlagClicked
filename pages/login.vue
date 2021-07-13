@@ -15,26 +15,20 @@ export default {
   data() {
     return {
       studioLink: `https://scratch.mit.edu/studios/${process.env.studioId}/comments#frc-compose-3392903`,
-      error: !!this.$route.query.error || false,
       code: "",
     };
   },
   async mounted() {
-    let res = await fetch(`/api/auth/init`, { method: "PUT" });
-    let json = await res.json();
-    this._private = json.private;
-    this.code = json.token;
+    let res = (await this.$axios.$put(`/api/auth/init`));
+    this._private = res.private;
+    this.code = res.token;
   },
   methods: {
     async finishAuth() {
-      let res = await fetch(`/api/auth/login`, {
-        headers: { "Content-Type": "application/json" },
-        method: "PUT",
-        body: JSON.stringify({
+      await this.$axios.$put(`/api/auth/login`, {
           private: this._private,
           public: this.code,
-        }),
-      });
+        });
 
       this.$store.dispatch("auth/refreshUserDetails");
       this.$router.push({ path: "/" });

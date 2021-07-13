@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Banner />
+    <!-- <Banner /> -->
     <Navbar />
     <div class="main-content">
       <Nuxt />

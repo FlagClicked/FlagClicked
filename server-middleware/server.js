@@ -9,40 +9,6 @@ const fetch = require("node-fetch");
 const auth = require("./auth.js");
 const Tutorials = require(`./Tutorials.js`);
 
-app.get("/auth/begin", (req, res) => {
-  res.redirect(
-    `https://fluffyscratch.hampton.pw/auth/getKeys/v2?redirect=${Buffer.from(
-      `${req.get("Host")}/auth/handle`
-    ).toString("base64")}`
-  );
-});
-
-app.get("/auth/handle", async (req, res) => {
-  // the user is back from hampton's thing.
-  const privateCode = req.query.privateCode;
-
-  let authResponse = await fetch(
-    "http://fluffyscratch.hampton.pw/auth/verify/v2/" + privateCode
-  );
-
-  let authData = await authResponse.json();
-
-  if (authData.valid) {
-    var user = await auth.getUser(authData.username);
-    if (!user) {
-      user = await auth.createUser(authData.username);
-    }
-
-    let session = await auth.createSession(user.username);
-
-    res.cookie("token", session, { path: "/" });
-
-    res.redirect(`/`);
-  } else {
-    res.redirect(`/login?error=1`); // failed fluffyscratch auth
-  }
-});
-
 app.get("/auth/me", auth.middleware("authenticated"), (req, res) => {
   res.json(req.user);
 });
@@ -122,7 +88,7 @@ app.put("/api/auth/init", async (req, res) => {
 
 app.put("/api/auth/login", async (req, res) => {
   let resp = await fetch(
-    `https://api.scratch.mit.edu/studios/30078251/comments`
+    `https://api.scratch.mit.edu/studios/${process.env.studioId || 30078251}/comments`
   );
   let json = await resp.json();
   let tk = await auth.rawTokenDB.find({ private: req.body["private"] });
