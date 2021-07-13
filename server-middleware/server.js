@@ -122,7 +122,7 @@ app.put("/api/auth/init", async (req, res) => {
 
 app.put("/api/auth/login", async (req, res) => {
   let resp = await fetch(
-    `https://api.scratch.mit.edu/studios/29872706/comments`
+    `https://api.scratch.mit.edu/studios/30078251/comments`
   );
   let json = await resp.json();
   let tk = await auth.rawTokenDB.find({ private: req.body["private"] });
@@ -135,7 +135,7 @@ app.put("/api/auth/login", async (req, res) => {
 
       var user = await auth.getUser(author);
       if (!user) {
-        user = await auth.createUser(user);
+        user = await auth.createUser(author);
       }
 
       let session = await auth.createSession(user.username);

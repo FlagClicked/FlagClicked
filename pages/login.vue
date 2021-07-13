@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import cookie from "js-cookie";
 export default {
   middleware: ["notauthenticated"],
   data() {
@@ -37,11 +36,8 @@ export default {
         }),
       });
 
-      let { token } = await res.json();
 
-      cookie.set("token", token);
-
-      this.$store.dispatch("auth/refreshUserDetails", { token });
+      this.$store.dispatch("auth/refreshUserDetails");
       this.$router.push({ path: "/" });
     },
   },
