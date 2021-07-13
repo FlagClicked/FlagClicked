@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Banner />
     <Navbar />
     <div class="main-content">
       <Nuxt />
