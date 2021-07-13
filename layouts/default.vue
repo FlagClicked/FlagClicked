@@ -17,8 +17,7 @@ export default {};
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
 }
 *:not(code, button) {
-    color: white;
-
+  color: white;
 }
 
 body {

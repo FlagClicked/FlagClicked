@@ -1,4 +1,6 @@
-const db = require("monk")(process.env.MONGODB_URL || "mongodb://localhost/flagclicked");
+const db = require("monk")(
+  process.env.MONGODB_URL || "mongodb://localhost/flagclicked"
+);
 const auth = require("./auth.js");
 let tutorials = db.get("tutorials");
 

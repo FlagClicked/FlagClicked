@@ -1,7 +1,9 @@
 const fetch = require("node-fetch");
 const crypto = require("crypto");
 
-const db = require("monk")(process.env.MONGODB_URL || "mongodb://localhost/flagclicked");
+const db = require("monk")(
+  process.env.MONGODB_URL || "mongodb://localhost/flagclicked"
+);
 const users = db.get("users");
 const sessions = db.get("sessions");
 const tokens = db.get("verify");

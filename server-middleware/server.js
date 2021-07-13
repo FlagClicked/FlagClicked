@@ -9,7 +9,6 @@ const fetch = require("node-fetch");
 const auth = require("./auth.js");
 const Tutorials = require(`./Tutorials.js`);
 
-
 app.get("/auth/begin", (req, res) => {
   res.redirect(
     `https://fluffyscratch.hampton.pw/auth/getKeys/v2?redirect=${Buffer.from(

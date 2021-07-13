@@ -2,9 +2,9 @@
   <div class="margined">
     <h1>Login</h1>
     <h3>Your authentication code is: {{ code }}</h3>
-      Comment this code in the
-      <a target="_blank" :href="studioLink">Authentication Studio</a>
-      and when you're done, click 
+    Comment this code in the
+    <a target="_blank" :href="studioLink">Authentication Studio</a>
+    and when you're done, click
     <button @click="finishAuth" v-if="code">here</button>
   </div>
 </template>
