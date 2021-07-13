@@ -77,3 +77,5 @@ dist
 
 # IDE
 .idea
+
+.vercel

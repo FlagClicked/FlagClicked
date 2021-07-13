@@ -117,7 +117,7 @@ app.put("/api/auth/init", async (req, res) => {
   let code = generateRandomID(20);
   let privateCode = generateRandomID(40);
   await auth.registerToken(code, privateCode);
-  res.json({ token: code, private: privateCode });
+  res.json({ token: code, "private": privateCode });
 });
 
 app.put("/api/auth/login", async (req, res) => {
@@ -125,12 +125,12 @@ app.put("/api/auth/login", async (req, res) => {
     `https://api.scratch.mit.edu/studios/29872706/comments`
   );
   let json = await resp.json();
-  let tk = await auth.rawTokenDB.find({ private: req.body.private });
+  let tk = await auth.rawTokenDB.find({ "private": req.body["private"] });
   if (!tk[0]) return res.json({ error: "invalid token" });
 
   for (let j in json) {
     if (json[j].content == tk[0].token) {
-      await auth.rawTokenDB.remove({ private: req.body.private });
+      await auth.rawTokenDB.remove({ "private": req.body["private"] });
       let author = json[j].author.username;
 
       var user = await auth.getUser(author);
