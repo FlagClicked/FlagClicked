@@ -1,5 +1,5 @@
 node_modules
 .env
 vercel.json
-yarn.lock
+# yarn.lock
 .nuxt
