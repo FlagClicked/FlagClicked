@@ -1,13 +1,14 @@
 /* >>>>> MODULES <<<<< */
 const express = require("express");
-const fetch = require("node-fetch");
 const cookieParser = require("cookie-parser");
-const auth = require("./auth.js");
-const Tutorials = require(`./Tutorials.js`);
 const app = express();
-
 app.use(cookieParser());
 app.use(express.json());
+
+const fetch = require("node-fetch");
+const auth = require("./auth.js");
+const Tutorials = require(`./Tutorials.js`);
+
 
 app.get("/auth/begin", (req, res) => {
   res.redirect(

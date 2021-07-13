@@ -15,7 +15,10 @@ export default {};
 *:not(code) {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  color: white;
+}
+*:not(code, button) {
+    color: white;
+
 }
 
 body {
