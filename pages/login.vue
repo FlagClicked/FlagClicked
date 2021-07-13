@@ -36,7 +36,6 @@ export default {
         }),
       });
 
-
       this.$store.dispatch("auth/refreshUserDetails");
       this.$router.push({ path: "/" });
     },
