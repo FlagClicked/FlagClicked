@@ -75,7 +75,7 @@ Auth.getCurrentUserCount = async function () {
 Auth.registerToken = async function (token, privateCode) {
   await tokens.insert({
     token,
-    "private": privateCode,
+    private: privateCode,
     timestamp: Date.now(),
   });
   // Remove old sessions
