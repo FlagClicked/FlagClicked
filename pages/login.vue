@@ -19,22 +19,22 @@ export default {
     };
   },
   async mounted() {
-    let res = await fetch('/api/auth/init', {
-      method: 'PUT'
-    }).then(res => res.json())
+    let res = await fetch("/api/auth/init", {
+      method: "PUT",
+    }).then((res) => res.json());
     this._private = res.private;
     this.code = res.token;
   },
   methods: {
     async finishAuth() {
-      await fetch('/api/auth/login', {
-        headers: {'content-type': 'application/json'},
+      await fetch("/api/auth/login", {
+        headers: { "content-type": "application/json" },
         body: JSON.stringify({
           private: this._private,
-          code: this.code
+          code: this.code,
         }),
-        method: "PUT"
-      })
+        method: "PUT",
+      });
 
       this.$store.dispatch("auth/refreshUserDetails");
       this.$router.push({ path: "/" });

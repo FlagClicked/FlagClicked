@@ -93,7 +93,7 @@ app.put("/api/auth/login", async (req, res) => {
     }/comments?limit=40`
   );
   let json = await resp.json();
-  let tk = await auth.rawTokenDB.findOne({ private: req.body.private })
+  let tk = await auth.rawTokenDB.findOne({ private: req.body.private });
   if (!tk) return res.json({ error: "invalid token" });
 
   for (let j in json) {
