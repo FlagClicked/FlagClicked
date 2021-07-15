@@ -19,16 +19,22 @@ export default {
     };
   },
   async mounted() {
-    let res = await this.$axios.$put(`/api/auth/init`);
+    let res = await fetch('/api/auth/init', {
+      method: 'PUT'
+    }).then(res => res.json())
     this._private = res.private;
     this.code = res.token;
   },
   methods: {
     async finishAuth() {
-      await this.$axios.$put(`/api/auth/login`, {
-        private: this._private,
-        public: this.code,
-      });
+      await fetch('/api/auth/login', {
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({
+          private: this._private,
+          code: this.code
+        }),
+        method: "PUT"
+      })
 
       this.$store.dispatch("auth/refreshUserDetails");
       this.$router.push({ path: "/" });
