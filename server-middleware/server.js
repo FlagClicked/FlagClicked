@@ -93,7 +93,7 @@ app.put("/api/auth/login", async (req, res) => {
     }/comments?limit=40`
   );
   let json = await resp.json();
-  let tk = await auth.rawTokenDB.findOnc({ private: req.body.private });
+  let tk = await auth.rawTokenDB.findOne({ private: req.body.private })
   if (!tk) return res.json({ error: "invalid token" });
 
   for (let j in json) {
@@ -120,7 +120,7 @@ app.put("/api/auth/login", async (req, res) => {
 export default app;
 
 function generateRandomID(len) {
-  let ALPHA = "BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz0";
+  let ALPHA = "BCDGHJLMNPQRSTVWXYZbcdghjlmnpqrstvwxyz*234567";
   var str = "";
   var i = 0;
   while (i < len) {
