@@ -1,7 +1,10 @@
 <template>
   <div class="post">
     <div class="user-box">
-      <img :src="`https://cdn2.scratch.mit.edu/get_image/user/${data.author.id}_500x500.png`" class="pfp" />
+      <img
+        :src="`https://cdn2.scratch.mit.edu/get_image/user/${data.author.id}_500x500.png`"
+        class="pfp"
+      />
       <p>{{ data.author.username }}</p>
     </div>
     <div class="renderer">
