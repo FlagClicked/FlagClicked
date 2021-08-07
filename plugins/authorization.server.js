@@ -20,6 +20,7 @@ users.createIndex("username", { unique: true });
 
 export var module = {
   async getSession(session) {
+    if (!session) return null;
     const sessionObject = await sessions.findOne({
       session,
     });
