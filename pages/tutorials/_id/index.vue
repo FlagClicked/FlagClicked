@@ -1,7 +1,7 @@
 <template>
   <div class="margined">
     <div class="tutorial-container">
-      <Tutorial :id="id" :data="fetched" />
+      <Tutorial v-if="tutorial" :id="id" :data="fetched" />
     </div>
   </div>
 </template>
@@ -10,34 +10,28 @@ import * as fetch from "node-fetch";
 export default {
   head() {
     return {
-      title: this.title,
+      title: this.title
     };
   },
   data() {
     return {
       id: this.$route.params.id,
-      fetched: [],
+      fetched: []
     };
   },
-  async asyncData({ req, params, error }) {
-    req = process.server
-      ? req
-      : { protocol: window.location.protocol, Host: window.location.hostname };
-    var res;
-    var host = process.server ? `${req.protocol}://${req.get("Host")}` : "";
+  async asyncData({ params, error, $tutorials }) {
+    var tutorial;
+    if ($tutorials) {
+      tutorial = await $tutorials.get(params.id);
+    } else {
+      let res = await fetch(`/api/tutorial/${params.id}`);
+      if (res.error == 404) this.layout = "error";
 
-    try {
-      res = await fetch(`${host}/api/tutorial/${params.id}`);
-    } catch (ex) {
-      this.layout = "error";
+      tutorial = await res.json();
     }
 
-    if (res.error == 404) this.layout = "error";
-
-    res = await res.json();
-
-    return { fetched: res };
-  },
+    return { fetched: tutorial };
+  }
 };
 </script>
 <style>

@@ -1,6 +1,6 @@
 const cookie = process.server ? require("cookie") : require("js-cookie");
 
-export default async function ({ redirect, req, store, $auth, $util }) {
+export default async function({ redirect, req, store, $auth }) {
   let token = null;
 
   if (process.server) {
@@ -12,8 +12,7 @@ export default async function ({ redirect, req, store, $auth, $util }) {
   }
 
   await store.dispatch("auth/refreshUserDetails", {
-    token,
-    base: $util.getHost(req),
+    token
   });
 
   if (!$auth.isLoggedIn) {

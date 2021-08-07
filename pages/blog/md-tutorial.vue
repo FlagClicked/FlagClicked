@@ -9,14 +9,14 @@
 export default {
   head() {
     return {
-      title: "Markdown Tutorial",
+      title: "Markdown Tutorial"
     };
   },
   data() {
     return {
       author: {
         user: "markverb1",
-        scratch: "markverb1",
+        scratch: "markverb1"
       },
       title: "Markdown Tutorial",
       page: `## Headings
@@ -174,8 +174,8 @@ move (10) steps
 set [var v] to (100)
 \`\`\`
 Anyway, that's all for now! We'll add more if we here [any feedback from you!](/contact)
-`,
+`
     };
-  },
+  }
 };
 </script>

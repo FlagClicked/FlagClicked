@@ -16,8 +16,8 @@ export default {
       await this.$store.dispatch("auth/logout");
       cookies.remove("token");
       this.$router.push("/");
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

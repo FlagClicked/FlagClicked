@@ -1,4 +1,8 @@
 /* >>>>> MODULES <<<<< */
+import * as module from "../plugins/authorization.server.js";
+import * as tutorials from "../plugins/tutorials.server.js";
+const auth = module.module;
+const Tutorials = tutorials.Tutorials;
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
@@ -6,8 +10,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 const fetch = require("node-fetch");
-const auth = require("./auth.js");
-const Tutorials = require(`./Tutorials.js`);
 
 app.get("/auth/me", auth.middleware("authenticated"), (req, res) => {
   res.json(req.user);
@@ -36,9 +38,13 @@ app.put(
   }
 );
 
+app.get("/api/tutorial/search", async (req, res) => {
+  res.status(501).json({ error: "not implemented" });
+});
+
 app.get("/api/tutorial/featured", async (req, res) => {
   let tutorial = await Tutorials.raw.findOne({
-    featured: true,
+    featured: true
   });
 
   tutorial
@@ -52,13 +58,13 @@ app.put(
   async (req, res) => {
     // Remove the last featured tutorial if found
     let tutorial = await Tutorials.raw.findOne({
-      featured: true,
+      featured: true
     });
 
     if (tutorial) {
       await Tutorials.raw.update(
         { id: tutorial.id },
-        { $set: { featured: false } }
+        { $unset: { featured: "" } }
       );
     }
 
@@ -88,17 +94,16 @@ app.put("/api/auth/init", async (req, res) => {
 
 app.put("/api/auth/login", async (req, res) => {
   let resp = await fetch(
-    `https://api.scratch.mit.edu/studios/${
-      process.env.studioId || 30078251
-    }/comments?limit=40`
+    `https://api.scratch.mit.edu/studios/${process.env.studioId ||
+      30078251}/comments?limit=40`
   );
   let json = await resp.json();
-  let tk = await auth.rawTokenDB.findOne({ private: req.body.private });
+  let tk = await auth.databases.tokens.findOne({ private: req.body.private });
   if (!tk) return res.json({ error: "invalid token" });
 
   for (let j in json) {
     if (json[j].content == tk.token) {
-      await auth.rawTokenDB.remove({ private: req.body["private"] });
+      await auth.databases.tokens.remove({ private: req.body["private"] });
       let author = json[j].author.username;
 
       var user = await auth.getUser(author);

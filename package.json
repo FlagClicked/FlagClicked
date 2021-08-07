@@ -13,6 +13,8 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
+    "@nuxt-hero-icons/outline": "^1.0.1",
+    "@nuxt-hero-icons/solid": "^1.0.1",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/markdownit": "^2.0.0",
     "cookie": "^0.4.1",
