@@ -44,7 +44,7 @@ app.get("/api/tutorial/search", async (req, res) => {
 
 app.get("/api/tutorial/featured", async (req, res) => {
   let tutorial = await Tutorials.raw.findOne({
-    featured: true
+    featured: true,
   });
 
   tutorial
@@ -58,7 +58,7 @@ app.put(
   async (req, res) => {
     // Remove the last featured tutorial if found
     let tutorial = await Tutorials.raw.findOne({
-      featured: true
+      featured: true,
     });
 
     if (tutorial) {
@@ -94,8 +94,9 @@ app.put("/api/auth/init", async (req, res) => {
 
 app.put("/api/auth/login", async (req, res) => {
   let resp = await fetch(
-    `https://api.scratch.mit.edu/studios/${process.env.studioId ||
-      30078251}/comments?limit=40`
+    `https://api.scratch.mit.edu/studios/${
+      process.env.studioId || 30078251
+    }/comments?limit=40`
   );
   let json = await resp.json();
   let tk = await auth.databases.tokens.findOne({ private: req.body.private });

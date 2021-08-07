@@ -10,13 +10,13 @@ import * as fetch from "node-fetch";
 export default {
   head() {
     return {
-      title: this.title
+      title: this.title,
     };
   },
   data() {
     return {
       id: this.$route.params.id,
-      fetched: []
+      fetched: [],
     };
   },
   async asyncData({ params, error, $tutorials }) {
@@ -31,7 +31,7 @@ export default {
     }
 
     return { fetched: tutorial };
-  }
+  },
 };
 </script>
 <style>

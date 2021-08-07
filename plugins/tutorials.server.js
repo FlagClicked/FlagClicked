@@ -11,13 +11,13 @@ let tutorials = db.get("tutorials");
 tutorials.createIndex("id", { unique: true });
 
 export var Tutorials = {
-  get: async function(id) {
+  get: async function (id) {
     let regex = "^" + escapeRegExp(id) + "$";
     var tutorial = {};
 
     try {
       tutorial = await tutorials.findOne({
-        id: { $regex: new RegExp(regex, "i") }
+        id: { $regex: new RegExp(regex, "i") },
       });
     } catch (ex) {
       tutorial = null;
@@ -25,7 +25,7 @@ export var Tutorials = {
 
     return tutorial;
   },
-  new: async function(body, author) {
+  new: async function (body, author) {
     let allTutorials = await tutorials.find();
     let tutorial = {
       id: (allTutorials.length + 1).toString(),
@@ -35,19 +35,19 @@ export var Tutorials = {
       history: {
         created: {
           time: Date.now(),
-          user: author
+          user: author,
         },
         edited: {
           time: Date.now(),
-          user: author
-        }
-      }
+          user: author,
+        },
+      },
     };
     await tutorials.insert(tutorial);
 
     return tutorial;
   },
-  edit: async function(body, id, user) {
+  edit: async function (body, id, user) {
     let tutorial = await Tutorials.get(id);
     var editor = await auth.getUser(user);
 
@@ -61,15 +61,15 @@ export var Tutorials = {
         $set: {
           body,
           "meta.edited.user": editor,
-          "meta.edited.time": Date.now()
-        }
+          "meta.edited.time": Date.now(),
+        },
       }
     );
   },
-  raw: tutorials
+  raw: tutorials,
 };
 
-export default function({}, inject) {
+export default function ({}, inject) {
   inject("tutorials", Tutorials);
 }
 

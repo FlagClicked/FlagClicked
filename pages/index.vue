@@ -23,9 +23,9 @@ export default {
     // console.log(this)
     return {
       tutorialName: "TutorialName",
-      tutorialAuthor: "TutorialAuthor"
+      tutorialAuthor: "TutorialAuthor",
     };
-  }
+  },
 };
 </script>
 

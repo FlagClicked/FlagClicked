@@ -4,13 +4,13 @@ export default {
    ** Doc: https://vue-meta.nuxtjs.org/api/#metainfo-properties
    */
   head: {
-    titleTemplate: chunk => {
+    titleTemplate: (chunk) => {
       return chunk ? `${chunk} on When Flag Clicked` : "When Flag Clicked";
     },
     script: [
       {
-        src: "https://scratchblocks.github.io/js/scratchblocks-v3.5.2-min.js"
-      }
+        src: "https://scratchblocks.github.io/js/scratchblocks-v3.5.2-min.js",
+      },
     ],
     meta: [
       { charset: "utf-8" },
@@ -18,27 +18,27 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "Tutorials by scratchers, for scratchers"
-      }
+        content: "Tutorials by scratchers, for scratchers",
+      },
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "apple-touch-icon",
         sizes: "144x144",
-        href: "/assets/apple-touch-icon-ipad-retina-152x152.png"
+        href: "/assets/apple-touch-icon-ipad-retina-152x152.png",
       },
       {
         rel: "apple-touch-icon",
         sizes: "114x114",
-        href: "/assets/apple-touch-icon-iphone-retina-120x120.png"
+        href: "/assets/apple-touch-icon-iphone-retina-120x120.png",
       },
       {
         rel: "apple-touch-icon",
         sizes: "60x60",
-        href: "/assets/apple-touch-icon-ipad-76x76.png"
-      }
-    ]
+        href: "/assets/apple-touch-icon-ipad-76x76.png",
+      },
+    ],
   },
 
   components: true,
@@ -67,17 +67,17 @@ export default {
     "~/plugins/auth.js",
     "~/plugins/util.js",
     "~/plugins/authorization.server.js",
-    "~/plugins/tutorials.server.js"
+    "~/plugins/tutorials.server.js",
   ],
 
   env: {
     mongoDBURL: process.env.MONGODB_URL || "localhost/flagclicked",
-    studioId: 30078251
+    studioId: 30078251,
   },
 
   loading: {
     color: "white",
-    height: "4px"
+    height: "4px",
   },
 
   markdownit: {
@@ -85,8 +85,8 @@ export default {
     linkify: true,
     breaks: true,
     use: [],
-    runtime: true
+    runtime: true,
   },
 
-  serverMiddleware: ["~/server-middleware/server.js"]
+  serverMiddleware: ["~/server-middleware/server.js"],
 };
