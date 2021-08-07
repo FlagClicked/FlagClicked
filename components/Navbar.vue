@@ -12,7 +12,7 @@
       v-for="(item, k) in items"
       :key="k"
     >
-    <span>{{ item.text }}</span>
+      <span>{{ item.text }}</span>
     </NuxtLink>
     <NuxtLink to="/settings" class="item right" v-if="$auth.user">
       <img
