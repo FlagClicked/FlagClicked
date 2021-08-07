@@ -1,7 +1,7 @@
 <template>
   <div class="margined">
     <div class="tutorial-container">
-      <Tutorial v-if="tutorial" :id="id" :data="fetched" />
+      <Tutorial v-if="fetched" :id="id" :data="fetched" />
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      fetched: [],
+      fetched: null,
     };
   },
   async asyncData({ params, error, $tutorials }) {
