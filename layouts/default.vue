@@ -1,9 +1,8 @@
 <template>
   <div class="container">
+    <!-- <Banner /> -->
     <Navbar />
-    <div class="main-content">
-      <Nuxt />
-    </div>
+    <div class="content"><Nuxt /></div>
     <Footer />
   </div>
 </template>
@@ -15,16 +14,24 @@ export default {};
 *:not(code) {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  color: white;
+}
+*:not(code, button) {
+  color: #fff;
 }
 
 body {
   margin: 0px;
   background: #21bcff;
+  overflow-x: hidden;
 }
 
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .content {
-  padding-top: 80px;
+  flex: 1;
 }
 
 .margined {

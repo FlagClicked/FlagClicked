@@ -9,7 +9,8 @@
           typed the URL correctly.
         </p>
       </div>
-      <h1 v-else>An error occurred when trying to start this page.</h1>
+      <h1 v-else>An error occurred when trying to load this page.</h1>
+      <h3>{{ error.message }}</h3>
       <p>Go back to the <NuxtLink to="/">Home page</NuxtLink></p>
     </center>
   </div>

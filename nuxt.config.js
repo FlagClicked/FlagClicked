@@ -47,7 +47,9 @@ export default {
    ** Nuxt.js modules
    ** Doc: https://modules.nuxtjs.org
    */
-  modules: ["@nuxtjs/markdownit"],
+  modules: ["@nuxtjs/axios", "@nuxtjs/markdownit"],
+
+  buildModules: [],
 
   /*
    ** Global CSS
@@ -59,10 +61,16 @@ export default {
    ** Plugins to load before mounting the App
    ** Doc: https://nuxtjs.org/docs/2.x/directory-structure/plugins
    */
-  plugins: ["~/plugins/auth.js"],
+  plugins: [
+    "~/plugins/auth.js",
+    "~/plugins/util.js",
+    "~/plugins/authorization.server.js",
+    "~/plugins/tutorials.server.js",
+  ],
 
   env: {
-    backendURL: process.env.backendURL || "https://api.whenflagclicked.org",
+    mongoDBURL: process.env.MONGODB_URL || "localhost/flagclicked",
+    studioId: 30078251,
   },
 
   loading: {
@@ -77,4 +85,6 @@ export default {
     use: [],
     runtime: true,
   },
+
+  serverMiddleware: ["~/server-middleware/server.js"],
 };

@@ -1,134 +1,97 @@
 <template>
   <div class="navbar">
-    <NuxtLink class="item" to="/">
-      <div class="block">
-        <span
-          >when
-          <img src="/greenflag.svg" />
-          clicked</span
-        >
-      </div>
+    <NuxtLink class="item no-anim" to="/">
+      when
+      <img src="/greenflag.svg" />
+      clicked
+      <span class="version">ALPHA</span>
     </NuxtLink>
     <NuxtLink
-      v-for="item of items"
-      :key="item.text"
-      :to="{ path: item.href }"
-      :data-smallsize="item.smallSize"
-      class="item"
+      :to="item.link"
+      class="item button"
+      v-for="(item, k) in items"
+      :key="k"
     >
-      <span
-        :class="item.button ? 'button' : ''"
-        :style="item.bold ? 'font-weight: 500' : ''"
-        >{{ item.text }}</span
-      >
+      <span>{{ item.text }}</span>
     </NuxtLink>
-    <NuxtLink :to="userLink" class="item">
-      <span style="font-weight: 500">
-        <p v-if="$auth.user()">
-          {{ $auth.user().username }}
-          <img
-          :src"`https://cdn2.scratch.mit.edu/get_image/user/${$auth.user().id}_50x50.png`"
-          />
-        </p>
-        <p v-if="!$auth.user()">Login</p>
-      </span>
+    <NuxtLink to="/settings" class="item right" v-if="$auth.user">
+      <span>{{ $auth.user.username }}</span>
+      <img
+        :src="`https://cdn2.scratch.mit.edu/get_image/user/${$auth.user.id}_500x500.png`"
+      />
+    </NuxtLink>
+    <NuxtLink to="/login" class="item right" v-else>
+      <span>Login</span>
     </NuxtLink>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {
-      userLink: this.$auth.user()
-        ? `/user/${this.$auth.user().username}`
-        : "/login",
       items: [
         {
           text: "Tutorials",
-          button: true,
-          href: "/tutorials",
-        },
-        {
-          text: "About",
-          button: true,
-          href: "/about",
+          link: "/tutorials",
         },
       ],
     };
   },
 };
 </script>
-
 <style scoped>
 .navbar {
-  --padding: 20px;
-  background: #ffbf00;
-  height: 80px;
-  width: calc(100% - var(--padding) * 2);
+  --brand: #ffbf00;
+  background: var(--brand);
   display: flex;
-  font-size: 30px;
-  justify-content: center;
-  align-items: center;
-  padding: 0px var(--padding);
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.block {
-  display: flex;
-  width: 350px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  height: 100%;
-}
-.block img {
-  margin: 0 10px;
-  height: 50px;
-}
 .item {
-  flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0px 10px;
   text-decoration: none;
-  cursor: default;
-  height: 100%;
+  font-size: 28px;
+  align-items: center;
+  user-select: none;
+  height: 65px;
 }
 .button {
-  text-align: center;
-  width: 120px;
-  background: white;
+  justify-content: center;
+  flex: 1;
+}
+.button span {
+  display: flex;
+  justify-content: center;
   color: #5d657c;
-  padding: 10px;
+  background: white;
+  padding: 2px;
   border-radius: 20pc;
   border: #00000045 solid 2px;
-  margin: 0;
-}
-.navbar span:not(.button) {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.button {
-  cursor: pointer;
+  width: 120px;
 }
 
-.navbar span:not(.button):hover {
-  background: #00000021;
-}
-.button:hover {
+.button span:hover {
   border: none;
   box-shadow: 0px 0px 8px #888888;
-  background: linear-gradient(
-    90deg,
-    rgba(250, 250, 250, 1) 0%,
-    rgba(255, 255, 255, 1) 50%,
-    rgba(250, 250, 250, 1) 100%
-  ); /*very unnoticable gradient when hover*/
+}
+.item:not(.no-anim):not(.button):hover {
+  background: #00000021;
+}
+
+.item img {
+  width: 45px;
+  height: 45px;
+}
+
+.right {
+  margin-left: auto;
+}
+
+.version {
+  font-size: 10px;
+  background-color: #21bcff;
+  padding: 2px;
+  border-radius: 10px;
+  border: 10px;
 }
 </style>

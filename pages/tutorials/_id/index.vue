@@ -1,46 +1,39 @@
 <template>
   <div class="margined">
     <div class="tutorial-container">
-      <Tutorial :id="id" :content="content" />
+      <Tutorial v-if="tutorial" :id="id" :data="tutorial" />
     </div>
   </div>
 </template>
 <script>
-import * as fetch from "node-fetch";
 export default {
   head() {
     return {
-      title: "Tutorial",
+      title: this.title,
     };
   },
   data() {
     return {
       id: this.$route.params.id,
-      content: [],
+      tutorial: null,
+      error: null,
     };
   },
-  async asyncData({ req, params, error }) {
-    var res;
-
-    try {
-      res = await fetch(`${process.env.backendURL}/tutorial/${params.id}`);
-    } catch (ex) {
-      return error({
-        statusCode: 500,
-        message: `Error on rendering page: ${ex}\nError Code: TUTORIAL_FETCH_ERROR`,
-      });
+  async asyncData({ params, error, $tutorials }) {
+    let tutorial;
+    if ($tutorials) {
+      tutorial = await $tutorials.get(params.id);
+      if (!tutorial) error("Tutorial does not exist!");
+    } else {
+      let res = await fetch(`/api/tutorial/${params.id}`);
+      if (res.status == 404) {
+        error("Tutorial does not exist!");
+      } else {
+        tutorial = await res.json();
+      }
     }
 
-    if (res.error !== 200)
-      return error({
-        statusCode: 404,
-        message: "This tutorial cannot be found",
-      });
-
-    res = await res.json();
-
-    this.content = res.body;
-    this.title = `${res.title}`;
+    return { tutorial };
   },
 };
 </script>

@@ -1,6 +1,9 @@
 // Based on https://github.com/jeffalo/ocular/blob/main/store/auth.js
 import cookies from "js-cookie";
-
+var module;
+if (process.server) {
+  module = require("../plugins/authorization.server.js").module;
+}
 export const state = () => ({
   user: null,
   token: null,
@@ -18,50 +21,63 @@ export const mutations = {
   },
   resetToken(store) {
     store.token = null;
+    cookies.remove("token");
   },
 };
 
 export const actions = {
-  async refreshUserDetails({ commit, dispatch }, token) {
-    return new Promise((resolve, reject) => {
-      var headers = {};
-      if (process.server) {
-        headers = { cookie: `auth=${token || cookies.get("auth")}` };
-      }
+  async refreshUserDetails(
+    { commit, dispatch },
+    { token = cookies.get("token") } = {}
+  ) {
+    var me;
+    if (process.server) {
+      me = await module.getSession(token);
+    } else {
+      var res;
+
       try {
-        fetch(`${process.env.backendURL}/auth/me`, {
-          method: "GET",
+        res = await fetch(`/auth/me`, {
           credentials: "include",
-          headers,
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            if (res.error) {
-              dispatch("logout");
-              resolve(false);
-            } else {
-              commit("setUser", res);
-              resolve(res);
-            }
-          });
+        });
       } catch (ex) {
-        resolve(false);
+        throw "Fetch Error";
       }
-    });
-  },
-  async logout({ commit, dispatch }) {
-    return new Promise(async (resolve, reject) => {
-      let token = cookies.get("auth");
-      let res = await fetch(`${process.env.backendURL}/auth/delete`, {
-        credentials: "include",
-      });
       let json = await res.json();
 
-      commit("resetUser", res);
-      commit("resetToken", res);
+      me = json.error ? null : json;
+    }
 
-      if (json.error) return resolve(json.error);
-      resolve(json.ok);
-    });
+    if (!me) {
+      commit("resetUser", null);
+      commit("resetToken", null);
+      return;
+    } else {
+      commit("setUser", me);
+      commit("setToken", token);
+      return me;
+    }
+  },
+
+  async logout({ commit, dispatch }, { token = cookies.get("token") } = {}) {
+    let headers = {};
+    if (process.server) {
+      await module.deleteSession(token);
+    } else {
+      var res;
+
+      try {
+        res = await fetch(`${base}/auth/delete`, {
+          method: "PUT",
+          credentials: "include",
+          headers,
+        });
+      } catch (ex) {
+        throw "Fetch Error";
+      }
+    }
+
+    commit("resetUser");
+    commit("resetToken");
   },
 };

@@ -1,15 +1,11 @@
 <template>
   <div class="container">
-    <Navbar />
     <div class="margined">
       <div class="tutorial-editor">
-        <input
-          type="text"
-          placeholder="Title"
-          @input="updateTitle"
-          :value="title"
-        />
-        <textarea :value="input" @input="update"></textarea>
+        <div class="col">
+          <input type="text" placeholder="Title" v-model="title" />
+          <textarea v-model="input"></textarea>
+        </div>
         <Renderer :content="input" />
       </div>
       <button @click="createTutorial">Create Tutorial</button>
@@ -18,7 +14,6 @@
   </div>
 </template>
 <script>
-import cookies from "js-cookie";
 export default {
   middleware: ["authenticated"],
   head() {
@@ -34,15 +29,9 @@ export default {
     };
   },
   methods: {
-    updateTitle(e) {
-      this.title = e.target.value;
-    },
-    update(e) {
-      this.input = e.target.value;
-    },
     async createTutorial() {
       this.loading = true;
-      let res = await fetch(`${process.env.backendURL}/tutorial/new`, {
+      let res = await fetch(`/api/tutorial/new`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -60,8 +49,27 @@ export default {
       if (json.id) return this.$router.push({ path: `/tutorials/${json.id}` });
     },
   },
-  mounted() {
-    if (!cookies.get("auth")) this.$router.push({ path: "/login" });
-  },
 };
 </script>
+<style>
+.tutorial-editor {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.125rem;
+  width: 100%;
+  height: 100%;
+}
+
+.tutorial-editor .col * {
+  width: 100%;
+}
+
+.tutorial-editor .col textarea {
+  resize: none;
+  padding: 20px;
+  background: black;
+  font-family: "Monaco", courier, monospace;
+  width: 100%;
+  height: 100%;
+}
+</style>
