@@ -9,7 +9,7 @@
 export default {
   head() {
     return {
-      title: this.title,
+      title: this.title
     };
   },
   data() {
@@ -21,21 +21,20 @@ export default {
   },
   async asyncData({ params, error, $tutorials }) {
     let tutorial;
-    //let error;
     if ($tutorials) {
       tutorial = await $tutorials.get(params.id);
-      if (!tutorial) error("Tutorial does not exist!")
+      if (!tutorial) error("Tutorial does not exist!");
     } else {
       let res = await fetch(`/api/tutorial/${params.id}`);
       if (res.status == 404) {
-        error("Tutorial does not exist!")
+        error("Tutorial does not exist!");
       } else {
         tutorial = await res.json();
       }
     }
 
     return { tutorial };
-  },
+  }
 };
 </script>
 <style>

@@ -5,4 +5,4 @@ yarn.lock
 .nuxt
 .vercel
 .vscode
-yarn-error.log
+*.log
