@@ -10,7 +10,7 @@
         </p>
       </div>
       <h1 v-else>An error occurred when trying to load this page.</h1>
-      <h3>Error encountered: {{ error.message }}</h3>
+      <h3>{{ error.message }}</h3>
       <p>Go back to the <NuxtLink to="/">Home page</NuxtLink></p>
     </center>
   </div>

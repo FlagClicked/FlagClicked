@@ -1,12 +1,11 @@
 <template>
   <div class="margined">
     <div class="tutorial-container">
-      <Tutorial v-if="fetched" :id="id" :data="fetched" />
+      <Tutorial v-if="tutorial" :id="id" :data="tutorial" />
     </div>
   </div>
 </template>
 <script>
-import * as fetch from "node-fetch";
 export default {
   head() {
     return {
@@ -16,21 +15,26 @@ export default {
   data() {
     return {
       id: this.$route.params.id,
-      fetched: null,
+      tutorial: null,
+      error: null
     };
   },
   async asyncData({ params, error, $tutorials }) {
-    var tutorial;
+    let tutorial;
+    //let error;
     if ($tutorials) {
       tutorial = await $tutorials.get(params.id);
+      if (!tutorial) error("Tutorial does not exist!")
     } else {
       let res = await fetch(`/api/tutorial/${params.id}`);
-      if (res.error == 404) this.layout = "error";
-
-      tutorial = await res.json();
+      if (res.status == 404) {
+        error("Tutorial does not exist!")
+      } else {
+        tutorial = await res.json();
+      }
     }
 
-    return { fetched: tutorial };
+    return { tutorial };
   },
 };
 </script>

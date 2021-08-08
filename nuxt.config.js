@@ -49,9 +49,7 @@ export default {
    */
   modules: ["@nuxtjs/axios", "@nuxtjs/markdownit"],
 
-  buildModules: [
-    /* "@nuxt-hero-icons/outline", "@nuxt-hero-icons/solid" */
-  ],
+  buildModules: [],
 
   /*
    ** Global CSS

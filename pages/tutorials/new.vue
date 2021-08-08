@@ -18,14 +18,14 @@ export default {
   middleware: ["authenticated"],
   head() {
     return {
-      title: "Create Tutorial",
+      title: "Create Tutorial"
     };
   },
   data() {
     return {
       input: "",
       title: "",
-      loading: false,
+      loading: false
     };
   },
   methods: {
@@ -33,22 +33,22 @@ export default {
       this.loading = true;
       let res = await fetch(`/api/tutorial/new`, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         method: "PUT",
         body: JSON.stringify({
           body: this.input,
-          title: this.title,
+          title: this.title
         }),
-        credentials: "include",
+        credentials: "include"
       });
 
       this.loading = false;
       let json = await res.json();
 
       if (json.id) return this.$router.push({ path: `/tutorials/${json.id}` });
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

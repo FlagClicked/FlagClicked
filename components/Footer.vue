@@ -48,6 +48,7 @@ export default {
   padding: 30px;
 }
 .blocks-image {
+  display: block;
   width: 100%;
 }
 

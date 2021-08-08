@@ -14,18 +14,16 @@ export default {
   methods: {
     async logout() {
       await this.$store.dispatch("auth/logout");
-      cookies.remove("token");
       this.$router.push("/");
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
 button {
   background: white;
   outline: none;
-  color: #ffbf00;
-  border-color: transparent;
+  border: none;
   cursor: pointer;
 }
 </style>

@@ -6,7 +6,17 @@ The backend can be found [here](https://github.com/FlagClicked/Backend).
 
 ## Build Setup
 
-First, make sure you have yarn installed.
+2 things you need before being installed on your computer before beginning.
+
+#### npm
+
+https://nodejs.org/en/download/current/
+
+### MongoDB
+
+https://www.mongodb.com/try/download/community
+
+Then, make sure you have yarn installed.
 
 ```bash
 yarn --version
@@ -18,11 +28,16 @@ If you get an error from this script, then run the following:
 npm install --global yarn
 ```
 
-Once yarn is installed, you can run this with one of these three commands.
+Once yarn is installed, run:
+
+```bash
+yarn install
+```
+
+then run one of the following commands:
 
 ```bash
 # Developing
-yarn install
 yarn run dev
 
 # build for production and launch server
