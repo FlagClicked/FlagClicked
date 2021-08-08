@@ -5,3 +5,4 @@ vercel.json
 .nuxt
 .vercel
 .vscode
+*.log
