@@ -9,14 +9,14 @@
 export default {
   head() {
     return {
-      title: this.title
+      title: this.title,
     };
   },
   data() {
     return {
       id: this.$route.params.id,
       tutorial: null,
-      error: null
+      error: null,
     };
   },
   async asyncData({ params, error, $tutorials }) {
@@ -34,7 +34,7 @@ export default {
     }
 
     return { tutorial };
-  }
+  },
 };
 </script>
 <style>

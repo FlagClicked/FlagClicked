@@ -30,15 +30,15 @@ export default {
       items: [
         [
           { text: "Contact us", link: "/contact" },
-          { text: "About", link: "/about" }
+          { text: "About", link: "/about" },
         ],
         [
           { text: "Tutorials", link: "/tutorials" },
-          { text: "Markdown Tutorial", link: "/blog/md-tutorial" }
-        ]
-      ]
+          { text: "Markdown Tutorial", link: "/blog/md-tutorial" },
+        ],
+      ],
     };
-  }
+  },
 };
 </script>
 <style scoped>
