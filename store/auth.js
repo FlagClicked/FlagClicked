@@ -1,6 +1,9 @@
 // Based on https://github.com/jeffalo/ocular/blob/main/store/auth.js
 import cookies from "js-cookie";
-
+var module;
+if (process.server) {
+  module = require("../plugins/authorization.server.js").module;
+}
 export const state = () => ({
   user: null,
   token: null,
@@ -24,55 +27,56 @@ export const mutations = {
 export const actions = {
   async refreshUserDetails(
     { commit, dispatch },
-    { token = cookies.get("token"), base = "" } = {}
+    { token = cookies.get("token") } = {}
   ) {
-    let headers = {};
+    var me;
     if (process.server) {
-      headers = { cookie: `token=${token}` };
-    }
-    var res;
+      me = await module.getSession(token);
+    } else {
+      var res;
 
-    try {
-      res = await fetch(`${base}/auth/me`, {
-        credentials: "include",
-        headers,
-      });
-    } catch (ex) {
-      throw "Fetch Error";
+      try {
+        res = await fetch(`/auth/me`, {
+          credentials: "include",
+        });
+      } catch (ex) {
+        throw "Fetch Error";
+      }
+      let json = await res.json();
+
+      me = json.error ? null : json;
     }
-    let json = await res.json();
-    if (!json.username) {
+
+    if (!me) {
       commit("resetUser", null);
       commit("resetToken", null);
       return;
     } else {
-      commit("setUser", json);
-      commit("setToken", json);
-      return json;
+      commit("setUser", me);
+      commit("setToken", token);
+      return me;
     }
   },
 
-  async logout({ commit, dispatch }, obj) {
-    let { token = cookies.get("token"), base = "" } = obj || {};
+  async logout({ commit, dispatch }, { token = cookies.get("token") } = {}) {
     let headers = {};
     if (process.server) {
-      headers = { cookie: `token=${token}` };
-    }
+      await module.deleteSession(token);
+    } else {
+      var res;
 
-    var res;
-
-    try {
-      res = await fetch(`${base}/auth/delete`, {
-        method: "PUT",
-        credentials: "include",
-        headers,
-      });
-    } catch (ex) {
-      throw "Fetch Error";
+      try {
+        res = await fetch(`${base}/auth/delete`, {
+          method: "PUT",
+          credentials: "include",
+          headers,
+        });
+      } catch (ex) {
+        throw "Fetch Error";
+      }
     }
 
     commit("resetUser");
     commit("resetToken");
-    return res;
   },
 };

@@ -1,4 +1,7 @@
 const cookie = process.server ? require("cookie") : undefined;
+const auth = process.server
+  ? require("../plugins/authorization.server.js").module
+  : undefined;
 
 export const actions = {
   async nuxtServerInit({ commit }, { req, res }) {
@@ -14,28 +17,19 @@ export const actions = {
       }
     }
 
-    if (token !== null && token !== false) {
-      await fetch(`${req.protocol}://${req.get("Host")}/auth/me`, {
-        headers: {
-          cookie: req.headers.cookie,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.error) {
-            commit("auth/resetUser", null);
-            commit("auth/resetToken", null);
-            res.setHeader("Set-Cookie", [
-              `token=false; expires=Thu, 01 Jan 1970 00:00:00 GMT`,
-            ]);
-          } else {
-            commit("auth/setUser", data);
-            commit("auth/setToken", token);
-          }
-        })
-        .catch((error) => {
-          console.warn(error);
-        });
+    if (token) {
+      const data = await auth.getSession(token);
+
+      if (data) {
+        commit("auth/setUser", data);
+        commit("auth/setToken", token);
+      } else {
+        commit("auth/resetUser", null);
+        commit("auth/resetToken", null);
+        res.setHeader("Set-Cookie", [
+          `token=false; expires=Thu, 01 Jan 1970 00:00:00 GMT`,
+        ]);
+      }
     }
   },
 };

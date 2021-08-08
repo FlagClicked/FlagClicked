@@ -4,6 +4,7 @@
       <div v-if="$auth.isLoggedIn" class="margined">
         <h2>This week's Featured Tutorial</h2>
         <h3>{{ tutorialName }} - {{ tutorialAuthor }}</h3>
+        <PencilIcon v-if="$auth.user.admin" />
       </div>
       <div v-else class="hero-banner">
         <h1 class="gold">FlagClicked<span class="blue">.</span></h1>

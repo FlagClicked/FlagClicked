@@ -937,6 +937,20 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@nuxt-hero-icons/outline@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@nuxt-hero-icons/outline/-/outline-1.0.1.tgz#71e040cf05addecdb50c2f90c1d3bfae46944d29"
+  integrity sha512-2kMugIcVzU96BJZTmCIJTyruHQzZFS0KE66Wkfa+vWlQTZ7CESL4npVFfek2ENQjQvT075x2RyIhcIpWOQIupw==
+  dependencies:
+    heroicons "git+https://github.com/tailwindlabs/heroicons.git#master"
+
+"@nuxt-hero-icons/solid@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@nuxt-hero-icons/solid/-/solid-1.0.1.tgz#4c032f58567426dd6fc2286ee6d3f9326a1a415c"
+  integrity sha512-3oM0F2qSzBioP0WceYXoIOIYIpWFPSa7duPHDhdN/tNsc9fTu5HgespSdpd045/DNHlPW2t7n2eDhBMI4fMszw==
+  dependencies:
+    heroicons "git+https://github.com/tailwindlabs/heroicons.git#master"
+
 "@nuxt/babel-preset-app@2.15.7":
   version "2.15.7"
   resolved "https://registry.yarnpkg.com/@nuxt/babel-preset-app/-/babel-preset-app-2.15.7.tgz#5f51b2f5f4aa604cc80d2a5698b97dd34e19d63b"
@@ -4008,6 +4022,10 @@ he@1.2.0, he@^1.1.0, he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
+
+"heroicons@git+https://github.com/tailwindlabs/heroicons.git#master":
+  version "1.0.2"
+  resolved "git+https://github.com/tailwindlabs/heroicons.git#6b2fc5dc1554c903809a31a6beb0745ca56df124"
 
 hex-color-regex@^1.1.0:
   version "1.1.0"

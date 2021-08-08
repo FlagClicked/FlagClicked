@@ -1,6 +1,17 @@
 <template>
   <div class="post">
-    <Renderer :content="data.body" />
+    <div class="user-box">
+      <img
+        :src="`https://cdn2.scratch.mit.edu/get_image/user/${data.author.id}_500x500.png`"
+        class="pfp"
+      />
+      <p>{{ data.author.username }}</p>
+    </div>
+    <div class="renderer">
+      <div class="tutorial-content">
+        <Renderer :content="data.body" />
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -20,3 +31,27 @@ export default {
   },
 };
 </script>
+<style>
+.post * {
+  color: black !important;
+}
+.post {
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  width: 80vw;
+  font-weight: 400;
+}
+
+.user-box {
+  padding: 22px;
+}
+.pfp {
+  width: 90px;
+  height: 90px;
+}
+
+.renderer {
+  border-left: 1px black;
+}
+</style>

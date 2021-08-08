@@ -49,6 +49,10 @@ export default {
    */
   modules: ["@nuxtjs/axios", "@nuxtjs/markdownit"],
 
+  buildModules: [
+    /* "@nuxt-hero-icons/outline", "@nuxt-hero-icons/solid" */
+  ],
+
   /*
    ** Global CSS
    ** Doc: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-css
@@ -59,7 +63,12 @@ export default {
    ** Plugins to load before mounting the App
    ** Doc: https://nuxtjs.org/docs/2.x/directory-structure/plugins
    */
-  plugins: ["~/plugins/auth.js", "~/plugins/util.js"],
+  plugins: [
+    "~/plugins/auth.js",
+    "~/plugins/util.js",
+    "~/plugins/authorization.server.js",
+    "~/plugins/tutorials.server.js",
+  ],
 
   env: {
     mongoDBURL: process.env.MONGODB_URL || "localhost/flagclicked",
