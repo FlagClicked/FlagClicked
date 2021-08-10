@@ -1,7 +1,10 @@
 <template>
   <div class="margined">
     <h1>Login</h1>
-    <h3>Your authentication code is: {{ code }}</h3>
+    <h3>
+      Your authentication code is: {{ code }}
+      <button @click="copyCode">{{ copied ? "Copied" : "Copy" }}</button>
+    </h3>
     Comment this code in the
     <button @click="openStudio">Authentication Studio</button>
     and when you're done, click
@@ -15,6 +18,7 @@ export default {
   data() {
     return {
       code: "",
+      copied: false,
     };
   },
   async mounted() {
@@ -31,6 +35,13 @@ export default {
         "_blank",
         "height=600,width=780"
       );
+    },
+    copyCode() {
+      navigator.clipboard.writeText(this.code);
+      this.copied = true;
+      setTimeout(() => {
+        this.copied = false;
+      }, 3000);
     },
     async finishAuth() {
       await fetch("/api/auth/login", {

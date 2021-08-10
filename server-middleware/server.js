@@ -9,7 +9,7 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 
-const fetch = require("node-fetch");
+const axios = require("axios");
 
 app.get("/auth/me", auth.middleware("authenticated"), (req, res) => {
   res.json(req.user);
@@ -93,19 +93,17 @@ app.put("/api/auth/init", async (req, res) => {
 });
 
 app.put("/api/auth/login", async (req, res) => {
-  let resp = await fetch(
-    `https://api.scratch.mit.edu/studios/${
-      process.env.studioId || 30078251
-    }/comments?limit=40`
+  let { data: comments } = await axios.get(
+    `https://api.scratch.mit.edu/studios/${process.env.studioId ||
+      30078251}/comments?limit=40`
   );
-  let json = await resp.json();
   let tk = await auth.databases.tokens.findOne({ private: req.body.private });
   if (!tk) return res.json({ error: "invalid token" });
 
-  for (let j in json) {
-    if (json[j].content == tk.token) {
+  for (const comment of comments) {
+    if (comment.content == tk.token) {
       await auth.databases.tokens.remove({ private: req.body["private"] });
-      let author = json[j].author.username;
+      let author = comment.author.username;
 
       var user = await auth.getUser(author);
       if (!user) {
@@ -120,7 +118,7 @@ app.put("/api/auth/login", async (req, res) => {
     }
   }
 
-  res.json({ ok: false, error: "not found", data: json });
+  res.json({ ok: false, error: "not found" });
 });
 
 export default app;

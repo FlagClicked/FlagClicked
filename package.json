@@ -13,15 +13,12 @@
     "post-update": "yarn upgrade --latest"
   },
   "dependencies": {
-    "@nuxt-hero-icons/outline": "^1.0.1",
-    "@nuxt-hero-icons/solid": "^1.0.1",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/markdownit": "^2.0.0",
     "cookie": "^0.4.1",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "js-cookie": "^2.2.1",
-    "linkedom": "^0.11.0",
+    "js-cookie": "^3.0.0",
     "monk": "^7.3.4",
     "node-fetch": "^2.6.1",
     "nuxt": "^2.15.7"

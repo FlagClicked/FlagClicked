@@ -63,7 +63,6 @@ export default {
    */
   plugins: [
     "~/plugins/auth.js",
-    "~/plugins/util.js",
     "~/plugins/authorization.server.js",
     "~/plugins/tutorials.server.js",
   ],

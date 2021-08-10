@@ -67,7 +67,7 @@ export const actions = {
       var res;
 
       try {
-        res = await fetch(`${base}/auth/delete`, {
+        res = await fetch(`/auth/delete`, {
           method: "PUT",
           credentials: "include",
           headers,
