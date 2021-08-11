@@ -11,21 +11,26 @@ let tutorials = db.get("tutorials");
 tutorials.createIndex("id", { unique: true });
 
 export var Tutorials = {
-  get: async function (id) {
-    let regex = "^" + escapeRegExp(id) + "$";
-    var tutorial = {};
+  async getById(id) {
+    let tutorial = null;
 
     try {
-      tutorial = await tutorials.findOne({
-        id: { $regex: new RegExp(regex, "i") },
-      });
-    } catch (ex) {
-      tutorial = null;
-    }
+      tutorial = await tutorials.findOne({ id });
+    } catch (error) {}
 
     return tutorial;
   },
-  new: async function (body, author) {
+  async getAll(data) {
+    let list = [];
+
+    try {
+      list = await tutorials.find(data);
+    } catch (error) {}
+
+    return list;
+  },
+
+  async new(body, author) {
     let allTutorials = await tutorials.find();
     let tutorial = {
       id: (allTutorials.length + 1).toString(),
@@ -37,18 +42,15 @@ export var Tutorials = {
           time: Date.now(),
           user: author,
         },
-        edited: {
-          time: Date.now(),
-          user: author,
-        },
+        edited: {},
       },
     };
     await tutorials.insert(tutorial);
 
     return tutorial;
   },
-  edit: async function (body, id, user) {
-    let tutorial = await Tutorials.get(id);
+  async edit(body, id, user) {
+    let tutorial = await this.getById(id);
     var editor = await auth.getUser(user);
 
     if (editor.id !== tutorial.author.id && !editor.admin) {
@@ -69,10 +71,6 @@ export var Tutorials = {
   raw: tutorials,
 };
 
-export default function ({}, inject) {
+export default function({}, inject) {
   inject("tutorials", Tutorials);
-}
-
-function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }

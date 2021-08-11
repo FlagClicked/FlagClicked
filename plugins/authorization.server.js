@@ -5,7 +5,7 @@ if (!process.server && process.client)
 // Server Authorization
 
 import monk from "monk";
-import fetch from "node-fetch";
+import axios from "axios";
 import crypto from "crypto";
 
 const db = monk(
@@ -61,25 +61,23 @@ export var module = {
       throw `User ${username} has already been created!`;
     }
 
-    let res = await fetch(`https://api.scratch.mit.edu/users/${username}`).then(
-      (res) => res.json()
+    let { data } = await axios.get(
+      `https://api.scratch.mit.edu/users/${username}`
     );
 
-    if (res.code == "NotFound") {
+    if (data.code == "NotFound") {
       throw `User ${username} is not a valid scratch user!`;
     }
 
     let User = {
-      id: res.id,
-      username: res.username,
+      id: data.id,
+      username: data.username,
       admin: false,
     };
 
-    console.log(`Creating user: ${res.username}..`);
-
     await users.insert(User);
 
-    console.log(`Finished creating user: ${res.username}..`);
+    console.log(`User created: ${data.username}..`);
 
     return User;
   },
@@ -105,7 +103,7 @@ export var module = {
     return;
   },
   middleware(type) {
-    return async function (req, res, next) {
+    return async function(req, res, next) {
       let sessionUser = await module.getSession(req.cookies.token);
       if (
         (sessionUser && sessionUser.admin && type == "admin") ||
@@ -126,7 +124,7 @@ export var module = {
   databases: { users, sessions, tokens },
 };
 
-export default function ({}, inject) {
+export default function({}, inject) {
   inject("db", module);
 }
 
@@ -142,7 +140,10 @@ async function generateToken() {
     });
   });
 
-  let token = crypto.createHash("sha1").update(buffer).digest("hex");
+  let token = crypto
+    .createHash("sha1")
+    .update(buffer)
+    .digest("hex");
 
   return token;
 }

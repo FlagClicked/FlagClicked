@@ -78,11 +78,22 @@ app.put(
 );
 
 app.get("/api/tutorial/:id", async (req, res) => {
-  let tutorial = await Tutorials.get(req.params.id);
+  let tutorial = await Tutorials.getById(req.params.id);
   tutorial
     ? res.json(tutorial)
     : res.status(404).json({ error: "tutorial not found" });
 });
+
+app.get(
+  "/api/tutorials/me",
+  auth.middleware("authenticated"),
+  async (req, res) => {
+    let tutorials = await Tutorials.getAll({
+      "author.username": req.user.username,
+    });
+    res.json(tutorials);
+  }
+);
 
 app.put("/api/auth/init", async (req, res) => {
   // Generate a code
@@ -94,9 +105,8 @@ app.put("/api/auth/init", async (req, res) => {
 
 app.put("/api/auth/login", async (req, res) => {
   let { data: comments } = await axios.get(
-    `https://api.scratch.mit.edu/studios/${
-      process.env.studioId || 30078251
-    }/comments?limit=40`
+    `https://api.scratch.mit.edu/studios/${process.env.studioId ||
+      30078251}/comments?limit=40`
   );
   let tk = await auth.databases.tokens.findOne({ private: req.body.private });
   if (!tk) return res.json({ error: "invalid token" });

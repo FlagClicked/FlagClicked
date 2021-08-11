@@ -22,7 +22,7 @@ export default {
   async asyncData({ params, error, $tutorials }) {
     let tutorial;
     if ($tutorials) {
-      tutorial = await $tutorials.get(params.id);
+      tutorial = await $tutorials.getById(params.id);
       if (!tutorial) error("Tutorial does not exist!");
     } else {
       let res = await fetch(`/api/tutorial/${params.id}`);
