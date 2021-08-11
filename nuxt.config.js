@@ -20,6 +20,10 @@ export default {
         name: "description",
         content: "Tutorials by scratchers, for scratchers",
       },
+      {
+        name: "keywords",
+        content: "When Flag Clicked, FlagClicked, WhenFlagClicked, Scratch Tutorials, Tutorials"
+      }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -89,4 +93,27 @@ export default {
   },
 
   serverMiddleware: ["~/server-middleware/server.js"],
+
+  build: {
+    extend(config, { isClient }) {
+      if (isClient) {
+        config.output.filename = "[name].bundle.js";
+        config.output.chunkFilename = "[name].chunk.js"
+
+        config.output.devtoolModuleFilenameTemplate = 'webpack://flagclicked/[namespace]/[resource-path]?[loaders]'
+      }
+
+    },
+    filenames: {
+      app: ({ isDev, isModern }) => isDev ? '[name].js' : '[contenthash:7].app.js',
+      chunk: ({ isDev, isModern }) => isDev ? '[name].js' : '[contenthash:7].chunk.js',
+    },
+    publicPath: '/js/',
+    splitChunks: {
+      layouts: false,
+      pages: false,
+      commons: false
+    }
+  },
+  globalName: 'flagclicked'
 };
