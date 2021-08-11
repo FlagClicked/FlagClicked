@@ -27,9 +27,9 @@ export const actions = {
         commit("auth/resetUser", null);
         commit("auth/resetToken", null);
         res.setHeader("Set-Cookie", [
-          `token=false; expires=Thu, 01 Jan 1970 00:00:00 GMT`
+          `token=false; expires=Thu, 01 Jan 1970 00:00:00 GMT`,
         ]);
       }
     }
-  }
+  },
 };

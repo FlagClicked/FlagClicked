@@ -24,10 +24,10 @@ export default {
         languages: ["en"],
         read: scratchblocks.read,
         parse: scratchblocks.parse,
-        render: scratchblocks.render
+        render: scratchblocks.render,
       };
       let sb = Array.from(doc.querySelectorAll("code.language-scratchblocks"));
-      sb.forEach(blocks => {
+      sb.forEach((blocks) => {
         let code = sbOptions.read(blocks, sbOptions);
         let parsed = sbOptions.parse(code, sbOptions);
         let svg = sbOptions.render(parsed, sbOptions);
@@ -39,14 +39,14 @@ export default {
       let codeblocks = Array.from(
         doc.querySelectorAll("code:not(.language-scratchblocks)")
       );
-      codeblocks.forEach(el => {
+      codeblocks.forEach((el) => {
         let lang = el.classList[0]?.split("-")[1];
         if (!allowedLanguages.includes(lang)) lang = "markdown";
         el.setAttribute("data-language", lang);
-        el.classList.add("CODE+" + Math.random()) // Unique ID
+        el.classList.add("CODE+" + Math.random()); // Unique ID
         el.source = el.innerHTML;
         el.innerHTML = Rainbow.highlight(el.innerHTML, {
-          language: el.getAttribute("data-language")
+          language: el.getAttribute("data-language"),
         }).value;
         el.classList.add("code");
 
@@ -54,11 +54,11 @@ export default {
 
         const toReplace = el.parentNode.outerHTML;
 
-        el.parentNode.parentNode.innerHTML.replace(toReplace, code)
+        el.parentNode.parentNode.innerHTML.replace(toReplace, code);
       });
       return doc.body.innerHTML;
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
@@ -76,5 +76,4 @@ code {
   max-height: 400px;
   overflow: auto;
 }
-
 </style>

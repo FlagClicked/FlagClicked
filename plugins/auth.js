@@ -8,6 +8,6 @@ export default ({ store }, inject) => {
     },
     get token() {
       return store.state.auth.token;
-    }
+    },
   });
 };

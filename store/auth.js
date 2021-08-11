@@ -6,7 +6,7 @@ if (process.server) {
 }
 export const state = () => ({
   user: null,
-  token: null
+  token: null,
 });
 
 export const mutations = {
@@ -22,7 +22,7 @@ export const mutations = {
   resetToken(store) {
     store.token = null;
     cookies.remove("token");
-  }
+  },
 };
 
 export const actions = {
@@ -61,5 +61,5 @@ export const actions = {
 
     commit("resetUser");
     commit("resetToken");
-  }
+  },
 };
