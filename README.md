@@ -13,7 +13,7 @@ https://nodejs.org/en/download/current/
 
 ### MongoDB
 
-We use mongodb to store data (our database)
+We use mongodb to store data (our database):
 https://www.mongodb.com/try/download/community
 
 If you don't want to install MongoDB: Use the free MongoDB atlas plan.
