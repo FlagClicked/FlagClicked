@@ -42,7 +42,7 @@ export default {
         el.setAttribute("data-language", el.classList[0]?.split("-")[1]);
         el.source = el.innerHTML;
         el.innerHTML = Rainbow.highlight(el.innerHTML, {
-          language: el.getAttribute("data-language"),
+          language: el.getAttribute("data-language") || "markdown",
         }).value;
         el.classList.add("code");
       });

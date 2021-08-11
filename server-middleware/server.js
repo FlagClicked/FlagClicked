@@ -47,9 +47,11 @@ app.get("/api/tutorial/featured", async (req, res) => {
     featured: true,
   });
 
+  
+  
   tutorial
-    ? res.json(tutorial)
-    : res.status(404).json({ error: "cannot find tutorial" });
+    ? res.status(200).json(tutorial)
+    : res.status(404).json({ error: "cannot find tutorial" }); 
 });
 
 app.put(

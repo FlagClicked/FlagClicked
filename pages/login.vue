@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       code: "",
-      copied: false,
+      copied: false
     };
   },
   async mounted() {
@@ -56,7 +56,7 @@ export default {
       this.scratchWindow?.close();
       this.$store.dispatch("auth/refreshUserDetails");
       this.$router.push({ path: "/" });
-    },
-  },
+    }
+  }
 };
 </script>
