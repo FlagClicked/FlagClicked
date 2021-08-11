@@ -12,9 +12,7 @@
     <NuxtLink to="/settings" class="item" v-if="$auth.user">
       <span class="username">{{ $auth.user.username }}</span>
       <img
-        :src="
-          `https://cdn2.scratch.mit.edu/get_image/user/${$auth.user.id}_500x500.png`
-        "
+        :src="`https://cdn2.scratch.mit.edu/get_image/user/${$auth.user.id}_500x500.png`"
       />
     </NuxtLink>
     <NuxtLink to="/login" class="item right" v-else>
