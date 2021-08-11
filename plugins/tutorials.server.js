@@ -71,6 +71,6 @@ export var Tutorials = {
   raw: tutorials,
 };
 
-export default function({}, inject) {
+export default function ({}, inject) {
   inject("tutorials", Tutorials);
 }

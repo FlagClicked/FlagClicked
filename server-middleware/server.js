@@ -105,8 +105,9 @@ app.put("/api/auth/init", async (req, res) => {
 
 app.put("/api/auth/login", async (req, res) => {
   let { data: comments } = await axios.get(
-    `https://api.scratch.mit.edu/studios/${process.env.studioId ||
-      30078251}/comments?limit=40`
+    `https://api.scratch.mit.edu/studios/${
+      process.env.studioId || 30078251
+    }/comments?limit=40`
   );
   let tk = await auth.databases.tokens.findOne({ private: req.body.private });
   if (!tk) return res.json({ error: "invalid token" });
