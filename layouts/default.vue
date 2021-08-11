@@ -47,4 +47,14 @@ body {
 [class*="hljs"] {
   font-family: monospace;
 }
+
+button {
+    padding: 10px;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    background-color: #ffbf00;
+    cursor: pointer;
+    border-color: #fff;
+    border-width: 2px;
+}
 </style>

@@ -2,7 +2,7 @@
   <div class="navbar">
     <NuxtLink class="item" to="/">
       when
-      <img src="/greenflag.svg" />
+      <img src="/greenflag.svg" class="logo" />
       clicked
       <span class="version">ALPHA</span>
     </NuxtLink>
@@ -90,9 +90,18 @@ export default {
   padding: 2px;
   border-radius: 10px;
   border: 10px;
+  margin-left: 10px;
 }
 
 .username {
   padding: 0px 20px;
+}
+
+.logo {
+  padding: 0px 4px;
+}
+
+* {
+  max-width: 100vw;
 }
 </style>

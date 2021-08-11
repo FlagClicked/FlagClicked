@@ -1,5 +1,5 @@
 <template>
-  <div class="margined" style="text-align: center">
+  <div class="margined" style="text-align: center;">
     <h1>Below is a list of users who have contributed to the website.</h1>
     <h2>
       Have you contributed and you're not listed here?
@@ -231,5 +231,6 @@ export default {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   padding: 20px;
+  justify-content: center;
 }
 </style>

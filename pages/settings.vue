@@ -20,10 +20,4 @@ export default {
 };
 </script>
 <style>
-button {
-  background: white;
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
 </style>
