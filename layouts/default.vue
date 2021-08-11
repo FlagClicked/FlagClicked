@@ -56,5 +56,7 @@ button {
   cursor: pointer;
   border-color: #fff;
   border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
 }
 </style>

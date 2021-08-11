@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       code: "",
-      copied: false,
+      copied: false
     };
   },
   async mounted() {
@@ -36,9 +36,10 @@ export default {
     },
     copyCode() {
       navigator.clipboard.writeText(this.code);
+      let self = this;
       this.copied = true;
       setTimeout(() => {
-        this.copied = false;
+        self.copied = false;
       }, 3000);
     },
     async finishAuth() {
@@ -46,17 +47,17 @@ export default {
         "/api/auth/login",
         {
           private: this._private,
-          code: this.code,
+          code: this.code
         },
         {
-          headers: { "content-type": "application/json" },
+          headers: { "content-type": "application/json" }
         }
       );
 
       this.scratchWindow?.close();
       this.$store.dispatch("auth/refreshUserDetails");
       this.$router.push({ path: "/" });
-    },
-  },
+    }
+  }
 };
 </script>

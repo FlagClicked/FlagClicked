@@ -380,5 +380,5 @@ export default [
   "zenscript",
   "zs",
   "zephir",
-  "zep",
+  "zep"
 ];

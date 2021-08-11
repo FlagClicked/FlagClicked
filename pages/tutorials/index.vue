@@ -27,13 +27,13 @@ export default {
   middleware: "authenticated",
   data() {
     return {
-      tutorials: [],
+      tutorials: []
     };
   },
   async mounted() {
     let { data } = await this.$axios.get("/api/tutorials/me");
     this.tutorials = data;
-  },
+  }
 };
 </script>
 <style scoped>

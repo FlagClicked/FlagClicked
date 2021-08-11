@@ -18,14 +18,14 @@ export default {
   middleware: ["authenticated"],
   head() {
     return {
-      title: "Create Tutorial",
+      title: "Create Tutorial"
     };
   },
   data() {
     return {
       input: "",
       title: "",
-      loading: false,
+      loading: false
     };
   },
   methods: {
@@ -35,20 +35,20 @@ export default {
         `/api/tutorial/new`,
         {
           body: this.input,
-          title: this.title,
+          title: this.title
         },
         {
           headers: {
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json"
+          }
         }
       );
 
       this.loading = false;
 
       if (data.id) return this.$router.push({ path: `/tutorials/${data.id}` });
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

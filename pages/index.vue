@@ -45,7 +45,7 @@ export default {
   data() {
     // console.log(this)
     return {
-      tutorial: null,
+      tutorial: null
     };
   },
   async asyncData({ $tutorials }) {
@@ -72,13 +72,13 @@ export default {
 
       res = await fetch(`/api/tutorial/featured`, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         method: "PUT",
         credentials: "include",
         body: JSON.stringify({
-          id: Number(id),
-        }),
+          id: Number(id)
+        })
       });
 
       let json = await res.json();
@@ -86,8 +86,8 @@ export default {
       if (res.status == 200) {
         this.tutorial = tutorial;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

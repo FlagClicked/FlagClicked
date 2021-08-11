@@ -22,7 +22,7 @@ export var module = {
   async getSession(session) {
     if (!session) return null;
     const sessionObject = await sessions.findOne({
-      session,
+      session
     });
 
     if (!sessionObject) return null;
@@ -35,14 +35,14 @@ export var module = {
   },
   async getUserById(id) {
     const user = await users.findOne({
-      id: Number(id),
+      id: Number(id)
     });
 
     return user;
   },
   async getUser(name) {
     const user = await users.findOne({
-      username: { $regex: new RegExp("^" + escapeRegExp(name) + "$", "i") },
+      username: { $regex: new RegExp("^" + escapeRegExp(name) + "$", "i") }
     });
 
     return user ? user : null;
@@ -51,7 +51,7 @@ export var module = {
     const token = await generateToken();
     const session = await sessions.insert({
       session: token,
-      user: username,
+      user: username
     });
 
     return token;
@@ -72,7 +72,7 @@ export var module = {
     let User = {
       id: data.id,
       username: data.username,
-      admin: false,
+      admin: false
     };
 
     await users.insert(User);
@@ -89,7 +89,7 @@ export var module = {
     await tokens.insert({
       token,
       private: privateCode,
-      timestamp: Date.now(),
+      timestamp: Date.now()
     });
     // Remove old sessions
     let all = await tokens.find();
@@ -103,7 +103,7 @@ export var module = {
     return;
   },
   middleware(type) {
-    return async function (req, res, next) {
+    return async function(req, res, next) {
       let sessionUser = await module.getSession(req.cookies.token);
       if (
         (sessionUser && sessionUser.admin && type == "admin") ||
@@ -121,10 +121,10 @@ export var module = {
       }
     };
   },
-  databases: { users, sessions, tokens },
+  databases: { users, sessions, tokens }
 };
 
-export default function ({}, inject) {
+export default function({}, inject) {
   inject("db", module);
 }
 
@@ -140,7 +140,10 @@ async function generateToken() {
     });
   });
 
-  let token = crypto.createHash("sha1").update(buffer).digest("hex");
+  let token = crypto
+    .createHash("sha1")
+    .update(buffer)
+    .digest("hex");
 
   return token;
 }
