@@ -12,6 +12,7 @@ FlagClicked is a Nuxt.js-based application using MongoDB
 https://nodejs.org/en/download/current/
 
 ### MongoDB
+
 We use mongodb to store data (our database)
 https://www.mongodb.com/try/download/community
 
