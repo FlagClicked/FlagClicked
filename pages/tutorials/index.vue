@@ -1,11 +1,17 @@
 <template>
   <div class="margined">
     <h1>Tutorials</h1>
-    <NuxtLink :to="`/tutorials/${tutorial.id}`" v-for="tutorial of tutorials" :key="tutorial.id">
+    <NuxtLink
+      :to="`/tutorials/${tutorial.id}`"
+      v-for="tutorial of tutorials"
+      :key="tutorial.id"
+    >
       <div class="tutorial-item">
         <div class="tutorialId">#{{ tutorial.id }}</div>
         <div class="tutorialName">{{ tutorial.title }}</div>
-        <div class="tutorialDate">{{ new Date(tutorial.history.created.time).toLocaleString() }}</div>
+        <div class="tutorialDate">
+          {{ new Date(tutorial.history.created.time).toLocaleString() }}
+        </div>
       </div>
       <br />
       <br />

@@ -18,14 +18,14 @@ export default {
   middleware: ["authenticated"],
   head() {
     return {
-      title: "Create Tutorial"
+      title: "Create Tutorial",
     };
   },
   data() {
     return {
       input: "",
       title: "",
-      loading: false
+      loading: false,
     };
   },
   methods: {

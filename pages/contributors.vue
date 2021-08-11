@@ -1,5 +1,5 @@
 <template>
-  <div class="margined" style="text-align: center;">
+  <div class="margined" style="text-align: center">
     <h1>Below is a list of users who have contributed to the website.</h1>
     <h2>
       Have you contributed and you're not listed here?
@@ -39,7 +39,7 @@
 export default {
   head() {
     return {
-      title: "Contributors"
+      title: "Contributors",
     };
   },
   data() {
@@ -49,129 +49,129 @@ export default {
       icons: {
         a11y: {
           symbol: "\ufe0f\ufe0f\ufe0f\ufe0f\u267f\ufe0f",
-          description: "Accessibility"
+          description: "Accessibility",
         },
         audio: {
           symbol: "\ud83d\udd0a",
-          description: "Audio"
+          description: "Audio",
         },
         blog: {
           symbol: "\ud83d\udcdd",
-          description: "Blogposts"
+          description: "Blogposts",
         },
         bug: {
           symbol: "\ud83d\udc1b",
-          description: "Bug reports"
+          description: "Bug reports",
         },
         business: {
           symbol: "\ud83d\udcbc",
-          description: "Business development"
+          description: "Business development",
         },
         code: {
           symbol: "\ud83d\udcbb",
-          description: "Code"
+          description: "Code",
         },
         content: {
           symbol: "\ud83d\udd8b",
-          description: "Content"
+          description: "Content",
         },
         data: {
           symbol: "\ud83d\udd23",
-          description: "Data"
+          description: "Data",
         },
         design: {
           symbol: "\ud83c\udfa8",
-          description: "Design"
+          description: "Design",
         },
         doc: {
           symbol: "\ud83d\udcd6",
-          description: "Documentation"
+          description: "Documentation",
         },
         eventOrganizing: {
           symbol: "\ud83d\udccb",
-          description: "Event Organizing"
+          description: "Event Organizing",
         },
         example: {
           symbol: "\ud83d\udca1",
-          description: "Examples"
+          description: "Examples",
         },
         financial: {
           symbol: "\ud83d\udcb5",
-          description: "Financial"
+          description: "Financial",
         },
         fundingFinding: {
           symbol: "\ud83d\udd0d",
-          description: "Funding Finding"
+          description: "Funding Finding",
         },
         ideas: {
           symbol: "\ud83e\udd14",
-          description: "Ideas, Planning, & Feedback"
+          description: "Ideas, Planning, & Feedback",
         },
         infra: {
           symbol: "\ud83d\ude87",
-          description: "Infrastructure (Hosting, Build-Tools, etc)"
+          description: "Infrastructure (Hosting, Build-Tools, etc)",
         },
         maintenance: {
           symbol: "\ud83d\udea7",
-          description: "Maintenance"
+          description: "Maintenance",
         },
         mentoring: {
           symbol: "\ud83e\uddd1\u200d\ud83c\udfeb",
-          description: "Mentoring"
+          description: "Mentoring",
         },
         platform: {
           symbol: "\ud83d\udce6",
-          description: "Packaging/porting to new platform"
+          description: "Packaging/porting to new platform",
         },
         plugin: {
           symbol: "\ud83d\udd0c",
-          description: "Plugin/utility libraries"
+          description: "Plugin/utility libraries",
         },
         projectManagement: {
           symbol: "\ud83d\udcc6",
-          description: "Project Management"
+          description: "Project Management",
         },
         question: {
           symbol: "\ud83d\udcac",
-          description: "Answering Questions"
+          description: "Answering Questions",
         },
         review: {
           symbol: "\ud83d\udc40",
-          description: "Reviewed Pull Requests"
+          description: "Reviewed Pull Requests",
         },
         security: {
           symbol: "\ud83d\udee1\ufe0f",
-          description: "Security"
+          description: "Security",
         },
         talk: {
           symbol: "\ud83d\udce2",
-          description: "Talks"
+          description: "Talks",
         },
         test: {
           symbol: "\u26a0\ufe0f",
-          description: "Tests"
+          description: "Tests",
         },
         tool: {
           symbol: "\ud83d\udd27",
-          description: "Tools"
+          description: "Tools",
         },
         translation: {
           symbol: "\ud83c\udf0d",
-          description: "Translation"
+          description: "Translation",
         },
         tutorial: {
           symbol: "\u2705",
-          description: "Tutorials"
+          description: "Tutorials",
         },
         userTesting: {
           symbol: "\ud83d\udcd3",
-          description: "User Testing"
+          description: "User Testing",
         },
         video: {
           symbol: "\ud83d\udcf9",
-          description: "Videos"
-        }
-      }
+          description: "Videos",
+        },
+      },
     };
   },
   async fetch() {
@@ -182,7 +182,7 @@ export default {
     this.loading = false;
     this.users = data;
   },
-  fetchOnServer: false
+  fetchOnServer: false,
 };
 </script>
 

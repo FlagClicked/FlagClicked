@@ -9,14 +9,14 @@
 export default {
   head() {
     return {
-      title: "Render Playground"
+      title: "Render Playground",
     };
   },
   data() {
     return {
       author: {
         user: "9gr",
-        scratch: "9gr"
+        scratch: "9gr",
       },
       title: "Render Playground",
       page: `# JS
@@ -29,8 +29,8 @@ console.log("Hello, World!")
 when gf clicked
 say [Hello, world!]
 \`\`\`
-`
+`,
     };
-  }
+  },
 };
 </script>
