@@ -58,12 +58,11 @@ export default {
 .rendered {
   background: white;
 }
-.rendered *:not(.code *) {
+.rendered * {
   color: black;
 }
-.code {
+code.code {
   padding: 20px;
-  background-color: black;
-  color: white;
+  background-color: #00000022;
 }
 </style>

@@ -49,6 +49,17 @@ export default {
    */
   modules: ["@nuxtjs/axios", "@nuxtjs/markdownit"],
 
+  axios: {
+    baseURL: "/",
+  },
+  markdownit: {
+    preset: "default",
+    linkify: true,
+    breaks: true,
+    use: [],
+    runtime: true,
+  },
+
   buildModules: [],
 
   /*
@@ -75,14 +86,6 @@ export default {
   loading: {
     color: "white",
     height: "4px",
-  },
-
-  markdownit: {
-    preset: "default",
-    linkify: true,
-    breaks: true,
-    use: [],
-    runtime: true,
   },
 
   serverMiddleware: ["~/server-middleware/server.js"],
