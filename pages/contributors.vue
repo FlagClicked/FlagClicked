@@ -175,13 +175,12 @@ export default {
     };
   },
   async fetch() {
-    const contributors = await fetch(
+    const { data } = await this.$axios.get(
       "https://raw.githubusercontent.com/FlagClicked/Contributors/master/.all-contributorsrc"
-    ).then((res) => res.json());
+    );
 
     this.loading = false;
-
-    this.users = contributors;
+    this.users = data;
   },
   fetchOnServer: false,
 };

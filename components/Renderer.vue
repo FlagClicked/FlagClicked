@@ -52,6 +52,12 @@ export default {
 };
 </script>
 <style>
+.rendered {
+  background: white;
+}
+.rendered * {
+  color: black;
+}
 .code {
   padding: 20px;
   background-color: black;

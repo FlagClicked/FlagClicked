@@ -1,23 +1,20 @@
 <template>
   <div class="navbar">
-    <NuxtLink class="item no-anim" to="/">
+    <NuxtLink class="item" to="/">
       when
       <img src="/greenflag.svg" />
       clicked
       <span class="version">ALPHA</span>
     </NuxtLink>
-    <NuxtLink
-      :to="item.link"
-      class="item button"
-      v-for="(item, k) in items"
-      :key="k"
-    >
-      <span>{{ item.text }}</span>
-    </NuxtLink>
-    <NuxtLink to="/settings" class="item right" v-if="$auth.user">
-      <span>{{ $auth.user.username }}</span>
+    <div class="item" v-for="(item, k) in items" :key="k">
+      <NuxtLink class="button" :to="item.link">{{ item.text }}</NuxtLink>
+    </div>
+    <NuxtLink to="/settings" class="item" v-if="$auth.user">
+      <span class="username">{{ $auth.user.username }}</span>
       <img
-        :src="`https://cdn2.scratch.mit.edu/get_image/user/${$auth.user.id}_500x500.png`"
+        :src="
+          `https://cdn2.scratch.mit.edu/get_image/user/${$auth.user.id}_500x500.png`
+        "
       />
     </NuxtLink>
     <NuxtLink to="/login" class="item right" v-else>
@@ -31,8 +28,16 @@ export default {
     return {
       items: [
         {
-          text: "Tutorials",
-          link: "/tutorials",
+          text: "Explore",
+          link: "/explore",
+        },
+        {
+          text: "My Tutorials",
+          link: "/tutorials/",
+        },
+        {
+          text: "New Tutorial",
+          link: "/tutorials/new",
         },
       ],
     };
@@ -48,34 +53,28 @@ export default {
 
 .item {
   display: flex;
-  padding: 0px 10px;
-  text-decoration: none;
   font-size: 28px;
   align-items: center;
   user-select: none;
   height: 65px;
-}
-.button {
   justify-content: center;
   flex: 1;
+  text-decoration: none;
 }
-.button span {
+.button {
   display: flex;
   justify-content: center;
   color: #5d657c;
   background: white;
-  padding: 2px;
   border-radius: 20pc;
   border: #00000045 solid 2px;
-  width: 120px;
+  padding: 4px 10px;
+  text-decoration: none;
 }
 
-.button span:hover {
-  border: none;
+.button:hover {
+  border-width: 0px;
   box-shadow: 0px 0px 8px #888888;
-}
-.item:not(.no-anim):not(.button):hover {
-  background: #00000021;
 }
 
 .item img {
@@ -93,5 +92,9 @@ export default {
   padding: 2px;
   border-radius: 10px;
   border: 10px;
+}
+
+.username {
+  padding: 0px 20px;
 }
 </style>

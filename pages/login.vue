@@ -22,11 +22,9 @@ export default {
     };
   },
   async mounted() {
-    let res = await fetch("/api/auth/init", {
-      method: "PUT",
-    }).then((res) => res.json());
-    this._private = res.private;
-    this.code = res.token;
+    let { data } = await this.$axios.put("/api/auth/init");
+    this._private = data.private;
+    this.code = data.token;
   },
   methods: {
     openStudio() {
@@ -44,14 +42,16 @@ export default {
       }, 3000);
     },
     async finishAuth() {
-      await fetch("/api/auth/login", {
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
+      await this.$axios.put(
+        "/api/auth/login",
+        {
           private: this._private,
           code: this.code,
-        }),
-        method: "PUT",
-      });
+        },
+        {
+          headers: { "content-type": "application/json" },
+        }
+      );
 
       this.scratchWindow?.close();
       this.$store.dispatch("auth/refreshUserDetails");

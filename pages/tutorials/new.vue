@@ -31,43 +31,30 @@ export default {
   methods: {
     async createTutorial() {
       this.loading = true;
-      let res = await fetch(`/api/tutorial/new`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "PUT",
-        body: JSON.stringify({
+      let { data } = await this.$axios.put(
+        `/api/tutorial/new`,
+        {
           body: this.input,
           title: this.title,
-        }),
-        credentials: "include",
-      });
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       this.loading = false;
-      let json = await res.json();
 
-      if (json.id) return this.$router.push({ path: `/tutorials/${json.id}` });
+      if (data.id) return this.$router.push({ path: `/tutorials/${data.id}` });
     },
   },
 };
 </script>
 <style>
-.tutorial-editor {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.125rem;
-  width: 100%;
-  height: 100%;
-}
-
-.tutorial-editor .col * {
-  width: 100%;
-}
-
 .tutorial-editor .col textarea {
   resize: none;
   padding: 20px;
-  background: black;
   font-family: "Monaco", courier, monospace;
   width: 100%;
   height: 100%;

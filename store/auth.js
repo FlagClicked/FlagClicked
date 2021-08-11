@@ -30,22 +30,14 @@ export const actions = {
     { commit, dispatch },
     { token = cookies.get("token") } = {}
   ) {
-    var me;
+    let me = null;
     if (process.server) {
       me = await module.getSession(token);
     } else {
-      var res;
-
       try {
-        res = await fetch(`/auth/me`, {
-          credentials: "include",
-        });
-      } catch (ex) {
-        throw "Fetch Error";
-      }
-      let json = await res.json();
-
-      me = json.error ? null : json;
+        let { data } = await this.$axios.get(`/auth/me`);
+        me = data;
+      } catch (error) {}
     }
 
     if (!me) {
@@ -64,17 +56,7 @@ export const actions = {
     if (process.server) {
       await module.deleteSession(token);
     } else {
-      var res;
-
-      try {
-        res = await fetch(`/auth/delete`, {
-          method: "PUT",
-          credentials: "include",
-          headers,
-        });
-      } catch (ex) {
-        throw "Fetch Error";
-      }
+      await this.$axios.put(`/auth/delete`, {}, { headers });
     }
 
     commit("resetUser");
