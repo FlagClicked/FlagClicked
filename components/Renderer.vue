@@ -43,18 +43,14 @@ export default {
         let lang = el.classList[0]?.split("-")[1];
         if (!allowedLanguages.includes(lang)) lang = "markdown";
         el.setAttribute("data-language", lang);
-        el.classList.add("CODE+" + Math.random()); // Unique ID
-        el.source = el.innerHTML;
-        el.innerHTML = Rainbow.highlight(el.innerHTML, {
-          language: el.getAttribute("data-language"),
-        }).value;
-        el.classList.add("code");
-
-        const code = el.outerHTML;
-
-        const toReplace = el.parentNode.outerHTML;
-
-        el.parentNode.parentNode.innerHTML.replace(toReplace, code);
+        el.setAttribute("data-source", el.innerText);
+        try {
+          el.parentNode.classList.add("code-container");
+          el.innerHTML = Rainbow.highlight(el.innerText, {
+            language: el.getAttribute("data-language"),
+          }).value;
+          el.classList.add("code");
+        } catch (ex) {}
       });
       return doc.body.innerHTML;
     },
@@ -62,18 +58,24 @@ export default {
 };
 </script>
 <style>
-.rendered {
-  background: white;
+div.rendered {
+  padding: 10px;
 }
-.rendered * {
+.rendered {
   color: black;
 }
-code {
+div.rendered pre.code-container {
   padding: 20px;
   width: auto;
   height: auto;
   background-color: rgba(0, 0, 0, 0.1);
   max-height: 400px;
   overflow: auto;
+  z-index: -999;
+  border-radius: 5px;
+}
+
+div.rendered pre * {
+  z-index: 333333;
 }
 </style>

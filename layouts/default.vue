@@ -36,11 +36,13 @@ body {
 
 .margined {
   margin-left: 88.5px;
+  margin-right: 88.5px;
 }
 
 @media only screen and (max-width: 500px) {
   .margined {
     margin-left: 5px;
+    margin-right: 5px;
   }
 }
 
