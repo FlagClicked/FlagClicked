@@ -44,7 +44,7 @@ export default {
         el.setAttribute("data-source", el.innerText);
         el.parentNode.classList.add("code-container");
         el.classList.add("code");
-        let code = ""
+        let code = "";
         try {
           code = Rainbow.highlight(el.innerText, {
             language: el.getAttribute("data-language"),
