@@ -2,7 +2,7 @@
   <div>
     <center>
       <div v-if="$auth.isLoggedIn" class="margined">
-        <h2>This week's Featured Tutorial</h2>
+        <h2 v-if="tutorial">This week's Featured Tutorial</h2>
         <div
           class="admin-button"
           v-if="$auth.user.admin"
@@ -24,8 +24,9 @@
             />
           </svg>
         </div>
-        <h3 v-if="tutorial && tutorial.title">
-          {{ tutorial.title }} - {{ tutorial.author.username }}
+        <h3 v-if="tutorial && tutorial.author.username">
+          <span v-if="tutorial.title">{{ tutorial.title }}</span> -
+          <span v-if="tutorial.author">{{ tutorial.author.username }}</span>
         </h3>
         <!-- TODO: A way for admins to set this -->
       </div>

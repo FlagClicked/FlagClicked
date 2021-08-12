@@ -40,7 +40,7 @@ export var Tutorials = {
       history: {
         created: {
           time: Date.now(),
-          user: author,
+          user: author.username,
         },
         edited: {},
       },

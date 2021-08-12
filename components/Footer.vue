@@ -8,11 +8,15 @@
         </li>
         <li v-for="(col, i) of items" :key="i">
           <ul>
-            <li v-for="(item, i) of col" :key="i">
+            <li class="title">{{ col.name.toUpperCase() }}</li>
+            <li v-for="(item, i) of col.items" :key="i">
               <p v-if="!item.link">{{ item.text }}</p>
-              <NuxtLink v-if="item.link" :to="item.link">
+              <NuxtLink v-if="item.link && !item.outside" :to="item.link">
                 {{ item.text }}
               </NuxtLink>
+              <a v-if="item.link && item.outside" :href="item.link">
+                {{ item.text }}
+              </a>
             </li>
           </ul>
         </li>
@@ -28,14 +32,26 @@ export default {
   data() {
     return {
       items: [
-        [
-          { text: "Contact us", link: "/contact" },
-          { text: "About", link: "/about" },
-        ],
-        [
-          { text: "Tutorials", link: "/tutorials" },
-          { text: "Markdown Tutorial", link: "/blog/md-tutorial" },
-        ],
+        {
+          name: "About us",
+          items: [
+            { text: "About", link: "/about" },
+            { text: "Contact", link: "/contact" },
+            { text: "Contributors", link: "/contributors" },
+          ],
+        },
+        {
+          name: "Resources",
+          items: [
+            { text: "Tutorials", link: "/tutorials" },
+            { text: "Markdown Tutorial", link: "/blog/md-tutorial" },
+            {
+              text: "GitHub",
+              link: "https://github.com/FlagClicked/FlagClicked",
+              outside: true,
+            },
+          ],
+        },
       ],
     };
   },
@@ -81,5 +97,9 @@ export default {
 a {
   text-decoration: none;
   user-select: none;
+}
+
+.title {
+  font-weight: 700;
 }
 </style>

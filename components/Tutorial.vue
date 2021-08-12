@@ -32,7 +32,7 @@ export default {
 </script>
 <style>
 .post * {
-  color: black !important;
+  color: black;
 }
 .post {
   display: flex;

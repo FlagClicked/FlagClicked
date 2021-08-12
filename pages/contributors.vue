@@ -194,6 +194,7 @@ export default {
   transition: background-color 0.15s ease-in-out;
   flex: 0 0 33.333333%;
   max-width: 20%;
+  margin: 10px;
 }
 .contributor a {
   padding: 0.375rem 15px;
