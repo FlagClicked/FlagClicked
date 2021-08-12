@@ -4,7 +4,6 @@
   </client-only>
 </template>
 <script>
-import allowedLanguages from "../assets/allowed-lang.js";
 import * as Rainbow from "highlight.js";
 import "highlight.js/styles/github.css";
 export default {
@@ -41,16 +40,22 @@ export default {
       );
       codeblocks.forEach((el) => {
         let lang = el.classList[0]?.split("-")[1];
-        if (!allowedLanguages.includes(lang)) lang = "markdown";
         el.setAttribute("data-language", lang);
         el.setAttribute("data-source", el.innerText);
+        el.parentNode.classList.add("code-container");
+        el.classList.add("code");
+        let code = ""
         try {
-          el.parentNode.classList.add("code-container");
-          el.innerHTML = Rainbow.highlight(el.innerText, {
+          code = Rainbow.highlight(el.innerText, {
             language: el.getAttribute("data-language"),
           }).value;
-          el.classList.add("code");
-        } catch (ex) {}
+        } catch (ex) {
+          code = Rainbow.highlight(el.innerText, {
+            language: "markdown",
+          }).value;
+        }
+
+        el.innerHTML = code;
       });
       return doc.body.innerHTML;
     },
