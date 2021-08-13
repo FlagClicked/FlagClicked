@@ -3,9 +3,7 @@
     <div class="user-box">
       <a :href="`https://scratch.mit.edu/users/${data.author.username}`">
         <img
-          :src="
-            `https://cdn2.scratch.mit.edu/get_image/user/${data.author.id}_500x500.png`
-          "
+          :src="`https://cdn2.scratch.mit.edu/get_image/user/${data.author.id}_500x500.png`"
           class="pfp"
         />
         <p>{{ data.author.username }}</p>

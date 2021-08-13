@@ -105,7 +105,7 @@ export var module = {
     return;
   },
   middleware(type) {
-    return async function(req, res, next) {
+    return async function (req, res, next) {
       let sessionUser = await module.getSession(req.cookies.token);
       if (
         (sessionUser && sessionUser.admin && type == "admin") ||
@@ -126,7 +126,7 @@ export var module = {
   databases: { users, sessions, tokens },
 };
 
-export default function({}, inject) {
+export default function ({}, inject) {
   inject("db", module);
 }
 
@@ -142,10 +142,7 @@ async function generateToken() {
     });
   });
 
-  let token = crypto
-    .createHash("sha1")
-    .update(buffer)
-    .digest("hex");
+  let token = crypto.createHash("sha1").update(buffer).digest("hex");
 
   return token;
 }
