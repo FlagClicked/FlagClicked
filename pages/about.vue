@@ -7,7 +7,8 @@
       scratch.mit.edu website, for other users to use. WhenFlagClicked is not
       affiliated, associated, or in any way officially connected with Scratch,
       the Scratch Team, the Scratch Foundation, or any of its subsidiaries or
-      its affiliates. WhenFlagClicked is licensed under the terms of MIT.
+      its affiliates. WhenFlagClicked is licensed under the terms of the MIT
+      License.
     </p>
   </div>
 </template>

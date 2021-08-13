@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="$auth.isLoggedIn">
-      <div class="hero-banner">
+      <div class="hero-banner" v-if="!tutorial">
         <h1 class="gold">FlagClicked</h1>
         <span class="md"
           >The new tutorials platform for scratchers, from scratchers.</span
