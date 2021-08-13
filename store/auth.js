@@ -1,4 +1,3 @@
-// Based on https://github.com/jeffalo/ocular/blob/main/store/auth.js
 import cookies from "js-cookie";
 var module;
 if (process.server) {

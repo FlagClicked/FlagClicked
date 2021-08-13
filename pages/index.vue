@@ -59,6 +59,7 @@ export default {
     async featuredTutorialSet() {
       // TODO: Make our own modals
       let id = prompt("Set the featured tutorial to:", 1);
+      if (id == null) return;
       let res = await fetch(`/api/tutorial/${id}`);
       if (res.status == 404) {
         return alert("This tutorial does not exist!");

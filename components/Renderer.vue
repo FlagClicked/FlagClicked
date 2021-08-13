@@ -73,7 +73,7 @@ div.rendered pre.code-container {
   padding: 20px;
   width: auto;
   height: auto;
-  /* background-color: rgba(0, 0, 0, 0.1); */
+  color: white;
   background-color: black;
   max-height: 400px;
   overflow: auto;

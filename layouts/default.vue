@@ -15,7 +15,7 @@ export default {};
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
 }
-*:not(code, button, input, textarea) {
+*:not(code, button, input, textarea, .no-white *) {
   color: #fff;
 }
 
