@@ -1,7 +1,7 @@
 <template>
   <div>
     <img src="/blocks-banner.jpg" class="blocks-image" />
-    <div class="footer" id="site-footer">
+    <div class="footer" id="footer">
       <ul>
         <li>
           <Logo />
@@ -21,8 +21,8 @@
           </ul>
         </li>
       </ul>
-      <NuxtLink to="/contributors">
-        <div class="footer-copyright">Copyright © FlagClicked Contributors</div>
+      <NuxtLink to="/contributors" class="copyright">
+        © 2021 When Flag Clicked contributors
       </NuxtLink>
     </div>
   </div>
@@ -62,6 +62,8 @@ export default {
   background-color: #ffbf00;
   font-size: 30px;
   padding: 30px;
+  display: flex;
+  flex-direction: column;
 }
 .blocks-image {
   display: block;
@@ -88,7 +90,7 @@ export default {
   align-items: center;
 }
 
-.footer-copyright {
+.copyright {
   text-align: center;
   font-size: 22px;
   margin-top: 18px;

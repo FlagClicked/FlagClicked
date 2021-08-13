@@ -2,7 +2,6 @@ if (!process.server && process.client)
   throw new Error(
     `Unexpected Error: authorization.server.js has been ran in client context. This plugin must be ran in server context.`
   );
-// Server Authorization
 
 import monk from "monk";
 import axios from "axios";
@@ -45,11 +44,11 @@ export var module = {
       username: { $regex: new RegExp("^" + escapeRegExp(name) + "$", "i") },
     });
 
-    return user ? user : null;
+    return user ?? null;
   },
   async createSession(username) {
     const token = await generateToken();
-    const session = await sessions.insert({
+    await sessions.insert({
       session: token,
       user: username,
     });
@@ -74,6 +73,11 @@ export var module = {
       username: data.username,
       admin: false,
     };
+
+    // Temporary way to get admin
+    if (["TheColaber", "FunctionalMetatable"].includes(User.username)) {
+      User.admin = true;
+    }
 
     await users.insert(User);
 
@@ -103,7 +107,7 @@ export var module = {
     return;
   },
   middleware(type) {
-    return async function (req, res, next) {
+    return async function(req, res, next) {
       let sessionUser = await module.getSession(req.cookies.token);
       if (
         (sessionUser && sessionUser.admin && type == "admin") ||
@@ -124,7 +128,7 @@ export var module = {
   databases: { users, sessions, tokens },
 };
 
-export default function ({}, inject) {
+export default function({}, inject) {
   inject("db", module);
 }
 
@@ -140,7 +144,10 @@ async function generateToken() {
     });
   });
 
-  let token = crypto.createHash("sha1").update(buffer).digest("hex");
+  let token = crypto
+    .createHash("sha1")
+    .update(buffer)
+    .digest("hex");
 
   return token;
 }

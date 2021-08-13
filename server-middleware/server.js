@@ -15,7 +15,7 @@ app.get("/auth/me", auth.middleware("authenticated"), (req, res) => {
   res.json(req.user);
 });
 
-app.put("/auth/delete", auth.middleware("authenticated"), async (req, res) => {
+app.delete("/auth/me", auth.middleware("authenticated"), async (req, res) => {
   await auth.deleteSession(req.cookies.token);
 
   res.clearCookie("token", { path: "/" });
@@ -43,13 +43,8 @@ app.get("/api/tutorial/search", async (req, res) => {
 });
 
 app.get("/api/tutorial/featured", async (req, res) => {
-  let tutorial = await Tutorials.raw.findOne({
-    featured: true,
-  });
-
-  tutorial
-    ? res.status(200).json(tutorial)
-    : res.status(404).json({ error: "cannot find tutorial" });
+  let tutorial = await Tutorials.raw.findOne({ featured: true });
+  res.json(tutorial ?? { error: "no featured tutorial" });
 });
 
 app.put(
@@ -105,9 +100,8 @@ app.put("/api/auth/init", async (req, res) => {
 
 app.put("/api/auth/login", async (req, res) => {
   let { data: comments } = await axios.get(
-    `https://api.scratch.mit.edu/studios/${
-      process.env.studioId || 30078251
-    }/comments?limit=40`
+    `https://api.scratch.mit.edu/studios/${process.env.studioId ||
+      30078251}/comments?limit=40`
   );
   let tk = await auth.databases.tokens.findOne({ private: req.body.private });
   if (!tk) return res.json({ error: "invalid token" });

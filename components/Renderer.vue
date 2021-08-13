@@ -73,14 +73,10 @@ div.rendered pre.code-container {
   padding: 20px;
   width: auto;
   height: auto;
-  background-color: rgba(0, 0, 0, 0.1);
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  background-color: black;
   max-height: 400px;
   overflow: auto;
-  z-index: -999;
   border-radius: 5px;
-}
-
-div.rendered pre * {
-  z-index: 333333;
 }
 </style>

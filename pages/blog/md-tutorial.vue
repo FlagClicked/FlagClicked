@@ -161,10 +161,14 @@ To display a literal character that would otherwise be used to format text in a 
 \`\`\`
 **_Everything you see above are all basic things you can do in markdown._**
 However one thing we have added into our markdown, are scratchblocks embeds. You can make them like this:
+
+${/* an invisable character was placed below to make the backticks show. */ ""}
 \`\`\`
+\`\`‎\`scratchblocks
 when gf clicked
 move (10) steps
 set [var v] to (100)
+\`\`‎\`
 \`\`\`
 
 which outputs:
@@ -173,7 +177,8 @@ when gf clicked
 move (10) steps
 set [var v] to (100)
 \`\`\`
-Anyway, that's all for now! We'll add more if we here [any feedback from you!](/contact)
+
+Anyway, that's all for now! We'll add more if we hear any feedback from you!
 `,
     };
   },

@@ -56,7 +56,7 @@ export const actions = {
     if (process.server) {
       await module.deleteSession(token);
     } else {
-      await this.$axios.put(`/auth/delete`, {}, { headers });
+      await this.$axios.delete("/auth/me", {}, { headers });
     }
 
     commit("resetUser");

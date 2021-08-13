@@ -6,52 +6,50 @@
       clicked
       <span class="version">ALPHA</span>
     </NuxtLink>
-    <div class="item" v-for="(item, k) in items" :key="k">
-      <NuxtLink class="button" :to="item.link">{{ item.text }}</NuxtLink>
+
+    <div class="item">
+      <NuxtLink class="button" to="/explore">Explore</NuxtLink>
     </div>
-    <NuxtLink to="/settings" class="item" v-if="$auth.user">
-      <span class="username">{{ $auth.user.username }}</span>
-      <img
-        :src="`https://cdn2.scratch.mit.edu/get_image/user/${$auth.user.id}_500x500.png`"
-      />
-    </NuxtLink>
-    <NuxtLink to="/login" class="item right" v-else>
-      <span>Login</span>
-    </NuxtLink>
+
+    <template v-if="$auth.user">
+      <div class="item" data-small1>
+        <NuxtLink class="button" to="/tutorials">My Tutorials</NuxtLink>
+      </div>
+      <div class="item" data-small2>
+        <NuxtLink class="button" to="/tutorials/new">New Tutorial</NuxtLink>
+      </div>
+
+      <NuxtLink to="/settings" class="item">
+        <span class="username">{{ $auth.user.username }}</span>
+        <img
+          :src="
+            `https://cdn2.scratch.mit.edu/get_image/user/${$auth.user.id}_500x500.png`
+          "
+        />
+      </NuxtLink>
+    </template>
+
+    <template v-else>
+      <div class="item">
+        <NuxtLink class="button" to="/about">About</NuxtLink>
+      </div>
+      <NuxtLink to="/login" class="item right">
+        <span>Login</span>
+      </NuxtLink>
+    </template>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      items: [
-        {
-          text: "Explore",
-          link: "/explore",
-        },
-        {
-          text: "My Tutorials",
-          link: "/tutorials/",
-        },
-        {
-          text: "New Tutorial",
-          link: "/tutorials/new",
-        },
-      ],
-    };
-  },
-};
-</script>
+
 <style scoped>
 .navbar {
-  --brand: #ffbf00;
-  background: var(--brand);
+  background: #ffbf00;
   display: flex;
+  padding: 0px 10px;
 }
 
 .item {
   display: flex;
-  font-size: 28px;
+  font-size: 24px;
   align-items: center;
   user-select: none;
   height: 65px;
@@ -76,8 +74,8 @@ export default {
 }
 
 .item img {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
 }
 
 .right {
@@ -94,14 +92,24 @@ export default {
 }
 
 .username {
-  padding: 0px 20px;
+  padding: 0px 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 160px;
 }
 
 .logo {
   padding: 0px 4px;
 }
 
-* {
-  max-width: 100vw;
+@media (max-width: 955px) {
+  [data-small1] {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  [data-small2] {
+    display: none;
+  }
 }
 </style>
