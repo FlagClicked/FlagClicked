@@ -75,7 +75,7 @@ export var module = {
     };
 
     // Temporary way to get admin
-    if (["TheColaber", "FunctionalMetatable"].includes(User.username)) {
+    if (["TheColaber", "9gr"].includes(User.username)) {
       User.admin = true;
     }
 
@@ -139,7 +139,7 @@ function escapeRegExp(string) {
 async function generateToken() {
   let buffer = await new Promise((resolve, reject) => {
     crypto.randomBytes(256, (ex, buffer) => {
-      if (ex) return reject("error generating token");
+      if (ex) return reject("error generating token :(");
       resolve(buffer);
     });
   });
