@@ -1,26 +1,27 @@
 {
-  "name": "FlagClicked",
+  "name": "flag-clicked",
   "version": "1.0.0",
-  "description": "Website for FlagClicked",
-  "main": "index.js",
+  "description": "FlagClicked Frontend",
+  "author": "TheColaber and contributors",
+  "license": "MIT",
+  "private": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "post-update": "yarn upgrade --latest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FlagClicked/FlagClicked.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FlagClicked/FlagClicked/issues"
-  },
-  "homepage": "https://github.com/FlagClicked/FlagClicked#readme",
   "dependencies": {
-    "@replit/database": "^2.0.0",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/markdownit": "^2.0.0",
+    "cookie": "^0.4.1",
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "jsdom": "^16.5.1",
-    "node-fetch": "^2.6.1"
-  }
+    "js-cookie": "^3.0.0",
+    "monk": "^7.3.4",
+    "node-fetch": "^2.6.1",
+    "nuxt": "^2.15.7"
+  },
+  "keywords": []
 }
