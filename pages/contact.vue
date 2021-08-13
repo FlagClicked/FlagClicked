@@ -1,7 +1,5 @@
 <template>
-  <div>
-    todo
-  </div>
+  <div>todo</div>
 </template>
 
 <script>
