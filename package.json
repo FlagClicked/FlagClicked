@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "js-cookie": "^3.0.0",
     "monk": "^7.3.4",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.2.3",
     "nuxt": "^2.15.7"
   },
   "keywords": []
